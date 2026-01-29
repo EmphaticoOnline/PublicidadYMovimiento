@@ -2,7 +2,7 @@ import { clientsLogos } from '../data/clientsLogos'
 
 export default function ClientsLogos() {
   return (
-    <section style={{ marginTop: '2.5rem', marginBottom: '3rem' }}>
+  <section style={{ marginTop: '2.5rem', marginBottom: '3rem' }}>
       <h2
         style={{
           textAlign: 'center',
@@ -17,10 +17,13 @@ export default function ClientsLogos() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-          gap: '1.2rem 2rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+          gap: '4px 24px',
           alignItems: 'center',
-          justifyItems: 'center'
+          justifyItems: 'center',
+          maxWidth: '900px',
+          width: '100%',
+          margin: '0 auto'
         }}
       >
         {clientsLogos.map((client) => (

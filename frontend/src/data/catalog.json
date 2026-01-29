@@ -1,0 +1,28 @@
+{
+  "sky-dancer": {
+    "diseno-especial": [
+      {
+        "image": "/images/categories/sky-dancer/diseno-especial/Camineta.jpg",
+        "title": "Sky Dancer Camioneta"
+      },
+      {
+        "image": "/images/categories/sky-dancer/diseno-especial/Castillo-1.jpg",
+        "title": "Sky Dancer Castillo"
+      },
+      {
+        "image": "/images/categories/sky-dancer/diseno-especial/Castillo-2.jpg",
+        "title": "Sky Dancer Castillo 2"
+      }
+    ],
+
+    "doble-turbina": [],
+    "tiras-locas": [],
+    "una-turbina": [],
+    "ventilador": []
+  },
+
+  "botargas": {
+    "inflables": [],
+    "rigidas": []
+  }
+}

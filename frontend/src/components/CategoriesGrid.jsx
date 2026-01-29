@@ -6,7 +6,7 @@ function CategoriesGrid() {
     <div
       style={{
         padding: '2rem',
-        maxWidth: '1400px',
+        maxWidth: '900px', // más angosto para centrar el grupo
         margin: '0 auto'
       }}
     >
@@ -14,7 +14,7 @@ function CategoriesGrid() {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-          gap: '18px'
+          gap: '4px 24px' // menos espacio entre filas, más entre columnas
         }}
       >
         {categories.map((category) => (
@@ -24,35 +24,68 @@ function CategoriesGrid() {
             style={{
               position: 'relative',
               aspectRatio: '1',
-              borderRadius: '8px',
               overflow: 'hidden',
               textDecoration: 'none',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
               transition: 'transform 0.2s',
-              display: 'block'
+              display: 'block',
+              background: 'transparent'
             }}
-            onMouseEnter={(e) => {
+            onMouseEnter={e => {
               e.currentTarget.style.transform = 'scale(1.05)'
+              // Mostrar overlay de label en hover
+              const overlay = e.currentTarget.querySelector('.category-overlay')
+              if (overlay) overlay.style.display = 'flex'
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={e => {
               e.currentTarget.style.transform = 'scale(1)'
+              // Ocultar overlay de label al salir del hover
+              const overlay = e.currentTarget.querySelector('.category-overlay')
+              if (overlay) overlay.style.display = 'none'
             }}
           >
             <img
-              src={category.image || '/images/placeholder.png'}
+              src={`/images/categories/${category.id}/cover.jpg`}
               alt={category.label}
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
-                display: 'block'
+                objectFit: 'contain',
+                display: 'block',
+                background: '#fff' // para que el área vacía sea blanca (opcional)
               }}
-              onError={(e) => {
+              onError={e => {
                 e.target.src = '/images/placeholder.png'
-                e.target.nextSibling.style.display = 'flex'
+                // Mostrar overlay de debug con category.id
+                const debugOverlay = e.target.parentNode.querySelector('.category-debug')
+                if (debugOverlay) debugOverlay.style.display = 'flex'
               }}
             />
+            {/* Overlay de debug: category.id, solo visible si la imagen falla */}
             <div
+              className="category-debug"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255,0,0,0.5)',
+                color: '#fff',
+                fontSize: '1rem',
+                fontWeight: 700,
+                textAlign: 'center',
+                zIndex: 2,
+                pointerEvents: 'none',
+                padding: '1rem',
+                letterSpacing: '1px',
+                textShadow: '0 1px 4px #000'
+              }}
+            >
+              {category.id}
+            </div>
+            {/* Overlay de label: solo visible en hover */}
+            <div
+              className="category-overlay"
               style={{
                 position: 'absolute',
                 inset: 0,
@@ -64,7 +97,8 @@ function CategoriesGrid() {
                 fontSize: '0.9rem',
                 fontWeight: 600,
                 textAlign: 'center',
-                padding: '1rem'
+                padding: '1rem',
+                zIndex: 1
               }}
             >
               {category.label}
