@@ -1,95 +1,49 @@
 import { clientsLogos } from '../data/clientsLogos'
 
-function ClientsLogos() {
+export default function ClientsLogos() {
   return (
-    <section
-      style={{
-        padding: '3rem 2rem',
-        backgroundColor: '#f5f5f5'
-      }}
-    >
-      <div
+    <section style={{ marginTop: '2.5rem', marginBottom: '3rem' }}>
+      <h2
         style={{
-          maxWidth: '1400px',
-          margin: '0 auto'
+          textAlign: 'center',
+          color: '#d60000',
+          fontWeight: 'bold',
+          marginBottom: '2rem'
         }}
       >
-        {/* TÍTULO CON LÍNEAS DECORATIVAS */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1.5rem',
-            marginBottom: '3rem'
-          }}
-        >
-          <div
-            style={{
-              flex: 1,
-              height: '3px',
-              backgroundColor: '#d80000'
-            }}
-          />
-          <h2
-            style={{
-              color: '#d80000',
-              fontSize: '1.8rem',
-              fontWeight: 700,
-              textAlign: 'center',
-              margin: 0,
-              whiteSpace: 'nowrap',
-              fontFamily: `'Poppins', 'Segoe UI', sans-serif`
-            }}
-          >
-            EMPRESAS CON LAS QUE TRABAJAMOS
-          </h2>
-          <div
-            style={{
-              flex: 1,
-              height: '3px',
-              backgroundColor: '#d80000'
-            }}
-          />
-        </div>
+        EMPRESAS CON LAS QUE TRABAJAMOS
+      </h2>
 
-        {/* GRID DE LOGOS */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
-            gap: '24px'
-          }}
-        >
-          {clientsLogos.map((client) => (
-            <div
-              key={client.id}
-              style={{
-                backgroundColor: '#fff',
-                padding: '1.5rem',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '100px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-              }}
-            >
-              <img
-                src={client.image}
-                alt={client.name}
-                style={{
-                  maxWidth: '120px',
-                  maxHeight: '80px',
-                  objectFit: 'contain',
-                  display: 'block'
-                }}
-              />
-            </div>
-          ))}
-        </div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+          gap: '1.2rem 2rem',
+          alignItems: 'center',
+          justifyItems: 'center'
+        }}
+      >
+        {clientsLogos.map((client) => (
+          <img
+            key={client.id}
+            src={client.image}
+            alt={client.name}
+            title={client.name}
+            style={{
+              width: '100%',
+              maxWidth: '280px',
+              objectFit: 'contain',
+              transition: 'transform 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.08)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
+          />
+        ))}
       </div>
     </section>
   )
 }
-
-export default ClientsLogos
