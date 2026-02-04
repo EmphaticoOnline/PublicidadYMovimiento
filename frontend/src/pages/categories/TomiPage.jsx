@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const WHATSAPP_NUMBERS = [
   '5213310949986', // Faby
@@ -13,7 +14,37 @@ function openWhatsappAlternado() {
   window.open(`https://wa.me/${phone}`, '_blank')
 }
 
+const VIDEOS = [
+  { id: 'tomi-1', src: '/images/categories/tomi-publicitario/tomi-1.mp4' },
+  { id: 'tomi-2', src: '/images/categories/tomi-publicitario/tomi-2.mp4' },
+  { id: 'tomi-3', src: '/images/categories/tomi-publicitario/tomi-3.mp4' },
+  { id: 'tomi-4', src: '/images/categories/tomi-publicitario/tomi-4.mp4' }
+]
+
+const GRID_ITEMS = [
+  { type: 'image', src: '/images/categories/tomi-publicitario/castor.jpg', alt: 'Tomi publicitario Castor' },
+  { type: 'image', src: '/images/categories/tomi-publicitario/pemex.jpg', alt: 'Tomi publicitario Pemex' },
+  { type: 'image', src: '/images/categories/tomi-publicitario/perro.jpg', alt: 'Tomi publicitario Perro' },
+  { type: 'video', id: 'tomi-2' },
+  { type: 'video', id: 'tomi-3' },
+  { type: 'video', id: 'tomi-4' }
+]
+
 export default function TomiPage() {
+  const [mainVideoId, setMainVideoId] = useState('tomi-1')
+  
+  const handleVideoSwap = (clickedVideoId) => {
+    setMainVideoId(clickedVideoId)
+  }
+  
+  const mainVideo = VIDEOS.find(v => v.id === mainVideoId)
+  const gridItems = GRID_ITEMS.map(item => {
+    if (item.type === 'video' && item.id === mainVideoId) {
+      return { type: 'video', id: 'tomi-1' }
+    }
+    return item
+  })
+
   return (
     <div
       style={{
@@ -52,30 +83,80 @@ export default function TomiPage() {
         </Link>
       </div>
 
-      {/* GRID DE IMÁGENES TOMI */}
+      {/* CONTENEDOR FLEX: VIDEO A IZQUIERDA + IMÁGENES A DERECHA */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '24px',
-          marginBottom: '3rem'
+          display: 'flex',
+          gap: '2rem',
+          marginBottom: '3rem',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          flexWrap: 'nowrap'
         }}
       >
-        <img
-          src="/images/categories/tomi-publicitario/castor.jpg"
-          alt="Tomi publicitario Castor"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-        <img
-          src="/images/categories/tomi-publicitario/pemex.jpg"
-          alt="Tomi publicitario Pemex"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-        <img
-          src="/images/categories/tomi-publicitario/perro.jpg"
-          alt="Tomi publicitario Perro"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
+        {/* VIDEO A LA IZQUIERDA (DINÁMICO) */}
+        <div
+          style={{
+            flex: '0 0 40%',
+            minWidth: '280px'
+          }}
+        >
+          <video
+            key={mainVideo.id}
+            src={mainVideo.src}
+            alt="Video Tomi Publicitario"
+            autoPlay
+            loop
+            muted
+            style={{
+              width: '100%',
+              borderRadius: '14px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+            }}
+          />
+        </div>
+
+        {/* GRID DE IMÁGENES A LA DERECHA */}
+        <div
+          style={{
+            flex: '0 0 55%',
+            minWidth: '280px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+            gap: '15px'
+          }}
+        >
+          {gridItems.map((item, idx) => {
+            if (item.type === 'image') {
+              return (
+                <img
+                  key={idx}
+                  src={item.src}
+                  alt={item.alt}
+                  style={{ width: '100%', borderRadius: '14px' }}
+                />
+              )
+            }
+            const video = VIDEOS.find(v => v.id === item.id)
+            return (
+              <video
+                key={item.id}
+                src={video.src}
+                alt={`Video Tomi Publicitario ${item.id}`}
+                autoPlay
+                loop
+                muted
+                onClick={() => handleVideoSwap(item.id)}
+                style={{
+                  width: '100%',
+                  borderRadius: '14px',
+                  backgroundColor: '#000',
+                  cursor: 'pointer'
+                }}
+              />
+            )
+          })}
+        </div>
       </div>
 
       {/* TEXTO COMERCIAL CENTRADO */}

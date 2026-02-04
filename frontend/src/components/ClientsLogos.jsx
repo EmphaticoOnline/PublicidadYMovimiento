@@ -18,6 +18,30 @@ export default function ClientsLogos() {
 
       <div
         style={{
+          maxWidth: '1300px',
+          width: '100%',
+          margin: '0 auto'
+        }}
+      >
+        <img
+          src="/images/clients/marcas.jpg"
+          alt="Marcas con las que trabajamos"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            objectFit: 'contain'
+          }}
+        />
+      </div>
+
+      {/**
+       * BLOQUE ORIGINAL (logos por cliente)
+       * Se deja comentado para futura reactivación.
+       */}
+      {/*
+      <div
+        style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
           gap: '4px 24px',
@@ -49,6 +73,7 @@ export default function ClientsLogos() {
           />
         ))}
       </div>
+      */}
     </section>
   )
 }

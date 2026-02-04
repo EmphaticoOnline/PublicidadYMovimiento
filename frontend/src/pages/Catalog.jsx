@@ -6,6 +6,23 @@ import TomiPage from './categories/TomiPage'
 import SkyDancerPage from './categories/SkyDancerPage'
 import ReplicasInflablesPage from './categories/ReplicasInflablesPage'
 import ArcosMetaPage from './categories/ArcosMetaPage'
+import PublibackPage from './categories/PublibackPage'
+import CilindrosPublicitariosPage from './categories/CilindrosPublicitariosPage'
+import PublituboPage from './categories/PublituboPage'
+import PantallasCartelerasPage from './categories/PantallasCartelerasPage'
+import FlagBannerPage from './categories/FlagBannerPage'
+import BotargasPage from './categories/BotargasPage'
+import CarpasTokenPage from './categories/CarpasTokenPage'
+import TunelsPage from './categories/TunelsPage'
+import GlobosAerostaticosPage from './categories/GlobosAerostaticosPage'
+import JuegosInteractivosPage from './categories/JuegosInteractivosPage'
+import BrincolinesPage from './categories/BrincolinesPage'
+import PeluchePublicitarioPage from './categories/PeluchePublicitarioPage'
+import DomisRellenablesPage from './categories/DomisRellenablesPage'
+import LineaAutosPage from './categories/LineaAutosPage'
+import DisplayPage from './categories/DisplayPage'
+import KitsPage from './categories/KitsPage'
+import TurbinasPage from './categories/TurbinasPage'
 
 function Catalog() {
   const [searchParams] = useSearchParams()
@@ -39,6 +56,73 @@ function Catalog() {
     return <ArcosMetaPage />
   }
 
+  if (categoria === 'publiback' && !sub) {
+    return <PublibackPage />
+  }
+if (categoria === 'cilindros-publicitarios' && !sub) {
+    return <CilindrosPublicitariosPage />
+  }
+
+  if (categoria === 'publitubo' && !sub) {
+    return <PublituboPage />
+  }
+if (categoria === 'pantallas-carteleras' && !sub) {
+    return <PantallasCartelerasPage />
+  }
+
+  if (categoria === 'flag-banner' && !sub) {
+    return <FlagBannerPage />
+  }
+
+  if (categoria === 'botargas' && !sub) {
+    return <BotargasPage />
+  }
+
+  if (categoria === 'carpas-toldos' && !sub) {
+    return <CarpasTokenPage />
+  }
+
+  if (categoria === 'tuneles' && !sub) {
+    return <TunelsPage />
+  }
+
+  if (categoria === 'globos-aerostaticos' && !sub) {
+    return <GlobosAerostaticosPage />
+  }
+
+  if (categoria === 'juegos-interactivos' && !sub) {
+    return <JuegosInteractivosPage />
+  }
+
+  if (categoria === 'brincolines' && !sub) {
+    return <BrincolinesPage />
+  }
+
+  if (categoria === 'peluche-publicitario' && !sub) {
+    return <PeluchePublicitarioPage />
+  }
+
+  if (categoria === 'domis-rellenables' && !sub) {
+    return <DomisRellenablesPage />
+  }
+
+  if (categoria === 'linea-autos' && !sub) {
+    return <LineaAutosPage />
+  }
+
+  if (categoria === 'display' && !sub) {
+    return <DisplayPage />
+  }
+
+  if (categoria === 'kits' && !sub) {
+    return <KitsPage />
+  }
+
+  if (categoria === 'turbinas' && !sub) {
+    return <TurbinasPage />
+  }
+
+  
   // 👉 NIVEL 1: SUBCATEGORÍAS
   if (categoria && !sub) {
     const subs = subcategories[categoria] || []
