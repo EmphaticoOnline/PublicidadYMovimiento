@@ -3,17 +3,17 @@ function BestSellersSection() {
     {
       id: 1,
       title: 'TOMI MUÑECOS PUBLICITARIOS',
-      image: '/images/placeholder.png'
+      image: '/images/best-sellers/producto1.jpg'
     },
     {
       id: 2,
       title: 'RÉPLICAS INFLABLES',
-      image: '/images/placeholder.png'
+      image: '/images/best-sellers/producto2.jpg'
     },
     {
       id: 3,
       title: 'BOTARGAS',
-      image: '/images/placeholder.png'
+      image: '/images/best-sellers/producto3.jpg'
     }
   ]
 

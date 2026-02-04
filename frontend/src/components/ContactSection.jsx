@@ -1,3 +1,4 @@
+import { FaWhatsapp } from 'react-icons/fa'
 function ContactSection() {
   return (
     <section
@@ -42,24 +43,20 @@ function ContactSection() {
               borderRadius: '12px',
               overflow: 'hidden',
               aspectRatio: '16/12',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.2)'
+              boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+              display: 'flex'
             }}
           >
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: '#e0e0e0',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#666',
-                fontSize: '1.2rem',
-                fontWeight: 600
-              }}
-            >
-              MAPA PLACEHOLDER
-            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.514239139682!2d-103.36161882478672!3d20.689332580876446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b1d7c88c11f3%3A0xcd5be53df090ff32!2sGrupo%20PM%20Publicidad%20y%20Movimiento!5e0!3m2!1ses-419!2smx!4v1770138729844!5m2!1ses-419!2smx"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block', width: '100%', height: '100%', flex: 1 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación Grupo PM Publicidad y Movimiento"
+            />
           </div>
 
           {/* COLUMNA DERECHA - INFORMACIÓN */}
@@ -80,10 +77,9 @@ function ContactSection() {
               >
                 HORARIO DE ATENCIÓN
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
                 Lunes a Viernes: 9:00 AM - 6:00 PM<br />
-                Sábados: 10:00 AM - 2:00 PM<br />
-                Domingos: Cerrado
+                Sábados: 10:00 AM - 2:00 PM
               </p>
             </div>
 
@@ -99,11 +95,39 @@ function ContactSection() {
               >
                 TELÉFONOS
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                Oficina: (55) 1234-5678<br />
-                WhatsApp: (55) 9876-5432<br />
-                Ventas: (55) 5555-1234
-              </p>
+              <div style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
+                (33) 3641-0130<br />
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
+                  (33) 1618-0720
+                  <span style={{
+                    backgroundColor: '#25D366',
+                    borderRadius: '50%',
+                    width: '1.2em',
+                    height: '1.2em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginLeft: '0.5em'
+                  }}>
+                    <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
+                  </span>
+                </span><br />
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
+                  (33) 1594-0580
+                  <span style={{
+                    backgroundColor: '#25D366',
+                    borderRadius: '50%',
+                    width: '1.2em',
+                    height: '1.2em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginLeft: '0.5em'
+                  }}>
+                    <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
+                  </span>
+                </span>
+              </div>
             </div>
 
             {/* DIRECCIÓN */}
@@ -118,10 +142,10 @@ function ContactSection() {
               >
                 DIRECCIÓN
               </h3>
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0 }}>
-                Av. Principal #123<br />
-                Col. Centro, Ciudad de México<br />
-                C.P. 12345, México
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
+                Av. Enrique Díaz de León Nte. 819<br />
+                Col. Mezquitán Country. Guadalara, Jalisco<br />
+                C.P. 44260, México
               </p>
             </div>
           </div>

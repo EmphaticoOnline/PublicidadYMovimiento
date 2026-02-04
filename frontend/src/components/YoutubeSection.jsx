@@ -1,98 +1,97 @@
 function YoutubeSection() {
   return (
-    <section
+    <div
       style={{
-        backgroundColor: '#f0f0f0',
-        padding: '4rem 2rem'
+        width: '100%',
+        maxWidth: '720px',          // 👈 antes 900px (más compacto)
+        margin: '0 auto',
+        background: 'transparent',
+        padding: 0,
+        boxShadow: 'none',
       }}
     >
-      <div
+      <h2
         style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
+          color: '#d80000',
+          fontSize: '1.6rem',       // 👈 antes 2.2rem
+          fontWeight: 800,
+          textAlign: 'center',
+          marginBottom: '1rem',     // 👈 antes 1.5rem
+          fontFamily: `'Poppins', 'Segoe UI', sans-serif`,
+          letterSpacing: '0.5px',
+          lineHeight: 1.15,
         }}
       >
-        {/* TÍTULO */}
-        <h2
-          style={{
-            color: '#d80000',
-            fontSize: '2.2rem',
-            fontWeight: 700,
-            textAlign: 'center',
-            marginBottom: '3rem',
-            fontFamily: `'Poppins', 'Segoe UI', sans-serif`
-          }}
-        >
-          ¡VE NUESTROS PRODUCTOS EN YOUTUBE!
-        </h2>
+        ¡VE NUESTROS PRODUCTOS EN YOUTUBE!
+      </h2>
 
-        {/* CONTENEDOR DE VIDEO */}
+      <div
+        style={{
+          width: '100%',
+          backgroundColor: '#000',
+          borderRadius: '16px',
+          overflow: 'hidden',
+          boxShadow: '0 12px 30px rgba(0,0,0,0.25)',
+          position: 'relative',
+          aspectRatio: '16 / 8',    // 👈 antes 16/9 (menos alto, más “tarjeta”)
+        }}
+      >
+        <img
+          src="/images/youtube-placeholder.jpg"
+          alt="Video de YouTube"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+          onError={(e) => {
+            e.currentTarget.src =
+              'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"%3E%3Crect fill="%23333" width="640" height="360"/%3E%3Ctext fill="%23fff" font-family="Arial" font-size="24" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EYouTube Video%3C/text%3E%3C/svg%3E'
+          }}
+        />
+
+        {/* BOTÓN PLAY */}
         <div
           style={{
-            maxWidth: '900px',
-            margin: '0 auto',
-            backgroundColor: '#000',
-            borderRadius: '12px',
-            overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-            position: 'relative',
-            aspectRatio: '16/9'
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '72px',          // 👈 un poquito más chico
+            height: '72px',
+            backgroundColor: 'rgba(255, 0, 0, 0.85)',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'transform 0.25s ease, background-color 0.25s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 1)'
+            e.currentTarget.style.transform =
+              'translate(-50%, -50%) scale(1.08)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.85)'
+            e.currentTarget.style.transform =
+              'translate(-50%, -50%) scale(1)'
           }}
         >
-          <img
-            src="/images/youtube-placeholder.jpg"
-            alt="Video de YouTube"
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block'
-            }}
-            onError={(e) => {
-              e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"%3E%3Crect fill="%23333" width="640" height="360"/%3E%3Ctext fill="%23fff" font-family="Arial" font-size="24" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EYouTube Video%3C/text%3E%3C/svg%3E'
-            }}
-          />
-
-          {/* ICONO DE PLAY OVERLAY */}
           <div
             style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '80px',
-              height: '80px',
-              backgroundColor: 'rgba(255, 0, 0, 0.8)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+              width: 0,
+              height: 0,
+              borderLeft: '18px solid white',  // 👈 proporcional al botón
+              borderTop: '11px solid transparent',
+              borderBottom: '11px solid transparent',
+              marginLeft: '4px',
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 1)'
-              e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.1)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.8)'
-              e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'
-            }}
-          >
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderLeft: '20px solid white',
-                borderTop: '12px solid transparent',
-                borderBottom: '12px solid transparent',
-                marginLeft: '5px'
-              }}
-            />
-          </div>
+          />
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

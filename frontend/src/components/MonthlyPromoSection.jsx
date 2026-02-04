@@ -1,12 +1,13 @@
 function MonthlyPromoSection() {
   const promos = [
-    { id: 1, image: '/images/placeholder.png', badge: '50%' },
-    { id: 2, image: '/images/placeholder.png', badge: 'PROMO' },
-    { id: 3, image: '/images/placeholder.png', badge: '30%' }
+    { id: 1, image: '/images/monthly-promo/promo1.jpg', badge: '50%' },
+    { id: 2, image: '/images/monthly-promo/promo2.jpg', badge: 'PROMO' },
+    { id: 3, image: '/images/monthly-promo/promo3.jpg', badge: '30%' }
   ]
 
   return (
     <section
+      id="promociones"
       style={{
         padding: '4rem 2rem',
         backgroundColor: '#f8f8f8'
@@ -61,7 +62,6 @@ function MonthlyPromoSection() {
                 e.currentTarget.style.transform = 'scale(1)'
               }}
             >
-              {/* IMAGEN */}
               <img
                 src={promo.image}
                 alt="Promo del mes"
@@ -72,30 +72,6 @@ function MonthlyPromoSection() {
                   display: 'block'
                 }}
               />
-
-              {/* BADGE */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '20px',
-                  backgroundColor: '#d80000',
-                  color: '#fff',
-                  fontSize: '1.5rem',
-                  fontWeight: 700,
-                  padding: '0.8rem 1.2rem',
-                  borderRadius: '50%',
-                  minWidth: '80px',
-                  minHeight: '80px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-                  fontFamily: `'Poppins', 'Segoe UI', sans-serif`
-                }}
-              >
-                {promo.badge}
-              </div>
             </div>
           ))}
         </div>

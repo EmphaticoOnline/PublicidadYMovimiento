@@ -8,7 +8,9 @@ export default function ClientsLogos() {
           textAlign: 'center',
           color: '#d60000',
           fontWeight: 'bold',
-          marginBottom: '2rem'
+          marginBottom: '2rem',
+          fontFamily: 'Montserrat, Arial, sans-serif',
+          fontSize: '2.5rem'
         }}
       >
         EMPRESAS CON LAS QUE TRABAJAMOS

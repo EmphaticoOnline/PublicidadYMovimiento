@@ -32,15 +32,9 @@ function CategoriesGrid() {
             }}
             onMouseEnter={e => {
               e.currentTarget.style.transform = 'scale(1.05)'
-              // Mostrar overlay de label en hover
-              const overlay = e.currentTarget.querySelector('.category-overlay')
-              if (overlay) overlay.style.display = 'flex'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.transform = 'scale(1)'
-              // Ocultar overlay de label al salir del hover
-              const overlay = e.currentTarget.querySelector('.category-overlay')
-              if (overlay) overlay.style.display = 'none'
             }}
           >
             <img
@@ -83,26 +77,7 @@ function CategoriesGrid() {
             >
               {category.id}
             </div>
-            {/* Overlay de label: solo visible en hover */}
-            <div
-              className="category-overlay"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'none',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(0,0,0,0.6)',
-                color: '#fff',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                textAlign: 'center',
-                padding: '1rem',
-                zIndex: 1
-              }}
-            >
-              {category.label}
-            </div>
+
           </Link>
         ))}
       </div>

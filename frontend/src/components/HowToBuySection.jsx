@@ -58,7 +58,7 @@ function HowToBuySection() {
             fontWeight: 600,
             textAlign: 'center',
             marginBottom: '3.5rem',
-            fontFamily: `'Poppins', 'Segoe UI', sans-serif`
+            fontFamily: 'Montserrat, Arial, sans-serif'
           }}
         >
           Comprar en Publicidad y Movimiento es muy sencillo:
@@ -69,7 +69,7 @@ function HowToBuySection() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '2.5rem'
+            gap: '0.5rem'
           }}
         >
           {steps.map((step) => (
@@ -80,25 +80,19 @@ function HowToBuySection() {
                 padding: '1.5rem'
               }}
             >
-              {/* ICONO PLACEHOLDER */}
-              <div
+              {/* ICONO PERSONALIZADO */}
+              <img
+                src={`/images/icons/paso-${step.id}.jpg`}
+                alt={`Icono paso ${step.id}`}
                 style={{
                   width: '80px',
                   height: '80px',
                   margin: '0 auto 1.5rem',
-                  backgroundColor: '#d80000',
+                  objectFit: 'contain',
                   borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#fff',
-                  fontSize: '2rem',
-                  fontWeight: 700,
-                  boxShadow: '0 4px 12px rgba(216,0,0,0.3)'
+                  boxShadow: '0 4px 12px rgba(216,0,0,0.15)'
                 }}
-              >
-                {step.id}
-              </div>
+              />
 
               {/* TÍTULO DEL PASO */}
               <h3
@@ -107,7 +101,7 @@ function HowToBuySection() {
                   fontSize: '1.2rem',
                   fontWeight: 700,
                   marginBottom: '1rem',
-                  fontFamily: `'Poppins', 'Segoe UI', sans-serif`
+                  fontFamily: `'Montserrat', 'Poppins', 'Segoe UI', sans-serif`
                 }}
               >
                 {step.title}
@@ -119,7 +113,8 @@ function HowToBuySection() {
                   color: '#666',
                   fontSize: '0.95rem',
                   lineHeight: '1.6',
-                  margin: 0
+                  margin: 0,
+                  fontFamily: `'Montserrat', 'Inter', 'Segoe UI', sans-serif`
                 }}
               >
                 {step.description}

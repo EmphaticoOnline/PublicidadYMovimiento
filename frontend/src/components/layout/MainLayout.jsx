@@ -5,9 +5,11 @@ function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <main style={{ padding: '1rem' }}>
+
+      <main>
         {children}
       </main>
+
       <Footer />
     </>
   )
