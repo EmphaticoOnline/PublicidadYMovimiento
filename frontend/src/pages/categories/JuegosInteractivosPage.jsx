@@ -1,19 +1,8 @@
 import { Link } from 'react-router-dom'
-
-const WHATSAPP_NUMBERS = [
-  '5213310949986', // Faby
-  '5213331704595', // Publicidad y Movimiento
-]
-
-function openWhatsappAlternado() {
-  const lastIndex = Number(localStorage.getItem('waIndex')) || 0
-  const nextIndex = (lastIndex + 1) % WHATSAPP_NUMBERS.length
-  localStorage.setItem('waIndex', nextIndex)
-  const phone = WHATSAPP_NUMBERS[lastIndex]
-  window.open(`https://wa.me/${phone}`, '_blank')
-}
+import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 export default function JuegosInteractivosPage() {
+  const { handleWhatsappClick, loading } = useWhatsappLead()
   return (
     <div
       style={{
@@ -34,7 +23,7 @@ export default function JuegosInteractivosPage() {
           to="/#"
           onClick={e => {
             e.preventDefault()
-            openWhatsappAlternado()
+            handleWhatsappClick()
           }}
           style={{
             display: 'inline-block',

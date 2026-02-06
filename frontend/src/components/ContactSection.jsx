@@ -1,5 +1,8 @@
 import { FaWhatsapp } from 'react-icons/fa'
+import { useWhatsappLead } from '../hooks/useWhatsappLead'
+
 function ContactSection() {
+  const { handleWhatsappClick } = useWhatsappLead()
   return (
     <section
       style={{
@@ -99,31 +102,37 @@ function ContactSection() {
                 (33) 3641-0130<br />
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
                   (33) 1618-0720
-                  <span style={{
-                    backgroundColor: '#25D366',
-                    borderRadius: '50%',
-                    width: '1.2em',
-                    height: '1.2em',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginLeft: '0.5em'
-                  }}>
+                  <span 
+                    onClick={handleWhatsappClick}
+                    style={{
+                      backgroundColor: '#25D366',
+                      borderRadius: '50%',
+                      width: '1.2em',
+                      height: '1.2em',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginLeft: '0.5em',
+                      cursor: 'pointer'
+                    }}>
                     <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
                   </span>
                 </span><br />
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
                   (33) 1594-0580
-                  <span style={{
-                    backgroundColor: '#25D366',
-                    borderRadius: '50%',
-                    width: '1.2em',
-                    height: '1.2em',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginLeft: '0.5em'
-                  }}>
+                  <span 
+                    onClick={handleWhatsappClick}
+                    style={{
+                      backgroundColor: '#25D366',
+                      borderRadius: '50%',
+                      width: '1.2em',
+                      height: '1.2em',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginLeft: '0.5em',
+                      cursor: 'pointer'
+                    }}>
                     <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
                   </span>
                 </span>

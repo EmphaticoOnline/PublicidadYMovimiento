@@ -4,9 +4,16 @@
   "description": "Este proyecto es un backend básico en Node.js y Express para interactuar con la base de datos PostgreSQL emphasys.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  }
 }

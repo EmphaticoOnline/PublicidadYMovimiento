@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
-import { getVendedorWhatsapp } from '../../services/getVendedorWhatsapp'
+import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 const IMAGES = [
   '/images/hero/hero-1.jpg',
@@ -35,12 +35,23 @@ const INTERVAL_TIME = 4500
 function HeroSlider() {
   const [index, setIndex] = useState(0)
 
-  const [loadingWhatsapp, setLoadingWhatsapp] = useState(false)
+  const { handleWhatsappClick, loading: loadingWhatsapp } = useWhatsappLead({ 
+    empresa_id: 1, 
+    origen: 'web' 
+  })
 
   const intervalRef = useRef(null)
   const isPausedRef = useRef(false)
 
   const total = IMAGES.length
+
+  const goPrev = () => {
+    setIndex((prev) => (prev - 1 + total) % total)
+  }
+
+  const goNext = () => {
+    setIndex((prev) => (prev + 1) % total)
+  }
 
   /* ======================
      AUTOPLAY
@@ -63,24 +74,8 @@ function HeroSlider() {
 
   useEffect(() => {
     startAutoPlay()
-    return stopAutoPlay
-  }, [])
-
-
-  // Nueva función para obtener el número de WhatsApp desde el backend
-  const handleWhatsappClick = async () => {
-    setLoadingWhatsapp(true)
-    // Ajusta estos valores según tu lógica de empresa y origen
-    const empresa_id = 1
-    const origen = 'web'
-    const telefono = await getVendedorWhatsapp({ empresa_id, origen })
-    setLoadingWhatsapp(false)
-    if (telefono) {
-      window.open(`https://wa.me/${telefono}`, '_blank')
-    } else {
-      alert('No se pudo obtener el número de WhatsApp. Intenta más tarde.')
-    }
-  }
+    return () => stopAutoPlay()
+  }, [total])
 
   const currentText = SLIDE_TEXTS[index]
 
@@ -107,6 +102,7 @@ function HeroSlider() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            filter: 'brightness(1.12)',
             opacity: i === index ? 1 : 0,
             transition: 'opacity 1s ease',
           }}
@@ -159,6 +155,79 @@ function HeroSlider() {
           {currentText.text}
         </p>
       </div>
+
+      {/* CONTROLES */}
+      <button
+        type="button"
+        aria-label="Imagen anterior"
+        onClick={goPrev}
+        className="hero-slider-control"
+        style={{
+          position: 'absolute',
+          left: '18px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 3,
+          width: '44px',
+          height: '44px',
+          borderRadius: '50%',
+          border: 'none',
+          background: 'rgba(0,0,0,0.45)',
+          color: '#fff',
+          fontSize: '24px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s ease, transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(0,0,0,0.65)'
+          e.currentTarget.style.transform = 'translateY(-50%) scale(1.04)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(0,0,0,0.45)'
+          e.currentTarget.style.transform = 'translateY(-50%) scale(1)'
+        }}
+      >
+        ‹
+      </button>
+
+      <button
+        type="button"
+        aria-label="Imagen siguiente"
+        onClick={goNext}
+        className="hero-slider-control"
+        style={{
+          position: 'absolute',
+          right: '18px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 3,
+          width: '44px',
+          height: '44px',
+          borderRadius: '50%',
+          border: 'none',
+          background: 'rgba(0,0,0,0.45)',
+          color: '#fff',
+          fontSize: '24px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background 0.2s ease, transform 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(0,0,0,0.65)'
+          e.currentTarget.style.transform = 'translateY(-50%) scale(1.04)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(0,0,0,0.45)'
+          e.currentTarget.style.transform = 'translateY(-50%) scale(1)'
+        }}
+      >
+        ›
+      </button>
 
 {/* BOTÓN WHATSAPP */}
 <button
@@ -235,6 +304,12 @@ function HeroSlider() {
           to {
             opacity: 1;
             transform: translateY(-50%);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-slider-control {
+            display: none !important;
           }
         }
       `}</style>
