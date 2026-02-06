@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
+import { getVendedorWhatsapp } from '../../services/getVendedorWhatsapp'
 
 const IMAGES = [
   '/images/hero/hero-1.jpg',
@@ -27,16 +28,14 @@ const SLIDE_TEXTS = [
   },
 ]
 
-const WHATSAPP_NUMBERS = [
-  '5213310949986', // Faby
-  '5213331704595', // Publicidad y Movimiento
-]
+
 
 const INTERVAL_TIME = 4500
 
 function HeroSlider() {
   const [index, setIndex] = useState(0)
-  const [whatsappIndex, setWhatsappIndex] = useState(0)
+
+  const [loadingWhatsapp, setLoadingWhatsapp] = useState(false)
 
   const intervalRef = useRef(null)
   const isPausedRef = useRef(false)
@@ -67,16 +66,20 @@ function HeroSlider() {
     return stopAutoPlay
   }, [])
 
-  /* ======================
-     WHATSAPP ROTATIVO
-  ====================== */
-  const handleWhatsappClick = () => {
-    const number = WHATSAPP_NUMBERS[whatsappIndex]
-    window.open(`https://wa.me/${number}`, '_blank')
 
-    setWhatsappIndex(
-      (prev) => (prev + 1) % WHATSAPP_NUMBERS.length
-    )
+  // Nueva función para obtener el número de WhatsApp desde el backend
+  const handleWhatsappClick = async () => {
+    setLoadingWhatsapp(true)
+    // Ajusta estos valores según tu lógica de empresa y origen
+    const empresa_id = 1
+    const origen = 'web'
+    const telefono = await getVendedorWhatsapp({ empresa_id, origen })
+    setLoadingWhatsapp(false)
+    if (telefono) {
+      window.open(`https://wa.me/${telefono}`, '_blank')
+    } else {
+      alert('No se pudo obtener el número de WhatsApp. Intenta más tarde.')
+    }
   }
 
   const currentText = SLIDE_TEXTS[index]
@@ -157,61 +160,64 @@ function HeroSlider() {
         </p>
       </div>
 
-      {/* BOTÓN WHATSAPP */}
-      <button
-        onClick={handleWhatsappClick}
-        style={{
-          position: 'absolute',
-          left: '8%',
-          bottom: '80px',
-          zIndex: 3,
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '10px',
-          padding: '0.85rem 1.6rem',
-          backgroundColor: '#25D366',
-          color: '#fff',
-          borderRadius: '999px',
-          fontWeight: 600,
-          fontSize: '1.05rem',
-          fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
-          border: 'none',
-          cursor: 'pointer',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
-          transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-        }}
-      >
-        <FaWhatsapp size={20} />
-        Cotiza ahora
-      </button>
+{/* BOTÓN WHATSAPP */}
+<button
+  onClick={handleWhatsappClick}
+  disabled={loadingWhatsapp}
+  style={{
+    position: 'absolute',
+    left: '8%',
+    bottom: '80px',
+    zIndex: 3,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    padding: '0.85rem 1.6rem',
+    backgroundColor: '#25D366',
+    color: '#fff',
+    borderRadius: '999px',
+    fontWeight: 600,
+    fontSize: '1.05rem',
+    fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
+    border: 'none',
+    cursor: loadingWhatsapp ? 'not-allowed' : 'pointer',
+    boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
+    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+    opacity: loadingWhatsapp ? 0.7 : 1,
+  }}
+>
+  <FaWhatsapp size={20} />
+  {loadingWhatsapp ? 'Cargando...' : 'Cotiza ahora'}
+</button>
 
-      {/* DOTS */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '24px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: '10px',
-          zIndex: 3,
-        }}
-      >
-        {IMAGES.map((_, i) => (
-          <div
-            key={i}
-            onClick={() => setIndex(i)}
-            style={{
-              width: '12px',
-              height: '12px',
-              borderRadius: '50%',
-              backgroundColor:
-                i === index ? '#fff' : 'rgba(255,255,255,0.5)',
-              cursor: 'pointer',
-            }}
-          />
-        ))}
-      </div>
+{/* INDICADORES */}
+<div
+  style={{
+    position: 'absolute',
+    left: '50%',
+    bottom: '30px',
+    transform: 'translateX(-50%)',
+    display: 'flex',
+    gap: '10px',
+    zIndex: 3,
+  }}
+>
+  {IMAGES.map((_, i) => (
+    <div
+      key={i}
+      onClick={() => setIndex(i)}
+      style={{
+        width: '12px',
+        height: '12px',
+        borderRadius: '50%',
+        backgroundColor:
+          i === index ? '#fff' : 'rgba(255,255,255,0.5)',
+        cursor: 'pointer',
+      }}
+    />
+  ))}
+</div>
+
 
       {/* ANIMACIONES */}
       <style>{`
