@@ -1,0 +1,65 @@
+.about-section {
+  width: 100%;
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(3rem, 6vw, 4.5rem);
+}
+
+.about-section__art {
+  position: relative;
+  width: min(1200px, 96%);
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: visible;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.about-section__image {
+  width: 100%;
+  display: block;
+}
+
+.about-section__video-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 15%; /* Desktop calibrado */
+  transform: translateX(-50%);
+  width: min(620px, 72%);
+  padding: 0 0.5rem;
+}
+
+/* ===== BREAKPOINTS ===== */
+
+@media (max-width: 1100px) {
+  .about-section__video-wrapper {
+    bottom: 14%;
+    width: min(520px, 78%);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section__art {
+    border-radius: 22px;
+  }
+
+  .about-section__video-wrapper {
+    bottom: 12%;
+    width: min(400px, 82%);
+  }
+}
+
+@media (max-width: 540px) {
+  .about-section__art {
+    border-radius: 18px;
+  }
+
+  .about-section__video-wrapper {
+    bottom: 10%; /* 👈 Bajamos el video */
+    width: min(300px, 80%);
+  }
+}
+
+@media (max-width: 400px) {
+  .about-section__video-wrapper {
+    bottom: 9%; /* 👈 Bajamos un poco más en pantallas muy chicas */
+    width: min(260px, 78%);
+  }
+}

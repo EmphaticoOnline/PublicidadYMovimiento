@@ -12,21 +12,6 @@ function YoutubeSection() {
         boxShadow: 'none',
       }}
     >
-      <h2
-        style={{
-          color: '#d80000',
-          fontSize: '1.6rem',       // 👈 antes 2.2rem
-          fontWeight: 800,
-          textAlign: 'center',
-          marginBottom: '1rem',     // 👈 antes 1.5rem
-          fontFamily: `'Poppins', 'Segoe UI', sans-serif`,
-          letterSpacing: '0.5px',
-          lineHeight: 1.15,
-        }}
-      >
-        ¡VE NUESTROS PRODUCTOS EN YOUTUBE!
-      </h2>
-
       <div
         style={{
           width: '100%',
@@ -40,7 +25,7 @@ function YoutubeSection() {
       >
         <iframe
           title="Video de YouTube"
-          src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+          src={`https://www.youtube.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&controls=1&showinfo=0`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
           style={{

@@ -4,13 +4,13 @@ export default function ClientsLogos() {
   return (
   <section style={{ marginTop: '2.5rem', marginBottom: '3rem' }}>
       <h2
+        className="clients-heading"
         style={{
           textAlign: 'center',
           color: '#d60000',
           fontWeight: 'bold',
           marginBottom: '2rem',
-          fontFamily: 'Montserrat, Arial, sans-serif',
-          fontSize: '2.5rem'
+          fontFamily: 'Montserrat, Arial, sans-serif'
         }}
       >
         EMPRESAS CON LAS QUE TRABAJAMOS

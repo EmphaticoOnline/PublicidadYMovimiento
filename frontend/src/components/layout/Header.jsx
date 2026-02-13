@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaWhatsapp, FaFacebookF, FaTiktok, FaInstagram, FaYoutube } from 'react-icons/fa'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
-const HEADER_HEIGHT = 140
+const HEADER_HEIGHT = 102
 const MOBILE_BREAKPOINT = 1100
 
 const SOCIAL_LINKS = {
@@ -35,8 +35,8 @@ export default function Header() {
           backgroundColor: '#d80000',
           display: 'flex',
           alignItems: 'center',
-          padding: '0 2.5rem',
-          gap: '2.5rem'
+          padding: '0 1.75rem',
+          gap: '1.75rem'
         }}
       >
         {/* LOGO */}
@@ -56,7 +56,7 @@ export default function Header() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '2.2rem',
+              gap: '1.6rem',
               fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
               marginLeft: '0.5rem'
             }}
@@ -82,7 +82,9 @@ export default function Header() {
                 background: 'transparent',
                 border: 'none',
                 color: '#fff',
-                fontSize: '2.2rem',
+                fontSize: '2.8rem',
+                lineHeight: 1,
+                padding: '0.25rem 0.4rem',
                 cursor: 'pointer'
               }}
             >
@@ -170,8 +172,8 @@ function Icon({ children, bg = '#2e2ee6', onClick }) {
     <div
       onClick={onClick}
       style={{
-        width: '38px',
-        height: '38px',
+        width: '32px',
+        height: '32px',
         borderRadius: '50%',
         backgroundColor: bg,
         color: '#fff',
@@ -190,7 +192,7 @@ const menuLink = {
   color: '#ffffff',
   textDecoration: 'none',
   fontWeight: 700,
-  fontSize: '1.05rem'
+  fontSize: '0.95rem'
 }
 
 const mobileLink = {

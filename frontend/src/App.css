@@ -1,8 +1,26 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
+}
+
+.clients-heading {
+  font-size: 2.5rem;
+}
+
+.contact-heading {
+  font-size: 3rem;
+}
+
+@media (max-width: 640px) {
+  .clients-heading {
+    font-size: 1.25rem;
+  }
+
+  .contact-heading {
+    font-size: 1.875rem;
+  }
 }
 
 .logo {

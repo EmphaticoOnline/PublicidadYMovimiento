@@ -18,9 +18,9 @@ function ContactSection() {
       >
         {/* TÍTULO */}
         <h2
+          className="contact-heading"
           style={{
             color: '#fff',
-            fontSize: '3rem',
             fontWeight: 700,
             textAlign: 'center',
             marginBottom: '3.5rem',
@@ -153,7 +153,7 @@ function ContactSection() {
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
                 Av. Enrique Díaz de León Nte. 819<br />
-                Col. Mezquitán Country. Guadalara, Jalisco<br />
+                Col. Mezquitán Country. Guadalajara, Jalisco<br />
                 C.P. 44260, México
               </p>
             </div>

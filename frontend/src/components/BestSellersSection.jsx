@@ -2,7 +2,7 @@ function BestSellersSection() {
   const products = [
     {
       id: 1,
-      title: 'TOMI MUÑECOS PUBLICITARIOS',
+      title: 'TOMI PUBLICITARIO',
       image: '/images/best-sellers/producto1.jpg'
     },
     {
