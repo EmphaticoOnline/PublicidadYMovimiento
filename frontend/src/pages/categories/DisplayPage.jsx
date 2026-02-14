@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
+import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 export default function DisplayPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Displays Inflables Publicitarios | Punto de Venta y Expos | Envíos Nacionales',
+    'Displays inflables publicitarios ligeros y portátiles, ideales para punto de venta y expos. Branding directo y fácil instalación. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/display'
+  )
   return (
     <div
       style={{
@@ -13,13 +20,17 @@ export default function DisplayPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        DISPLAY
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Displays Inflables Publicitarios para Punto de Venta y Expos
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Ligeros, portátiles y listos para instalar con tu branding
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -78,14 +89,36 @@ export default function DisplayPage() {
           color: '#444'
         }}
       >
-        <strong>Los displays son la presentación elegante y profesional de tu marca.</strong>{' '}
-        Desde expositores puntuales hasta estructuras modulables, transforman cualquier espacio en
-        una galería de tus productos. Ideales para puntos de venta, tiendas, ferias comerciales y eventos
-        corporativos donde necesitas presentar tu marca con impacto visual, orden y profesionalismo.
-        <br /><br />
-        Convierte cada punto de venta en una experiencia visual memorable que guía a tus clientes
-        y amplifica la presencia de tu marca en el espacio.
+        <strong>Los displays inflables son ligeros, portátiles y se instalan rápido en punto de venta y expos.</strong>{' '}
+        Ideales para interiores donde buscas branding directo con montaje sencillo y presentación profesional.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de los displays inflables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Pensados para punto de venta y expos con montaje rápido.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Ligero y portátil:</strong> fácil de transportar y colocar.</li>
+          <li><strong>Branding directo:</strong> mensaje claro y visible.</li>
+          <li><strong>Ideal para interiores:</strong> perfecto para tiendas y stands.</li>
+          <li><strong>Fácil instalación:</strong> listo en minutos sin complicaciones.</li>
+        </ul>
+      </section>
     </div>
   )
 }

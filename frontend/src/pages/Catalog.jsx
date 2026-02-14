@@ -1,136 +1,100 @@
-import { useSearchParams, Link } from 'react-router-dom'
-import { subcategories } from '../data/subcategories'
-import catalog from '../data/catalog.json'
 
-import TomiPage from './categories/TomiPage'
-import SkyDancerPage from './categories/SkyDancerPage'
-import ReplicasInflablesPage from './categories/ReplicasInflablesPage'
-import ArcosMetaPage from './categories/ArcosMetaPage'
-import PublibackPage from './categories/PublibackPage'
-import CilindrosPublicitariosPage from './categories/CilindrosPublicitariosPage'
-import PublituboPage from './categories/PublituboPage'
-import PantallasCartelerasPage from './categories/PantallasCartelerasPage'
-import FlagBannerPage from './categories/FlagBannerPage'
-import BotargasPage from './categories/BotargasPage'
-import CarpasTokenPage from './categories/CarpasTokenPage'
-import TunelsPage from './categories/TunelsPage'
-import GlobosAerostaticosPage from './categories/GlobosAerostaticosPage'
-import JuegosInteractivosPage from './categories/JuegosInteractivosPage'
-import BrincolinesPage from './categories/BrincolinesPage'
-import PeluchePublicitarioPage from './categories/PeluchePublicitarioPage'
-import DomisRellenablesPage from './categories/DomisRellenablesPage'
-import LineaAutosPage from './categories/LineaAutosPage'
-import DisplayPage from './categories/DisplayPage'
-import KitsPage from './categories/KitsPage'
-import TurbinasPage from './categories/TurbinasPage'
+import { useEffect } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import catalog from '../data/catalog.json'
+import { subcategories } from '../data/subcategories'
+import CategoriesGrid from '../components/CategoriesGrid'
 
 function Catalog() {
-  const [searchParams] = useSearchParams()
-  const categoria = searchParams.get('categoria')
-  const sub = searchParams.get('sub')
+  const [searchParams] = useSearchParams();
+  const categoria = searchParams.get('categoria');
+  const sub = searchParams.get('sub');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (categoria === 'tomi-publicitario' && !sub) {
+      navigate('/inflable-publicitario-con-movimiento', { replace: true });
+    }
+    if (categoria === 'replicas-inflables' && !sub) {
+      navigate('/replicas-inflables', { replace: true });
+    }
+    if (categoria === 'arcos-meta' && !sub) {
+      navigate('/arcos-meta', { replace: true });
+    }
+    if (categoria === 'botargas' && !sub) {
+      navigate('/botargas', { replace: true });
+    }
+    if (categoria === 'brincolines' && !sub) {
+      navigate('/brincolines', { replace: true });
+    }
+    if (categoria === 'flag-banner' && !sub) {
+      navigate('/flag-banners', { replace: true });
+    }
+    if (categoria === 'cilindros-publicitarios' && !sub) {
+      navigate('/cilindros-publicitarios', { replace: true });
+    }
+    if (categoria === 'globos-aerostaticos' && !sub) {
+      navigate('/globos-aerostaticos', { replace: true });
+    }
+    if (categoria === 'juegos-interactivos' && !sub) {
+      navigate('/juegos-interactivos', { replace: true });
+    }
+    if (categoria === 'pantallas-carteleras' && !sub) {
+      navigate('/pantallas-carteleras', { replace: true });
+    }
+    if (categoria === 'domis-rellenables' && !sub) {
+      navigate('/domis-rellenables', { replace: true })
+    }
+    if (categoria === 'tuneles' && !sub) {
+      navigate('/tuneles', { replace: true })
+    }
+    if (categoria === 'turbinas' && !sub) {
+      navigate('/turbinas', { replace: true })
+    }
+    if (categoria === 'kits' && !sub) {
+      navigate('/kits', { replace: true })
+    }
+    if (categoria === 'display' && !sub) {
+      navigate('/display', { replace: true })
+    }
+    if (categoria === 'publiback' && !sub) {
+      navigate('/publiback', { replace: true });
+    }
+    if (categoria === 'publitubo' && !sub) {
+      navigate('/publitubo', { replace: true });
+    }
+    if (categoria === 'peluche-publicitario' && !sub) {
+      navigate('/peluche-publicitario', { replace: true });
+    }
+    if (categoria === 'linea-autos' && !sub) {
+      navigate('/linea-autos', { replace: true });
+    }
+    if (categoria === 'carpas-toldos' && !sub) {
+      navigate('/carpas-toldos', { replace: true });
+    }
+  }, [categoria, sub, navigate]);
 
   // SIN CATEGORÍA
   if (!categoria) {
     return (
-      <div>
-        <h1>Catálogo</h1>
-        <p>Selecciona una categoría desde la página de inicio.</p>
+      <div style={{ padding: '2rem 1.5rem', maxWidth: '1100px', margin: '0 auto' }}>
+        <h1 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>Productos</h1>
+        <p style={{ textAlign: 'center', color: '#555', marginBottom: '1.5rem' }}>
+          Explora nuestras categorías y descubre la solución perfecta para tu marca.
+        </p>
+        <CategoriesGrid />
       </div>
-    )
+    );
   }
 
-  // 👉 PÁGINAS ESPECIALES (siempre arriba)
-  if (categoria === 'tomi-publicitario' && !sub) {
-    return <TomiPage />
-  }
 
-  if (categoria === 'sky-dancer' && !sub) {
-    return <SkyDancerPage />
-  }
 
-  if (categoria === 'replicas-inflables' && !sub) {
-    return <ReplicasInflablesPage />
-  }
-
-  if (categoria === 'arcos-meta' && !sub) {
-    return <ArcosMetaPage />
-  }
-
-  if (categoria === 'publiback' && !sub) {
-    return <PublibackPage />
-  }
-if (categoria === 'cilindros-publicitarios' && !sub) {
-    return <CilindrosPublicitariosPage />
-  }
-
-  if (categoria === 'publitubo' && !sub) {
-    return <PublituboPage />
-  }
-if (categoria === 'pantallas-carteleras' && !sub) {
-    return <PantallasCartelerasPage />
-  }
-
-  if (categoria === 'flag-banner' && !sub) {
-    return <FlagBannerPage />
-  }
-
-  if (categoria === 'botargas' && !sub) {
-    return <BotargasPage />
-  }
-
-  if (categoria === 'carpas-toldos' && !sub) {
-    return <CarpasTokenPage />
-  }
-
-  if (categoria === 'tuneles' && !sub) {
-    return <TunelsPage />
-  }
-
-  if (categoria === 'globos-aerostaticos' && !sub) {
-    return <GlobosAerostaticosPage />
-  }
-
-  if (categoria === 'juegos-interactivos' && !sub) {
-    return <JuegosInteractivosPage />
-  }
-
-  if (categoria === 'brincolines' && !sub) {
-    return <BrincolinesPage />
-  }
-
-  if (categoria === 'peluche-publicitario' && !sub) {
-    return <PeluchePublicitarioPage />
-  }
-
-  if (categoria === 'domis-rellenables' && !sub) {
-    return <DomisRellenablesPage />
-  }
-
-  if (categoria === 'linea-autos' && !sub) {
-    return <LineaAutosPage />
-  }
-
-  if (categoria === 'display' && !sub) {
-    return <DisplayPage />
-  }
-
-  if (categoria === 'kits' && !sub) {
-    return <KitsPage />
-  }
-
-  if (categoria === 'turbinas' && !sub) {
-    return <TurbinasPage />
-  }
-
-  
   // 👉 NIVEL 1: SUBCATEGORÍAS
   if (categoria && !sub) {
-    const subs = subcategories[categoria] || []
-
+    const subs = subcategories[categoria] || [];
     return (
       <div>
         <h1>{categoria.replace(/-/g, ' ').toUpperCase()}</h1>
-
         <div
           style={{
             display: 'grid',
@@ -156,18 +120,16 @@ if (categoria === 'pantallas-carteleras' && !sub) {
           ))}
         </div>
       </div>
-    )
+    );
   }
 
   // 👉 NIVEL 2: PRODUCTOS
   if (categoria && sub) {
-    const products = catalog?.[categoria]?.[sub] || []
-
+    const products = catalog?.[categoria]?.[sub] || [];
     return (
       <div>
         <h1>{categoria.replace(/-/g, ' ').toUpperCase()}</h1>
         <h2>{sub.replace(/-/g, ' ')}</h2>
-
         {products.length === 0 ? (
           <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>
             Próximamente productos en esta categoría.
@@ -200,10 +162,10 @@ if (categoria === 'pantallas-carteleras' && !sub) {
           </div>
         )}
       </div>
-    )
+    );
   }
 
-  return null
+  return null;
 }
 
 export default Catalog

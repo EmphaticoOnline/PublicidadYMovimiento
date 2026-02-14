@@ -1,5 +1,7 @@
+
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import usePageTitle from '../../hooks/usePageTitle'
 
 const WHATSAPP_NUMBERS = [
   '5213310949986', // Faby
@@ -25,12 +27,17 @@ const VIDEOS = [
 const GRID_VIDEO_ID = 'tomi-4'
 
 const GRID_IMAGES = [
-  { src: '/images/categories/tomi-publicitario/castor.jpg', alt: 'Tomi publicitario Castor' },
-  { src: '/images/categories/tomi-publicitario/pemex.jpg', alt: 'Tomi publicitario Pemex' },
-  { src: '/images/categories/tomi-publicitario/perro.jpg', alt: 'Tomi publicitario Perro' }
+  { src: '/images/categories/tomi-publicitario/castor.jpg', alt: 'Tomi inflable publicitario con movimiento Castor' },
+  { src: '/images/categories/tomi-publicitario/pemex.jpg', alt: 'Tomi inflable publicitario con movimiento Gasolinera' },
+  { src: '/images/categories/tomi-publicitario/perro.jpg', alt: 'Tomi inflable publicitario con movimiento Perro' }
 ]
 
 export default function TomiPage() {
+  usePageTitle(
+    'Inflable Publicitario con Movimiento (Tomi) | Envíos a Toda la República',
+    'Tomi inflable publicitario en Guadalajara. Muñeco inflable con movimiento que atrae clientes desde la calle. Ideal para negocios que quieren más visibilidad y ventas.',
+    'https://grupopmpublicidad.mx/inflable-publicitario-con-movimiento'
+  );
   const [mainVideoId, setMainVideoId] = useState('tomi-1')
 
   const mainVideo = VIDEOS.find(v => v.id === mainVideoId)
@@ -53,7 +60,8 @@ export default function TomiPage() {
       <div className="tomi-hero">
         {/* TEXTO */}
         <div>
-          <h1>TOMI PUBLICITARIO</h1>
+          <h1>Convierte Más Clientes con el Inflable Publicitario Tomi: Movimiento que Atrae y Vende</h1>
+          <h2>La alternativa profesional al Sky Dancer para negocios que buscan resultados</h2>
 
           <p className="lead">
             El inflable que dirige miradas y convierte curiosos en clientes desde la calle.
@@ -89,6 +97,9 @@ export default function TomiPage() {
                 autoPlay
                 loop
                 muted
+                playsInline
+                controls={false}
+                title={`Tomi inflable publicitario con movimiento - Video ${video.id}`}
                 onClick={() => setMainVideoId(video.id)}
               />
             ))}
@@ -103,6 +114,9 @@ export default function TomiPage() {
             autoPlay
             loop
             muted
+            playsInline
+            controls={false}
+            title={`Tomi inflable publicitario con movimiento - Video principal (${mainVideo.id})`}
           />
         </div>
       </div>
@@ -114,7 +128,10 @@ export default function TomiPage() {
           autoPlay
           loop
           muted
+          playsInline
+          controls={false}
           className="grid-video"
+          title="Tomi inflable publicitario con movimiento - Video fijo grid"
           onClick={() => setMainVideoId(gridVideo.id)}
         />
 
@@ -123,11 +140,30 @@ export default function TomiPage() {
         ))}
       </div>
 
+      {/* 
+Agrega aquí una nueva sección comparativa entre Tomi y Sky Dancer.
+Debe incluir:
+- Un <h2> con la pregunta: "¿Tomi o Sky Dancer? ¿Cuál conviene más a tu negocio?"
+- Un párrafo explicando que el Sky Dancer tiene más altura y visibilidad desde lejos.
+- Un párrafo explicando que el Tomi tiene movimiento dirigido que invita a entrar.
+- Una lista <ul> comparando ambos productos.
+Mantener el mismo estilo visual de la página.
+*/}
+      <div style={{ marginTop: '3rem' }}>
+        <h2>¿Tomi o Sky Dancer? ¿Cuál conviene más a tu negocio?</h2>
+        <p>
+          El Sky Dancer es el clásico inflable que se mueve con el viento, ideal para captar atención desde lejos gracias a su altura. Sin embargo, su movimiento es aleatorio y no siempre invita a entrar.
+        </p>
+        <p>
+          El Tomi, por otro lado, tiene un movimiento intencional que señala hacia tu negocio, guiando a los clientes potenciales directamente a tu puerta. Es como tener un anfitrión animado que da la bienvenida a cada persona que pasa.
+        </p>  
+    </div>
+
       {/* TEXTO FINAL */}
       <p className="tomi-copy">
         El Sky Dancer atrae miradas desde lejos.  
         El Tomi, en cambio, invita a pasar.
-        <br /><br />
+        <br /><br />      
         Su movimiento no es al azar: señala, guía y conecta con quien va pasando.
         Es como tener un personaje afuera de tu negocio diciendo sin hablar:
         <strong> "Pásele, aquí es."</strong>

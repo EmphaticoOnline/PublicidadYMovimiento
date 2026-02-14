@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
+import usePageTitle from '../../hooks/usePageTitle'
 
 export default function JuegosInteractivosPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Juegos Interactivos Inflables | Activaciones y Eventos | Envíos Nacionales',
+    'Juegos interactivos inflables para activaciones, eventos corporativos y promociones. Diversión, interacción y alto engagement de marca. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/juegos-interactivos'
+  )
+
   return (
     <div
       style={{
@@ -13,13 +21,17 @@ export default function JuegosInteractivosPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        JUEGOS INTERACTIVOS
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Juegos Interactivos Inflables para Activaciones y Eventos
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Genera experiencia, interacción y recordación de marca
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -52,17 +64,17 @@ export default function JuegosInteractivosPage() {
       >
         <img
           src="/images/categories/juegos-interactivos/interactivo-amarillo.jpg"
-          alt="Juego Interactivo Amarillo"
+          alt="Juego interactivo inflable para activaciones con alto engagement"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/juegos-interactivos/interactivo-basquet.jpg"
-          alt="Juego Interactivo Básquet"
+          alt="Juego inflable interactivo ideal para eventos corporativos y ferias"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/juegos-interactivos/interactivo-verde.jpg"
-          alt="Juego Interactivo Verde"
+          alt="Juego interactivo inflable que genera participación y fotos para redes"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -78,14 +90,36 @@ export default function JuegosInteractivosPage() {
           color: '#444'
         }}
       >
-        <strong>Los juegos interactivos son la diversión que engancha a tu audiencia.</strong>{' '}
-        Desde competencias deportivas hasta entretenimiento familiar, generan engagement real y memorable.
-        Ideales para ferias, eventos corporativos, centros comerciales y activaciones donde buscas que tu marca
-        sea sinónimo de diversión, interacción y entretenimiento de calidad.
-        <br /><br />
-        Transforma tu evento en una experiencia lúdica que tus visitantes disfrutarán, compartirán y recordarán
-        asociada directamente con tu marca.
+        <strong>Los juegos interactivos inflables convierten tus activaciones en experiencias que la gente quiere vivir y compartir.</strong>{' '}
+        Aumentan el tiempo de permanencia, generan participación y crean contenido para redes en eventos corporativos, ferias y promociones.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de los juegos interactivos inflables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Diseñados para activaciones donde la interacción y el tiempo de permanencia son esenciales.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Aumenta el tiempo de permanencia del público:</strong> la gente se queda a jugar.</li>
+          <li><strong>Ideal para activaciones de marca:</strong> participación directa con tu identidad.</li>
+          <li><strong>Perfecto para eventos corporativos y ferias:</strong> dinamiza el flujo de visitantes.</li>
+          <li><strong>Alto engagement y contenido para redes sociales:</strong> fotos y videos orgánicos.</li>
+        </ul>
+      </section>
     </div>
   )
 }

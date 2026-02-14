@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
+import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 export default function TunelsPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Túneles Inflables Publicitarios | Metas y Entradas Impactantes | Envíos Nacionales',
+    'Túneles inflables publicitarios ideales como entrada o meta espectacular en maratones, eventos deportivos y activaciones. Branding de alto impacto y visibilidad aérea. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/tuneles'
+  )
   return (
     <div
       style={{
@@ -13,13 +20,17 @@ export default function TunelsPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        TÚNELES
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Túneles Inflables Publicitarios para Metas y Entradas
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Metas espectaculares para carreras, eventos deportivos y activaciones
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -78,13 +89,37 @@ export default function TunelsPage() {
           color: '#444'
         }}
       >
-        <strong>Los túneles inflables son la entrada espectacular a tu evento o activación publicitaria.</strong>{' '}
-        Con formas personalizables, colores vibrantes y diseños impactantes, crean una experiencia inmersiva
-        que cautiva a todos los que los atraviesan. Ideales para carreras, maratones, ferias comerciales,
-        eventos deportivos y activaciones donde necesitas generar un punto de entrada memorable y fotogénico.
-        <br /><br />
-        Transforma el acceso a tu evento en un momento icónico que tus visitantes recordarán y compartirán.
+        <strong>Los túneles inflables crean una entrada o meta espectacular para tus eventos.</strong>{' '}
+        Perfectos para carreras, maratones y activaciones deportivas donde necesitas visibilidad aérea y branding de alto impacto.
+        Generan fotografías memorables y guían el flujo de asistentes hacia tu marca.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de los túneles inflables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Diseñados para carreras, eventos deportivos y activaciones con entrada memorable.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Entrada o meta espectacular:</strong> crea el momento clave del evento.</li>
+          <li><strong>Branding de alto impacto:</strong> gran superficie para logos y mensajes.</li>
+          <li><strong>Visibilidad aérea:</strong> destacan en tomas y fotografías desde lejos.</li>
+          <li><strong>Ideal para maratones y eventos deportivos:</strong> guía y recibe a los participantes.</li>
+        </ul>
+      </section>
     </div>
   )
 }

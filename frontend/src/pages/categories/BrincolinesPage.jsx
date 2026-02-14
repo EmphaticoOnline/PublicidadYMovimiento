@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
+import usePageTitle from '../../hooks/usePageTitle'
 
 export default function BrincolinesPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Brincolines Inflables para Fiestas Infantiles | Diversión y Seguridad',
+    'Brincolines inflables ideales para fiestas infantiles y eventos escolares. Diversión segura y atractivo visual para cualquier celebración.',
+    'https://grupopmpublicidad.mx/brincolines'
+  )
+
   return (
     <div
       style={{
@@ -13,13 +21,17 @@ export default function BrincolinesPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        BRINCOLINES
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Brincolines Inflables para Fiestas Infantiles y Eventos
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Diversión garantizada que mantiene a las familias más tiempo en tu evento
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -52,17 +64,17 @@ export default function BrincolinesPage() {
       >
         <img
           src="/images/categories/brincolines/brincolin-azul.jpg"
-          alt="Brincolin Azul"
+          alt="Brincolín inflable azul para fiestas infantiles y eventos escolares con alta seguridad"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/brincolines/brincolin-rojo.jpg"
-          alt="Brincolin Rojo"
+          alt="Brincolín inflable rojo llamativo ideal para celebraciones infantiles y ferias"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/brincolines/cocodrilo.jpg"
-          alt="Brincolin Cocodrilo"
+          alt="Brincolín inflable temática cocodrilo que atrae familias y niños en eventos"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -78,14 +90,36 @@ export default function BrincolinesPage() {
           color: '#444'
         }}
       >
-        <strong>Los brincolines son la alegría hecha inflable que conquista a toda la familia.</strong>{' '}
-        Desde niños hasta adultos, generan diversión infinita y memorable en cualquier evento.
-        Ideales para fiestas infantiles, eventos corporativos, ferias, activaciones y cualquier ocasión
-        donde necesites crear un ambiente festivo, seguro y lleno de entretenimiento de calidad.
-        <br /><br />
-        Convierte tu evento en un parque de diversiones portátil donde cada momento es una sonrisa
-        y cada salto refuerza la conexión con tu marca.
+        <strong>Los brincolines inflables son la atracción que engancha a familias y niños, asegurando más tiempo en tu evento.</strong>{' '}
+        Ideales para fiestas infantiles, eventos escolares y celebraciones donde la diversión segura y visible es clave. Añaden color, movimiento y un punto de encuentro para fotos y convivencia.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de los brincolines inflables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Pensados para fiestas infantiles y eventos donde la diversión y la seguridad retienen a las familias.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Ideal para fiestas infantiles:</strong> diversión asegurada para niños.</li>
+          <li><strong>Atractivo visual inmediato:</strong> colores y formas que llaman la atención.</li>
+          <li><strong>Seguro y resistente:</strong> materiales pensados para uso intensivo.</li>
+          <li><strong>Genera permanencia de familias:</strong> mantienen a padres e hijos más tiempo en el evento.</li>
+        </ul>
+      </section>
     </div>
   )
 }

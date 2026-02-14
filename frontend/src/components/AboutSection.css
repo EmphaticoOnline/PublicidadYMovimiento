@@ -5,7 +5,8 @@
 
 .about-section__art {
   position: relative;
-  width: min(1200px, 96%);
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
   border-radius: 28px;
   overflow: visible;

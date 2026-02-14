@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
+import usePageTitle from '../../hooks/usePageTitle'
 
 export default function PantallasCartelerasPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Pantallas y Carteleras Inflables | Publicidad de Gran Formato | Envíos Nacionales',
+    'Pantallas y carteleras inflables publicitarias de gran formato ideales para eventos, conciertos y promociones. Impacto visual masivo. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/pantallas-carteleras'
+  )
+
   return (
     <div
       style={{
@@ -13,13 +21,17 @@ export default function PantallasCartelerasPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        PANTALLAS Y CARTELERAS
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Pantallas y Carteleras Inflables de Gran Formato
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Impacto visual masivo para conciertos, eventos y promociones
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -52,17 +64,17 @@ export default function PantallasCartelerasPage() {
       >
         <img
           src="/images/categories/pantallas-carteleras/oxxo.jpg"
-          alt="Pantalla OXXO"
+          alt="Pantalla inflable publicitaria de gran formato para conciertos y eventos"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/pantallas-carteleras/pantalla-negra.jpg"
-          alt="Pantalla Negra"
+          alt="Cartelera inflable publicitaria ideal para promociones masivas"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/pantallas-carteleras/pantalla-roja.jpg"
-          alt="Pantalla Roja"
+          alt="Pantalla inflable de gran formato con branding para eventos y shows"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -78,13 +90,36 @@ export default function PantallasCartelerasPage() {
           color: '#444'
         }}
       >
-        <strong>Las pantallas y carteleras son la solución definitiva para comunicar tu mensaje con claridad y presencia.</strong>{' '}
-        Desde carteleras fijas hasta pantallas digitales, transformamos cualquier punto de venta o espacio público
-        en un centro de comunicación efectivo. Ideales para tiendas, gasolineras, restaurantes y lugares donde necesitas
-        información clara, ofertas vigentes y mensajes publicitarios que capten la atención al instante.
-        <br /><br />
-        Amplifica tu visibilidad y comunica con precisión mediante soluciones de cartelería moderna y profesional.
+        <strong>Las pantallas y carteleras inflables de gran formato te dan exposición masiva en eventos y promociones.</strong>{' '}
+        Funcionan como lienzos gigantes para tu marca en conciertos, ferias y activaciones, reforzando presencia y mensajes clave ante grandes audiencias.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de pantallas y carteleras inflables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Pensadas para escenarios, eventos masivos y campañas que requieren gran formato visible.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Gran formato para máxima exposición:</strong> mensajes que destacan a distancia.</li>
+          <li><strong>Ideal para escenarios y eventos masivos:</strong> soporte visual principal.</li>
+          <li><strong>Refuerza presencia de marca:</strong> espacio amplio para logos y anuncios.</li>
+          <li><strong>Perfecto para conciertos y espectáculos:</strong> impacta al público desde cualquier ángulo.</li>
+        </ul>
+      </section>
     </div>
   )
 }

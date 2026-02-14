@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
+import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 export default function DomisRellenablesPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Domis Rellenables Inflables | Activaciones y Promociones | Envíos Nacionales',
+    'Domis rellenables inflables personalizables para activaciones, promociones y ferias. Branding 360° con alto impacto visual y recordación fotográfica. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/domis-rellenables'
+  )
   return (
     <div
       style={{
@@ -13,13 +20,17 @@ export default function DomisRellenablesPage() {
       }}
     >
       {/* TÍTULO */}
-      <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        DOMIS RELLENABLES
+      <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
+        Domis Rellenables Inflables Personalizables
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Activaciones, promociones y ferias con impacto visual inmersivo
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -78,14 +89,37 @@ export default function DomisRellenablesPage() {
           color: '#444'
         }}
       >
-        <strong>Los domis rellenables son la diversión creativa que tus clientes pueden personalizar.</strong>{' '}
-        Desde costales publicitarios hasta figuras interactivas, permiten que tu audiencia participe activamente
-        en el entretenimiento. Ideales para eventos participativos, ferias interactivas, promociones y activaciones
-        donde buscas generar engagement directo y memorable con tu marca.
-        <br /><br />
-        Transforma tus domis rellenables en herramientas de interacción que crean experiencias únicas,
-        divertidas y absolutamente memorables para tu audiencia.
+        <strong>Los domis rellenables son piezas interactivas que tu público puede personalizar y usar.</strong>{' '}
+        Ideales para activaciones, promociones y ferias donde buscas branding 360° y participación directa.
+        Generan recordación fotográfica y experiencias inmersivas que conectan a la audiencia con tu marca.
       </p>
+
+      {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
+      <section
+        style={{
+          maxWidth: '900px',
+          margin: '2.5rem auto 0',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          padding: '1.8rem 1.5rem',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)',
+          color: '#2c2c2c',
+          lineHeight: 1.65
+        }}
+      >
+        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.8rem', textAlign: 'center' }}>
+          Beneficios clave de los domis rellenables
+        </h3>
+        <p style={{ textAlign: 'center', color: '#444', marginBottom: '1rem' }}>
+          Pensados para activaciones, promociones y ferias con alto impacto de marca.
+        </p>
+        <ul style={{ maxWidth: '780px', margin: '0 auto', paddingLeft: '1.1rem', color: '#333' }}>
+          <li><strong>Impacto visual inmersivo:</strong> piezas grandes y vistosas que atraen miradas.</li>
+          <li><strong>Branding 360°:</strong> superficie completa para logos, colores y mensajes.</li>
+          <li><strong>Ideal para plazas y eventos masivos:</strong> destacan en espacios concurridos.</li>
+          <li><strong>Alta recordación fotográfica:</strong> generan fotos y contenido orgánico.</li>
+        </ul>
+      </section>
     </div>
   )
 }

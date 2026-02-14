@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { categories } from '../../data/categories'
 import { FaWhatsapp, FaFacebookF, FaTiktok, FaInstagram, FaYoutube } from 'react-icons/fa'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
@@ -15,6 +16,7 @@ const SOCIAL_LINKS = {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [productsOpen, setProductsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_BREAKPOINT)
   const { handleWhatsappClick } = useWhatsappLead()
 
@@ -32,11 +34,15 @@ export default function Header() {
       <header
         style={{
           height: HEADER_HEIGHT,
+          position: 'sticky',
+          top: 0,
+          zIndex: 1200,
           backgroundColor: '#d80000',
           display: 'flex',
           alignItems: 'center',
           padding: '0 1.75rem',
-          gap: '1.75rem'
+          gap: '1.75rem',
+          boxShadow: '0 8px 20px rgba(0,0,0,0.16)'
         }}
       >
         {/* LOGO */}
@@ -60,10 +66,73 @@ export default function Header() {
               fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
               marginLeft: '0.5rem'
             }}
+            onMouseLeave={() => setProductsOpen(false)}
           >
             <Link to="/" style={menuLink}>INICIO</Link>
-            <a href="#nosotros" style={menuLink}>NOSOTROS</a>
-            <a href="#promociones" style={menuLink}>OFERTAS</a>
+            <Link to="/#nosotros" style={menuLink}>NOSOTROS</Link>
+            <Link to="/#promociones" style={menuLink}>OFERTAS</Link>
+
+            {/* PRODUCTOS DROPDOWN */}
+            <div style={{ position: 'relative' }} onMouseEnter={() => setProductsOpen(true)}>
+              <button
+                type="button"
+                style={{
+                  ...menuLink,
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 0,
+                  fontWeight: 800
+                }}
+              >
+                PRODUCTOS ▾
+              </button>
+
+              {productsOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '110%',
+                    left: 0,
+                    background: '#fff',
+                    boxShadow: '0 10px 28px rgba(0,0,0,0.16)',
+                    borderRadius: '14px',
+                    padding: '1rem',
+                    minWidth: '340px',
+                    zIndex: 1300
+                  }}
+                  onMouseLeave={() => setProductsOpen(false)}
+                >
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
+                      gap: '0.35rem 1rem',
+                      maxHeight: '320px',
+                      overflowY: 'auto'
+                    }}
+                  >
+                    {categories.map(cat => (
+                      <Link
+                        key={cat.id}
+                        to={cat.link}
+                        style={{
+                          color: '#222',
+                          textDecoration: 'none',
+                          fontWeight: 600,
+                          fontSize: '0.93rem',
+                          padding: '0.25rem 0.1rem',
+                          borderRadius: '6px'
+                        }}
+                        onClick={() => setProductsOpen(false)}
+                      >
+                        {cat.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             <Icon bg="#25D366" onClick={handleWhatsappClick}><FaWhatsapp /></Icon>
             <Icon onClick={() => openSocialLink(SOCIAL_LINKS.facebook)}><FaFacebookF /></Icon>
@@ -105,6 +174,7 @@ export default function Header() {
 }
 
 function SideMenu({ open, onClose, onWhatsappClick, onSocialClick }) {
+  const [productsOpen, setProductsOpen] = useState(false)
   return (
     <>
       {open && (
@@ -151,9 +221,9 @@ function SideMenu({ open, onClose, onWhatsappClick, onSocialClick }) {
           ✕
         </button>
 
-        <Link to="/" style={mobileLink}>INICIO</Link>
-        <a href="#nosotros" style={mobileLink}>NOSOTROS</a>
-        <a href="#promociones" style={mobileLink}>OFERTAS</a>
+  <Link to="/" style={mobileLink}>INICIO</Link>
+  <Link to="/#nosotros" style={mobileLink}>NOSOTROS</Link>
+  <Link to="/#promociones" style={mobileLink}>OFERTAS</Link>
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
           <Icon bg="#25D366" onClick={onWhatsappClick}><FaWhatsapp /></Icon>
@@ -162,6 +232,37 @@ function SideMenu({ open, onClose, onWhatsappClick, onSocialClick }) {
           <Icon onClick={() => onSocialClick(SOCIAL_LINKS.instagram)}><FaInstagram /></Icon>
           <Icon onClick={() => onSocialClick(SOCIAL_LINKS.youtube)}><FaYoutube /></Icon>
         </div>
+
+        <button
+          onClick={() => setProductsOpen(p => !p)}
+          style={{
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.6)',
+            borderRadius: '10px',
+            color: '#fff',
+            padding: '0.8rem 1rem',
+            textAlign: 'left',
+            fontWeight: 700,
+            cursor: 'pointer'
+          }}
+        >
+          PRODUCTOS {productsOpen ? '▴' : '▾'}
+        </button>
+
+        {productsOpen && (
+          <div style={{ display: 'grid', gap: '0.4rem', maxHeight: '260px', overflowY: 'auto' }}>
+            {categories.map(cat => (
+              <Link
+                key={cat.id}
+                to={cat.link}
+                onClick={onClose}
+                style={{ color: '#fff', textDecoration: 'none', fontWeight: 600 }}
+              >
+                {cat.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </>
   )

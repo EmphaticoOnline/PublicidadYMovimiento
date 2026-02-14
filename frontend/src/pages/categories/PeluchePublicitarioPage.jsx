@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
+import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 export default function PeluchePublicitarioPage() {
-  const { handleWhatsappClick, loading } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead()
+
+  usePageTitle(
+    'Peluche Publicitario Personalizado | Merchandising y Conexión Emocional | Envíos Nacionales',
+    'Peluche publicitario personalizado tipo mascota o personaje. Merchandising abrazable para regalos corporativos, activaciones emocionales y recordación de marca. Envíos a toda la República Mexicana.',
+    'https://grupopmpublicidad.mx/peluche-publicitario'
+  )
   return (
     <div
       style={{
@@ -14,12 +21,16 @@ export default function PeluchePublicitarioPage() {
     >
       {/* TÍTULO */}
       <h1 style={{ textAlign: 'center', fontSize: '2.2rem' }}>
-        PELUCHE PUBLICITARIO
+        Peluche publicitario personalizado para conexión emocional
       </h1>
+      <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
+        Merchandising abrazable para regalos corporativos y recordación de marca
+      </h2>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
+          className="whatsapp-btn"
           to="/#"
           onClick={e => {
             e.preventDefault()
@@ -78,13 +89,11 @@ export default function PeluchePublicitarioPage() {
           color: '#444'
         }}
       >
-        <strong>Los peluches publicitarios son emocionales, tangibles y coleccionables.</strong>{' '}
-        Desde personajes corporativos hasta mascotas temáticas, generan un vínculo afectivo directo
-        con tu marca. Ideales para merchandising, eventos, regalos corporativos y activaciones donde
-        buscas que tu audiencia tenga un recordatorio suave, adorable y memorable de tu presencia.
+        <strong>Los peluches publicitarios son piezas tangibles y coleccionables que generan conexión emocional.</strong>{' '}
+        Desde mascotas de marca hasta personajes temáticos, funcionan como merchandising y regalo corporativo que la gente quiere conservar.
+        Ideales para activaciones emocionales, programas de lealtad y obsequios donde buscas recordación cercana y amable.
         <br /><br />
-        Transforma tu marca en algo abrazable que vus clientes querrán guardar, compartir y recordar
-        durante años.
+        Convierte tu marca en un objeto abrazable que tus clientes quieran guardar, compartir y recordar durante años.
       </p>
     </div>
   )
