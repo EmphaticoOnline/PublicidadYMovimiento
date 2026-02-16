@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Catalog from './pages/Catalog'
 import Contact from './pages/Contact'
 import MainLayout from './components/layout/MainLayout'
+<<<<<<< Updated upstream
 import TomiPage from './pages/categories/TomiPage'
 import SkyDancerPage from './pages/categories/SkyDancerPage'
 import ReplicasInflablesPage from './pages/categories/ReplicasInflablesPage'
@@ -31,6 +32,9 @@ import CarpasToldosPage from './pages/categories/CarpasToldosPage'
 
 
 
+=======
+import { categories } from './data/categories'
+>>>>>>> Stashed changes
 
 function App() {
   return (
@@ -40,6 +44,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalogo" element={<Catalog />} />
+            {categories.map(({ id }) => (
+              <Route
+                key={id}
+                path={`/${id}`}
+                element={<Catalog initialCategory={id} />}
+              />
+            ))}
             <Route path="/contacto" element={<Contact />} />
             <Route path="/inflable-publicitario-con-movimiento" element={<TomiPage />} />
             <Route path="/sky-dancer" element={<SkyDancerPage />} />

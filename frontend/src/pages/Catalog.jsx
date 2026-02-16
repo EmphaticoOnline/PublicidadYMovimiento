@@ -5,6 +5,7 @@ import catalog from '../data/catalog.json'
 import { subcategories } from '../data/subcategories'
 import CategoriesGrid from '../components/CategoriesGrid'
 
+<<<<<<< Updated upstream
 function Catalog() {
   const [searchParams] = useSearchParams();
   const categoria = searchParams.get('categoria');
@@ -73,6 +74,13 @@ function Catalog() {
       navigate('/carpas-toldos', { replace: true });
     }
   }, [categoria, sub, navigate]);
+=======
+function Catalog({ initialCategory }) {
+  const [searchParams] = useSearchParams()
+  const categoriaParam = searchParams.get('categoria')
+  const sub = searchParams.get('sub')
+  const categoria = categoriaParam || initialCategory || null
+>>>>>>> Stashed changes
 
   // SIN CATEGORÍA
   if (!categoria) {
