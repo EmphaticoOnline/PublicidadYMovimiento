@@ -5,82 +5,11 @@ import catalog from '../data/catalog.json'
 import { subcategories } from '../data/subcategories'
 import CategoriesGrid from '../components/CategoriesGrid'
 
-<<<<<<< Updated upstream
-function Catalog() {
-  const [searchParams] = useSearchParams();
-  const categoria = searchParams.get('categoria');
-  const sub = searchParams.get('sub');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (categoria === 'tomi-publicitario' && !sub) {
-      navigate('/inflable-publicitario-con-movimiento', { replace: true });
-    }
-    if (categoria === 'replicas-inflables' && !sub) {
-      navigate('/replicas-inflables', { replace: true });
-    }
-    if (categoria === 'arcos-meta' && !sub) {
-      navigate('/arcos-meta', { replace: true });
-    }
-    if (categoria === 'botargas' && !sub) {
-      navigate('/botargas', { replace: true });
-    }
-    if (categoria === 'brincolines' && !sub) {
-      navigate('/brincolines', { replace: true });
-    }
-    if (categoria === 'flag-banner' && !sub) {
-      navigate('/flag-banners', { replace: true });
-    }
-    if (categoria === 'cilindros-publicitarios' && !sub) {
-      navigate('/cilindros-publicitarios', { replace: true });
-    }
-    if (categoria === 'globos-aerostaticos' && !sub) {
-      navigate('/globos-aerostaticos', { replace: true });
-    }
-    if (categoria === 'juegos-interactivos' && !sub) {
-      navigate('/juegos-interactivos', { replace: true });
-    }
-    if (categoria === 'pantallas-carteleras' && !sub) {
-      navigate('/pantallas-carteleras', { replace: true });
-    }
-    if (categoria === 'domis-rellenables' && !sub) {
-      navigate('/domis-rellenables', { replace: true })
-    }
-    if (categoria === 'tuneles' && !sub) {
-      navigate('/tuneles', { replace: true })
-    }
-    if (categoria === 'turbinas' && !sub) {
-      navigate('/turbinas', { replace: true })
-    }
-    if (categoria === 'kits' && !sub) {
-      navigate('/kits', { replace: true })
-    }
-    if (categoria === 'display' && !sub) {
-      navigate('/display', { replace: true })
-    }
-    if (categoria === 'publiback' && !sub) {
-      navigate('/publiback', { replace: true });
-    }
-    if (categoria === 'publitubo' && !sub) {
-      navigate('/publitubo', { replace: true });
-    }
-    if (categoria === 'peluche-publicitario' && !sub) {
-      navigate('/peluche-publicitario', { replace: true });
-    }
-    if (categoria === 'linea-autos' && !sub) {
-      navigate('/linea-autos', { replace: true });
-    }
-    if (categoria === 'carpas-toldos' && !sub) {
-      navigate('/carpas-toldos', { replace: true });
-    }
-  }, [categoria, sub, navigate]);
-=======
 function Catalog({ initialCategory }) {
   const [searchParams] = useSearchParams()
   const categoriaParam = searchParams.get('categoria')
   const sub = searchParams.get('sub')
   const categoria = categoriaParam || initialCategory || null
->>>>>>> Stashed changes
 
   // SIN CATEGORÍA
   if (!categoria) {
