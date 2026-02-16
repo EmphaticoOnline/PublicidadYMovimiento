@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy:pm": "npm run build && rsync -av --delete dist/ ubuntu@148.113.192.7:/var/www/pm/ && ssh ubuntu@148.113.192.7 \"chmod -R 755 /var/www/pm && find /var/www/pm -type f -exec chmod 644 {} \\;\"",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "deploy:pm": "npm run generate:sitemap && npm run build && rsync -av --delete dist/ ubuntu@148.113.192.7:/var/www/pm/ && ssh ubuntu@148.113.192.7 \"chmod -R 755 /var/www/pm && find /var/www/pm -type f -exec chmod 644 {} \\;\"",
     "deploy:pmwindows": "wsl bash -c \"cd /mnt/c/OpenSource/PublicidadYMovimiento/frontend && npm run build && rsync -av --delete dist/ ubuntu@148.113.192.7:/var/www/pm/\""
 
 

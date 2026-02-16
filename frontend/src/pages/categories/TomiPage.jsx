@@ -34,8 +34,8 @@ const GRID_IMAGES = [
 
 export default function TomiPage() {
   usePageTitle(
-    'Inflable Publicitario con Movimiento (Tomi) | Envíos a Toda la República',
-    'Tomi inflable publicitario en Guadalajara. Muñeco inflable con movimiento que atrae clientes desde la calle. Ideal para negocios que quieren más visibilidad y ventas.',
+    'Muñeco inflable para negocio | Inflables Publicitarios PM',
+    'Muñeco inflable para negocio con movimiento real, fabricado por Inflables Publicitarios PM y enviado a toda la República Mexicana. ¡Atrae clientes y convierte visitas en ventas!',
     'https://grupopmpublicidad.mx/inflable-publicitario-con-movimiento'
   );
   const [mainVideoId, setMainVideoId] = useState('tomi-1')
@@ -46,6 +46,37 @@ export default function TomiPage() {
   ).slice(0, 2)
 
   const gridVideo = VIDEOS.find(v => v.id === GRID_VIDEO_ID)
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Qué es un muñeco inflable para negocio?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Es un inflable publicitario con movimiento diseñado para captar miradas y dirigir clientes a tu local. El modelo Tomi tiene gestos intencionales que invitan a entrar, ideal para puntos de venta que necesitan activación inmediata.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuál es la diferencia entre un Tomi y un sky dancer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'El sky dancer destaca por su altura y visibilidad lejana, mientras que el Tomi actúa como muñeco inflable promocional con brazos dirigidos hacia tu negocio, logrando más interacción cercana y oportunidades de venta.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '¿El Tomi inflable se puede personalizar para mi marca?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí. Fabricamos cada muñeco inflable promocional con tus colores, logotipo y mensaje para que funcione como inflable gigante para negocio y refuerce tu identidad visual en eventos o fachadas.'
+        }
+      }
+    ]
+  }
 
   return (
     <div
@@ -60,11 +91,11 @@ export default function TomiPage() {
       <div className="tomi-hero">
         {/* TEXTO */}
         <div>
-          <h1>Convierte Más Clientes con el Inflable Publicitario Tomi: Movimiento que Atrae y Vende</h1>
+          <h1>Muñeco inflable con movimiento para negocio </h1>
           <h2>La alternativa profesional al Sky Dancer para negocios que buscan resultados</h2>
 
           <p className="lead">
-            El inflable que dirige miradas y convierte curiosos en clientes desde la calle.
+            El inflable publicitario con movimiento que dirige miradas, mantiene presencia de marca y convierte curiosos en clientes en cualquier ciudad de México.
           </p>
 
           <ul>
@@ -74,7 +105,11 @@ export default function TomiPage() {
           </ul>
 
           <p>
-            Cuéntanos qué tipo de negocio tienes y te ayudamos a elegir el Tomi ideal para atraer más clientes.
+            Este muñeco inflable promocional se personaliza con tus colores y logotipo, funcionando como anfitrión permanente que atiende a tus clientes incluso cuando el equipo está ocupado.
+          </p>
+
+          <p>
+            Cuéntanos qué tipo de negocio tienes y te ayudamos a elegir el Tomi ideal. Lo fabricamos como inflable gigante para negocio, resistente a exteriores y listo para operar con tus campañas.
           </p>
 
           <Link
@@ -159,7 +194,7 @@ Mantener el mismo estilo visual de la página.
         </p>  
     </div>
 
-      {/* TEXTO FINAL */}
+       {/* TEXTO FINAL */}
       <p className="tomi-copy">
         El Sky Dancer atrae miradas desde lejos.  
         El Tomi, en cambio, invita a pasar.
@@ -171,6 +206,43 @@ Mantener el mismo estilo visual de la página.
         Con el Tomi no solo decoras, comunicas.
         Con el Tomi no solo se mueven los brazos, se mueven los clientes.
       </p>
+
+      {/* FAQ */}
+      <section style={{ marginTop: '3rem' }}>
+        <h2>Preguntas frecuentes sobre el muñeco inflable para negocio</h2>
+
+        <div>
+          <h3>¿Cómo funciona el inflable publicitario con movimiento?</h3>
+          <p>
+            Utiliza una turbina silenciosa que mantiene al personaje siempre activo.
+            Sus brazos dirigen a las personas hacia tu puerta, generando interacción constante
+            como si fuera un promotor en vivo.
+          </p>
+        </div>
+
+        <div>
+          <h3>¿Puedo usar el muñeco inflable promocional en interiores?</h3>
+          <p>
+            Sí, siempre que cuentes con altura libre y corriente eléctrica.
+            Muchos clientes lo usan dentro de plazas comerciales para destacar
+            su local desde cualquier pasillo.
+          </p>
+        </div>
+
+        <div>
+          <h3>¿Qué incluye el paquete del inflable gigante para negocio?</h3>
+          <p>
+            Incluye estructura personalizada, turbina lista para enchufar y bolsa de transporte.
+            Opcionalmente agregamos iluminación LED o bases con peso adicional para exteriores.
+          </p>
+        </div>
+      </section>
+
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <style>{`
         .tomi-hero {
@@ -231,7 +303,6 @@ Mantener el mismo estilo visual de la página.
           box-shadow: 0 18px 36px rgba(0,0,0,0.2);
         }
 
-        /* 🔥 GRID: video arriba-izquierda FORZADO */
         .tomi-grid {
           margin-top: 3rem;
           display: grid;
@@ -240,7 +311,6 @@ Mantener el mismo estilo visual de la página.
           gap: 15px;
         }
 
-        /* ✅ REGLA ESPECÍFICA PRIMERO (mayor especificidad) */
         .tomi-grid .grid-video {
           grid-column: 1 / 2;
           grid-row: 1 / 2;
@@ -252,7 +322,6 @@ Mantener el mismo estilo visual de la página.
           cursor: pointer;
         }
 
-        /* Estilos genéricos para imágenes (sin afectar al video) */
         .tomi-grid img {
           width: 100%;
           aspect-ratio: 1 / 1;

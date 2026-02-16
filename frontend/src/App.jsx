@@ -26,6 +26,11 @@ function App() {
               />
             ))}
 
+            <Route
+              path="/inflable-publicitario-con-movimiento"
+              element={<Catalog initialCategory="tomi-publicitario" />}
+            />
+
             <Route path="/contacto" element={<Contact />} />
           </Routes>
         </MainLayout>
