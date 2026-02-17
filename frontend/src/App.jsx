@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import './App.css'
@@ -7,8 +8,13 @@ import Catalog from './pages/Catalog'
 import Contact from './pages/Contact'
 import MainLayout from './components/layout/MainLayout'
 import { categories } from './data/categories'
+import { initAnalyticsListener } from './utils/analyticsListener'
 
 function App() {
+  useEffect(() => {
+    initAnalyticsListener()
+  }, [])
+
   return (
     <Router>
       <CartProvider>

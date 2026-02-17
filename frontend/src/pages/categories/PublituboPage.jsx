@@ -27,31 +27,6 @@ export default function PublituboPage() {
         Presencia fija profesional para campañas corporativas
       </h2>
 
-      {/* CTA PRINCIPAL */}
-      <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
-        <Link
-          className="whatsapp-btn"
-          to="/#"
-          onClick={e => {
-            e.preventDefault()
-            handleWhatsappClick()
-          }}
-          style={{
-            display: 'inline-block',
-            backgroundColor: '#25D366',
-            color: '#fff',
-            padding: '1rem 2.4rem',
-            borderRadius: '999px',
-            textDecoration: 'none',
-            fontSize: '1.1rem',
-            fontWeight: 600,
-            boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
-          }}
-        >
-          Cotiza tu PUBLITUBO ahora
-        </Link>
-      </div>
-
       {/* GRID DE IMÁGENES PUBLITUBO */}
       <div
         style={{
@@ -76,6 +51,31 @@ export default function PublituboPage() {
           alt="Publitubo Verde"
           style={{ width: '100%', borderRadius: '14px' }}
         />
+      </div>
+
+      {/* CTA PRINCIPAL */}
+      <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
+        <Link
+          className="whatsapp-btn"
+          to="/#"
+          onClick={e => {
+            e.preventDefault()
+            handleWhatsappClick()
+          }}
+          style={{
+            display: 'inline-block',
+            backgroundColor: '#25D366',
+            color: '#fff',
+            padding: '1rem 2.4rem',
+            borderRadius: '999px',
+            textDecoration: 'none',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
+          }}
+        >
+          Cotiza tu PUBLITUBO ahora
+        </Link>
       </div>
 
       {/* TEXTO COMERCIAL CENTRADO */}

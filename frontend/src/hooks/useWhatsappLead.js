@@ -18,6 +18,12 @@ export function useWhatsappLead({ empresa_id = 1, origen = 'web' } = {}) {
     try {
       const telefono = await getVendedorWhatsapp({ empresa_id, origen });
       if (telefono) {
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+          window.gtag('event', 'click_whatsapp', {
+            event_category: 'Contacto',
+            event_label: window.location?.pathname || '/',
+          });
+        }
         window.open(`https://wa.me/${telefono}`, '_blank');
       } else {
         alert('No se pudo obtener el número de WhatsApp. Intenta más tarde.');

@@ -27,6 +27,16 @@ export default function TurbinasPage() {
         El motor que mantiene tu inflable estable y trabajando durante todo tu evento
       </h2>
 
+      {/* GRID DE IMÁGENES TURBINAS (no se usa cover.jpg y no hay más archivos disponibles) */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '24px',
+          marginBottom: '3rem'
+        }}
+      />
+
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
@@ -51,16 +61,6 @@ export default function TurbinasPage() {
           Cotiza tu Turbina / Soplador ahora
         </Link>
       </div>
-
-      {/* GRID DE IMÁGENES TURBINAS (no se usa cover.jpg y no hay más archivos disponibles) */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '24px',
-          marginBottom: '3rem'
-        }}
-      />
 
       {/* TEXTO COMERCIAL CENTRADO */}
       <p

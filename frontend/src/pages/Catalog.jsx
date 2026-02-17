@@ -12,7 +12,7 @@ import PublituboPage from './categories/PublituboPage'
 import PantallasCartelerasPage from './categories/PantallasCartelerasPage'
 import FlagBannerPage from './categories/FlagBannerPage'
 import BotargasPage from './categories/BotargasPage'
-import CarpasTokenPage from './categories/CarpasTokenPage'
+import CarpasToldosPage from './categories/CarpasToldosPage'
 import TunelsPage from './categories/TunelsPage'
 import GlobosAerostaticosPage from './categories/GlobosAerostaticosPage'
 import JuegosInteractivosPage from './categories/JuegosInteractivosPage'
@@ -35,7 +35,7 @@ const specialPages = {
   'pantallas-carteleras': PantallasCartelerasPage,
   'flag-banner': FlagBannerPage,
   botargas: BotargasPage,
-  'carpas-toldos': CarpasTokenPage,
+  'carpas-toldos': CarpasToldosPage,
   tuneles: TunelsPage,
   'globos-aerostaticos': GlobosAerostaticosPage,
   'juegos-interactivos': JuegosInteractivosPage,

@@ -27,6 +27,27 @@ export default function KitsPage() {
         Paquetes completos para activaciones con imagen profesional
       </h2>
 
+      {/* GRID DE IMÁGENES KITS */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '24px',
+          marginBottom: '3rem'
+        }}
+      >
+        <img
+          src="/images/categories/kits/kits-agave.jpg"
+          alt="Kit Agave"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/kits/kits-santatere.jpg"
+          alt="Kit Santatere"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+      </div>
+
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
         <Link
@@ -50,27 +71,6 @@ export default function KitsPage() {
         >
           Cotiza tus KITS ahora
         </Link>
-      </div>
-
-      {/* GRID DE IMÁGENES KITS */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '24px',
-          marginBottom: '3rem'
-        }}
-      >
-        <img
-          src="/images/categories/kits/kits-agave.jpg"
-          alt="Kit Agave"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-        <img
-          src="/images/categories/kits/kits-santatere.jpg"
-          alt="Kit Santatere"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
       </div>
 
       {/* TEXTO COMERCIAL CENTRADO */}

@@ -28,31 +28,6 @@ export default function GlobosAerostaticosPage() {
         Máxima visibilidad aérea para eventos, ferias y activaciones masivas
       </h2>
 
-      {/* CTA PRINCIPAL */}
-      <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
-        <Link
-          className="whatsapp-btn"
-          to="/#"
-          onClick={e => {
-            e.preventDefault()
-            handleWhatsappClick()
-          }}
-          style={{
-            display: 'inline-block',
-            backgroundColor: '#25D366',
-            color: '#fff',
-            padding: '1rem 2.4rem',
-            borderRadius: '999px',
-            textDecoration: 'none',
-            fontSize: '1.1rem',
-            fontWeight: 600,
-            boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
-          }}
-        >
-          Cotiza tus Globos Aerostáticos ahora
-        </Link>
-      </div>
-
       {/* GRID DE IMÁGENES GLOBOS AEROSTÁTICOS */}
       <div
         style={{
@@ -77,6 +52,31 @@ export default function GlobosAerostaticosPage() {
           alt="Globo aerostático publicitario personalizado con marca para ferias"
           style={{ width: '100%', borderRadius: '14px' }}
         />
+      </div>
+
+      {/* CTA PRINCIPAL */}
+      <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
+        <Link
+          className="whatsapp-btn"
+          to="/#"
+          onClick={e => {
+            e.preventDefault()
+            handleWhatsappClick()
+          }}
+          style={{
+            display: 'inline-block',
+            backgroundColor: '#25D366',
+            color: '#fff',
+            padding: '1rem 2.4rem',
+            borderRadius: '999px',
+            textDecoration: 'none',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
+          }}
+        >
+          Cotiza tus Globos Aerostáticos ahora
+        </Link>
       </div>
 
       {/* TEXTO COMERCIAL CENTRADO */}

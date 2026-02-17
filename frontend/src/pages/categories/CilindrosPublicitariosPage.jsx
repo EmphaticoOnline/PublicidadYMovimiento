@@ -6,10 +6,49 @@ export default function CilindrosPublicitariosPage() {
   const { handleWhatsappClick } = useWhatsappLead()
 
   usePageTitle(
-    'Cilindros Publicitarios Inflables | Inflables Verticales Gigantes | Envíos a Toda la República',
-    'Cilindros publicitarios inflables verticales ideales para promociones, eventos y puntos de venta. Alta visibilidad y personalización total. Envíos a toda la República Mexicana.',
+    'Cilindros Publicitarios Inflables en Venta | Cilindros Personalizados',
+    'Cilindros publicitarios inflables en venta, totalmente personalizados y fabricados en Guadalajara. Producción propia y envíos a todo México para eventos y activaciones.',
     'https://grupopmpublicidad.mx/cilindros-publicitarios'
   )
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Los cilindros inflables están en venta?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí, fabricamos cilindros inflables en venta para campañas, eventos y activaciones profesionales.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '¿Se pueden personalizar completamente?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Diseñamos cilindros publicitarios personalizados en altura, diámetro, colores e impresión 360° según tu marca.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '¿Dónde se fabrican?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Fabricamos en Guadalajara bajo estándares profesionales y enviamos a todo México.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuál es el precio de un cilindro publicitario?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'El precio depende del tamaño, la estructura y la impresión. Cotizamos cada proyecto de forma personalizada.'
+        }
+      }
+    ]
+  }
 
   return (
     <div
@@ -22,11 +61,36 @@ export default function CilindrosPublicitariosPage() {
     >
       {/* TÍTULO */}
       <h1 style={{ textAlign: 'center', fontSize: '2.35rem', lineHeight: 1.25 }}>
-        Cilindros Publicitarios Inflables Verticales de Alta Visibilidad
+        Cilindros Publicitarios Inflables en Venta de Alta Visibilidad
       </h1>
       <h2 style={{ textAlign: 'center', fontSize: '1.35rem', color: '#444', marginTop: '0.35rem' }}>
         Ideal para destacar tu marca en puntos de venta, ferias y promociones
       </h2>
+      {/* GRID DE IMÁGENES CILINDROS */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '24px',
+          marginBottom: '3rem'
+        }}
+      >
+        <img
+          src="/images/categories/cilindros-publicitarios/cilindro-cartepillar.jpg"
+          alt="Cilindro publicitario inflable vertical personalizado para activaciones en Guadalajara"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/cilindros-publicitarios/cilindro-efilea.jpg"
+          alt="Cilindro inflable corporativo con impresión 360° para eventos deportivos"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/cilindros-publicitarios/cilindro-presnillo.jpg"
+          alt="Cilindro publicitario inflable personalizado en venta para campañas promocionales"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+      </div>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>
@@ -53,31 +117,18 @@ export default function CilindrosPublicitariosPage() {
         </Link>
       </div>
 
-      {/* GRID DE IMÁGENES CILINDROS */}
-      <div
+      <p
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '24px',
-          marginBottom: '3rem'
+          textAlign: 'center',
+          maxWidth: '860px',
+          margin: '1rem auto 0',
+          fontSize: '1.05rem',
+          color: '#444',
+          lineHeight: 1.6
         }}
       >
-        <img
-          src="/images/categories/cilindros-publicitarios/cilindro-cartepillar.jpg"
-          alt="Cilindro publicitario inflable vertical de alta visibilidad en punto de venta"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-        <img
-          src="/images/categories/cilindros-publicitarios/cilindro-efilea.jpg"
-          alt="Cilindro inflable personalizado ideal para accesos y ferias"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-        <img
-          src="/images/categories/cilindros-publicitarios/cilindro-presnillo.jpg"
-          alt="Cilindro publicitario inflable con branding completo para promociones"
-          style={{ width: '100%', borderRadius: '14px' }}
-        />
-      </div>
+        Fabricamos cilindros inflables en venta totalmente personalizados para eventos, activaciones y campañas de alto impacto. Cada cilindro publicitario es producido en Guadalajara bajo estándares profesionales, con estructura reforzada para uso intensivo y envíos a todo México. No revendemos productos importados genéricos; somos fabricantes directos con control total de calidad y acabados premium.
+      </p>
 
       {/* TEXTO COMERCIAL CENTRADO */}
       <p
@@ -92,8 +143,25 @@ export default function CilindrosPublicitariosPage() {
       >
         <strong>Los cilindros publicitarios inflables ofrecen visibilidad 360° para tu marca en cualquier evento.</strong>{' '}
         Destacan en accesos, entradas y puntos de venta gracias a su altura y diseño personalizable, logrando impacto inmediato y recordación.
-        Son fáciles de instalar y se adaptan a ferias, promociones y activaciones donde necesitas que te vean primero.
+        Son fáciles de instalar y se adaptan a ferias, promociones y activaciones donde necesitas que te vean primero. También puedes complementar tu evento con nuestros <Link to="/tuneles">Túneles Inflables</Link>, <Link to="/arcos-meta">Arcos Meta</Link> o <Link to="/replicas-inflables">Réplicas Inflables Personalizadas</Link>.
       </p>
+
+      <div style={{ textAlign: 'center', marginTop: '2.3rem' }}>
+        <h2 style={{ fontSize: '1.55rem', color: '#222', marginBottom: '0.8rem' }}>
+          ¿Cuál es el precio de un cilindro inflable?
+        </h2>
+        <p
+          style={{
+            maxWidth: '820px',
+            margin: '0 auto',
+            fontSize: '1.05rem',
+            lineHeight: 1.65,
+            color: '#444'
+          }}
+        >
+          El precio de un cilindro publicitario inflable depende de la altura, diámetro, tipo de impresión, refuerzos estructurales y sistema de anclaje. Solicita una cotización personalizada para tu campaña o evento.
+        </p>
+      </div>
 
       {/* SECCIÓN DE BENEFICIOS ESTRATÉGICOS */}
       <section
@@ -121,6 +189,38 @@ export default function CilindrosPublicitariosPage() {
           <li><strong>Fácil instalación y gran impacto visual:</strong> listo para usar en minutos.</li>
         </ul>
       </section>
+
+      {/* FAQ */}
+      <section style={{ marginTop: '2.8rem' }}>
+        <h2 style={{ textAlign: 'center', fontSize: '1.6rem', color: '#222', marginBottom: '1.6rem' }}>
+          Preguntas frecuentes sobre cilindros publicitarios
+        </h2>
+
+        <div style={{ maxWidth: '900px', margin: '0 auto 1.4rem', lineHeight: 1.65 }}>
+          <h3>¿Los cilindros inflables están en venta?</h3>
+          <p>Sí, fabricamos cilindros inflables en venta para campañas, eventos y activaciones profesionales.</p>
+        </div>
+
+        <div style={{ maxWidth: '900px', margin: '0 auto 1.4rem', lineHeight: 1.65 }}>
+          <h3>¿Se pueden personalizar completamente?</h3>
+          <p>Diseñamos cilindros publicitarios personalizados en altura, diámetro, colores e impresión 360° según tu marca.</p>
+        </div>
+
+        <div style={{ maxWidth: '900px', margin: '0 auto 1.4rem', lineHeight: 1.65 }}>
+          <h3>¿Dónde se fabrican?</h3>
+          <p>Fabricamos en Guadalajara bajo estándares profesionales y enviamos a todo México.</p>
+        </div>
+
+        <div style={{ maxWidth: '900px', margin: '0 auto', lineHeight: 1.65 }}>
+          <h3>¿Cuál es el precio de un cilindro publicitario?</h3>
+          <p>El precio depende del tamaño, estructura e impresión. Cotizamos cada proyecto de forma personalizada; escríbenos por WhatsApp para una cotización rápida.</p>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </div>
   )
 }

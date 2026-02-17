@@ -13,6 +13,12 @@ function openWhatsappAlternado() {
   const nextIndex = (lastIndex + 1) % WHATSAPP_NUMBERS.length
   localStorage.setItem('waIndex', nextIndex)
   const phone = WHATSAPP_NUMBERS[lastIndex]
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', 'click_whatsapp', {
+      event_category: 'Contacto',
+      event_label: window.location?.pathname || '/',
+    })
+  }
   window.open(`https://wa.me/${phone}`, '_blank')
 }
 
