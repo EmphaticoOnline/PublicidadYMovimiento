@@ -36,7 +36,32 @@ export default function TurbinasPage() {
           gap: '24px',
           marginBottom: '3rem'
         }}
-      />
+      >
+        <img
+          src="/images/categories/turbinas/turbina-azul.jpg"
+          alt="Turbina o soplador azul para inflables publicitarios, flujo de aire estable en eventos"
+          loading="lazy"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/turbinas/turbina-fosforescente.jpg"
+          alt="Turbina fosforescente para inflables publicitarios, potencia visible y segura"
+          loading="lazy"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/turbinas/turbina-amarillo.jpg"
+          alt="Turbina amarilla para inflables publicitarios, equipo profesional para activaciones"
+          loading="lazy"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+        <img
+          src="/images/categories/turbinas/turbina-pm.jpg"
+          alt="Turbina Publicidad y Movimiento para inflables, respaldo confiable para eventos"
+          loading="lazy"
+          style={{ width: '100%', borderRadius: '14px' }}
+        />
+      </div>
 
       {/* CTA PRINCIPAL */}
       <div style={{ textAlign: 'center', margin: '1.5rem 0 2.5rem' }}>

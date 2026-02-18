@@ -5,10 +5,10 @@
 
 .about-section__art {
   position: relative;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  border-radius: 28px;
+  width: 100vw; /* full-bleed to eliminate side margins */
+  max-width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  border-radius: 0;
   overflow: visible;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
@@ -37,10 +37,6 @@
 }
 
 @media (max-width: 768px) {
-  .about-section__art {
-    border-radius: 22px;
-  }
-
   .about-section__video-wrapper {
     bottom: 12%;
     width: min(400px, 82%);
@@ -48,10 +44,6 @@
 }
 
 @media (max-width: 540px) {
-  .about-section__art {
-    border-radius: 18px;
-  }
-
   .about-section__video-wrapper {
     bottom: 10%; /* 👈 Bajamos el video */
     width: min(300px, 80%);

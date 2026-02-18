@@ -3,37 +3,65 @@ function HowToBuySection() {
     {
       id: 1,
       title: 'PASO 1',
-      description: 'Explora nuestro catálogo de productos y encuentra lo que necesitas'
+      description: (
+        <>
+          <strong>Explora nuestro catálogo de productos y encuentra lo que necesitas</strong>
+        </>
+      )
     },
     {
       id: 2,
       title: 'PASO 2',
-      description: 'Contacta con nuestro equipo de ventas por WhatsApp o teléfono'
+      description: (
+        <>
+          <strong>Contacta con nuestro equipo de ventas por WhatsApp o teléfono</strong>
+        </>
+      )
     },
     {
       id: 3,
       title: 'PASO 3',
-      description: 'Cuéntanos tu idea y personaliza tu producto'
+      description: (
+        <>
+          <strong>Cuéntanos tu idea y personaliza tu producto</strong>
+        </>
+      )
     },
     {
       id: 4,
       title: 'PASO 4',
-      description: 'Recibe una cotización detallada sin compromiso'
+      description: (
+        <>
+          <strong>Recibe una cotización detallada sin compromiso</strong>
+        </>
+      )
     },
     {
       id: 5,
       title: 'PASO 5',
-      description: 'Aprueba el diseño y confirma tu pedido'
+      description: (
+        <>
+          <strong>Aprueba el diseño y confirma tu pedido</strong>
+        </>
+      )
     },
     {
       id: 6,
       title: 'PASO 6',
-      description: 'Nuestro equipo fabrica tu producto con los mejores materiales'
+      description: (
+        <>
+          <strong>Nuestro equipo fabrica tu producto con los mejores materiales</strong>
+        </>
+      )
     },
     {
       id: 7,
       title: 'PASO 7',
-      description: 'Recibe tu producto y destaca en tu evento o campaña'
+      description: (
+        <>
+          <strong>Recibe tu producto y destaca en tu evento o campaña</strong>
+        </>
+      )
     }
   ]
 
@@ -111,7 +139,7 @@ function HowToBuySection() {
               {/* DESCRIPCIÓN */}
               <p
                 style={{
-                  color: '#666',
+                  color: '#000',
                   fontSize: '0.95rem',
                   lineHeight: '1.6',
                   margin: 0,
