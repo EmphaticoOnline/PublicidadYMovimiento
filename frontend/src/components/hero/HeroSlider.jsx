@@ -1,12 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
 const IMAGES = [
-  '/images/hero/hero-1.jpg',
-  '/images/hero/hero-2.jpg',
-  '/images/hero/hero-3.jpg',
-  '/images/hero/hero-4.jpg',
+  {
+    src: '/images/hero/hero-1.jpg',
+    alt: 'Inflable publicitario rojo con logo de Publicidad y Movimiento en exterior'
+  },
+  {
+    src: '/images/hero/hero-2.jpg',
+    alt: 'Equipo instalando inflable promocional alto frente a negocio en México'
+  },
+  {
+    src: '/images/hero/hero-3.jpg',
+    alt: 'Sky dancer inflable multicolor llamando la atención de transeúntes'
+  },
+  {
+    src: '/images/hero/hero-4.jpg',
+    alt: 'Inflable gigante personalizado exhibido en un evento promocional'
+  },
 ]
 
 const SLIDE_TEXTS = [
@@ -91,16 +103,23 @@ function HeroSlider() {
       }}
     >
       {/* IMÁGENES */}
-      {IMAGES.map((src, i) => (
+      {IMAGES.map(({ src, alt }, i) => (
         <img
           key={src}
           src={src}
-          alt=""
+          alt={alt}
+          decoding="async"
+          width="1600"
+          height="900"
+          {...(i === 0
+            ? { fetchpriority: 'high', loading: 'eager' }
+            : { loading: 'lazy' })}
           style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
+            aspectRatio: '16 / 9',
             objectFit: 'cover',
             filter: 'brightness(1.12)',
             opacity: i === index ? 1 : 0,
@@ -231,6 +250,7 @@ function HeroSlider() {
 
 {/* BOTÓN WHATSAPP */}
 <button
+  className="whatsapp-btn"
   onClick={handleWhatsappClick}
   disabled={loadingWhatsapp}
   style={{
@@ -238,19 +258,8 @@ function HeroSlider() {
     left: '8%',
     bottom: '80px',
     zIndex: 3,
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '0.85rem 1.6rem',
-    backgroundColor: '#25D366',
-    color: '#fff',
-    borderRadius: '999px',
-    fontWeight: 600,
-    fontSize: '1.05rem',
     fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
-    border: 'none',
     cursor: loadingWhatsapp ? 'not-allowed' : 'pointer',
-    boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
     transition: 'transform 0.25s ease, box-shadow 0.25s ease',
     opacity: loadingWhatsapp ? 0.7 : 1,
   }}

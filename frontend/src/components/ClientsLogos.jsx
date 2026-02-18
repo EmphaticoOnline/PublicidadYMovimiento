@@ -26,6 +26,7 @@ export default function ClientsLogos() {
         <img
           src="/images/clients/marcas.jpg"
           alt="Marcas con las que trabajamos"
+          loading="lazy"
           style={{
             width: '100%',
             height: 'auto',

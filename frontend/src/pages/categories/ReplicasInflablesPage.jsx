@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 import usePageTitle from '../../hooks/usePageTitle'
 
@@ -78,16 +79,19 @@ export default function ReplicasInflablesPage() {
         <img
           src="/images/categories/replicas-inflables/replica-cordoba.jpg"
           alt="Réplica inflable publicitaria gigante de producto Córdoba, ideal para eventos y puntos de venta"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/replicas-inflables/replica-pemex.jpg"
           alt="Réplica inflable publicitaria gigante estilo Pemex para promociones y activaciones de marca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/replicas-inflables/replica-tostadas.jpg"
           alt="Réplica inflable publicitaria gigante de tostadas para ferias, lanzamientos y tráfico peatonal"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -113,6 +117,7 @@ export default function ReplicasInflablesPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tus Réplicas Inflables ahora
         </Link>
       </div>

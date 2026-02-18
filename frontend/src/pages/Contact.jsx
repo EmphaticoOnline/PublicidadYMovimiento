@@ -1,7 +1,14 @@
 import { useCart } from '../context/CartContext'
+import usePageTitle from '../hooks/usePageTitle'
 
 function Contact() {
   const { items } = useCart()
+
+  usePageTitle(
+    'Contacto | Publicidad y Movimiento',
+    'Ponte en contacto con Publicidad y Movimiento para cotizaciones de inflables publicitarios, sky dancers y soluciones personalizadas en México.',
+    'https://grupopmpublicidad.mx/contacto'
+  )
 
   return (
     <div>

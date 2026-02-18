@@ -39,11 +39,13 @@ export default function KitsPage() {
         <img
           src="/images/categories/kits/kits-agave.jpg"
           alt="Kit Agave"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/kits/kits-santatere.jpg"
           alt="Kit Santatere"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

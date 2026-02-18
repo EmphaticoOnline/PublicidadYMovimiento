@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
@@ -58,6 +59,7 @@ export default function TurbinasPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu Turbina / Soplador ahora
         </Link>
       </div>

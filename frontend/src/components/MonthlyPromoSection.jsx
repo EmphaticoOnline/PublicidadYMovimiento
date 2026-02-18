@@ -65,6 +65,7 @@ function MonthlyPromoSection() {
               <img
                 src={promo.image}
                 alt="Promo del mes"
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',

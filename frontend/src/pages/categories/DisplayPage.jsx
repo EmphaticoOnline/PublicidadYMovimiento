@@ -77,16 +77,19 @@ export default function DisplayPage() {
         <img
           src="/images/categories/display/demo-mr.jpg"
           alt="Display publicitario inflable en venta para activaciones de marca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/display/demo-perron.jpg"
           alt="Mostrador publicitario portátil personalizado para punto de venta"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/display/demo-zimalta.jpg"
           alt="Stand promocional inflable fabricado en Guadalajara para expos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

@@ -87,11 +87,13 @@ export default function LineaAutosPage() {
         <img
           src="/images/categories/linea-autos/autos-cubierta.jpg"
           alt="Funda publicitaria para auto en venta con cubierta automotriz 100% opaca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/linea-autos/autos-funda.jpg"
           alt="Cubierta personalizada fabricada en Guadalajara para protección solar total"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

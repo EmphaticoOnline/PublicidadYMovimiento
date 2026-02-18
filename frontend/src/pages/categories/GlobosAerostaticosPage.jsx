@@ -40,16 +40,19 @@ export default function GlobosAerostaticosPage() {
         <img
           src="/images/categories/globos-aerostaticos/globo-centenario.jpg"
           alt="Globo aerostático publicitario inflable visible a gran distancia en eventos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/globos-aerostaticos/globo-delarosa.jpg"
           alt="Globo aerostático inflable publicitario para activaciones masivas"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/globos-aerostaticos/globo-motors.jpg"
           alt="Globo aerostático publicitario personalizado con marca para ferias"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

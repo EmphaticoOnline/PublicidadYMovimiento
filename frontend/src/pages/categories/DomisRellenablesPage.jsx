@@ -39,16 +39,19 @@ export default function DomisRellenablesPage() {
         <img
           src="/images/categories/domis-rellenables/aspros-costal.jpg"
           alt="Aspros Costal"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/domis-rellenables/costal-azul.jpg"
           alt="Costal Azul"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/domis-rellenables/costal-pegaduro.jpg"
           alt="Costal Pegaduro"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

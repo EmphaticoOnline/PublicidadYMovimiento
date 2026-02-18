@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 import usePageTitle from '../../hooks/usePageTitle'
 
@@ -78,16 +79,19 @@ export default function SkyDancerPage() {
         <img
           src="/images/categories/sky-dancer/sky-amarillo.jpg"
           alt="Sky Dancer inflable publicitario alto amarillo en uso para negocio o evento, máxima visibilidad exterior"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/sky-dancer/sky-dancer.jpg"
           alt="Sky Dancer inflable publicitario alto multicolor animando evento promocional, ideal para atraer clientes"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/sky-dancer/sky-tiraloca.jpg"
           alt="Sky Dancer inflable publicitario alto tiraloca destacando en inauguración o promoción de negocio"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -113,6 +117,7 @@ export default function SkyDancerPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu SKY DANCER ahora
         </Link>
       </div>
@@ -266,6 +271,7 @@ export default function SkyDancerPage() {
             boxShadow: '0 10px 24px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu SKY DANCER ahora
         </Link>
       </div>

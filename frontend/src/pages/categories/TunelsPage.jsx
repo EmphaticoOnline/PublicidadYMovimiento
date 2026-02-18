@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
@@ -78,16 +79,19 @@ export default function TunelsPage() {
         <img
           src="/images/categories/tuneles/tunel-cuadrado.jpg"
           alt="Túnel inflable personalizado cuadrado para meta de carrera"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/tuneles/tunel-curvo.jpg"
           alt="Túnel inflable curvo publicitario para eventos deportivos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/tuneles/tunel-uno.jpg"
           alt="Túnel inflable en venta con impresión corporativa"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -113,6 +117,7 @@ export default function TunelsPage() {
               boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
             }}
           >
+            <FaWhatsapp size={20} />
             Cotiza tus Túneles ahora
           </Link>
         </div>

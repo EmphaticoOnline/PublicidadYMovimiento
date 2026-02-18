@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
@@ -86,16 +87,19 @@ export default function PublibackPage() {
         <img
           src="/images/categories/publiback/publiback-azul.jpg"
           alt="Publiback publicitario en venta para activaciones en Guadalajara"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/publiback/publiback-capsulina.jpg"
           alt="Publiback personalizado para promociones BTL en calle"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/publiback/publiback-verde.jpg"
           alt="Publiback inflable con impresión personalizada para campañas masivas"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -121,6 +125,7 @@ export default function PublibackPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu PUBLIBACK ahora
         </Link>
       </div>

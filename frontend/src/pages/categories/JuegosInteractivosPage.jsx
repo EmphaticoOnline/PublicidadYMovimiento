@@ -78,16 +78,19 @@ export default function JuegosInteractivosPage() {
         <img
           src="/images/categories/juegos-interactivos/interactivo-amarillo.jpg"
           alt="Juego inflable interactivo personalizado para activaciones con alto engagement"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/juegos-interactivos/interactivo-basquet.jpg"
           alt="Juego inflable corporativo estilo básquet ideal para eventos y ferias"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/juegos-interactivos/interactivo-verde.jpg"
           alt="Juego inflable para activación de marca que genera participación y fotos para redes"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

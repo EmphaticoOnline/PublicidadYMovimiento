@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 
@@ -39,16 +40,19 @@ export default function PublituboPage() {
         <img
           src="/images/categories/publitubo/publitubos-blanco.jpg"
           alt="Publitubo Blanco"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/publitubo/publitubos-pri.jpg"
           alt="Publitubo Primario"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/publitubo/publitubos-verde.jpg"
           alt="Publitubo Verde"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -74,6 +78,7 @@ export default function PublituboPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu PUBLITUBO ahora
         </Link>
       </div>

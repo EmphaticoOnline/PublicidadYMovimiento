@@ -40,6 +40,7 @@ function CategoriesGrid() {
             <img
               src={`/images/categories/${category.id}/cover.jpg`}
               alt={category.label}
+              loading="lazy"
               style={{
                 width: '100%',
                 height: '100%',

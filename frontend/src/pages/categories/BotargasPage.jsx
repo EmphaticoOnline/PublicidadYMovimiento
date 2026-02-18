@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 import usePageTitle from '../../hooks/usePageTitle'
 
@@ -78,16 +79,19 @@ export default function BotargasPage() {
         <img
           src="/images/categories/botargas/botarga-elote.jpg"
           alt="Botarga publicitaria personalizada tipo elote para activaciones en centros comerciales y eventos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/botargas/botarga-tres.jpg"
           alt="Botarga publicitaria personalizada personaje corporativo para interacción con público"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/botargas/botarga-zgas.jpg"
           alt="Botarga publicitaria ZGAS ideal para activaciones y eventos infantiles"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -113,7 +117,8 @@ export default function BotargasPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
-          Cotiza tus BOTARGAS ahora
+          <FaWhatsapp size={20} />
+          Cotiza tu BOTARGA ahora
         </Link>
       </div>
 

@@ -78,16 +78,19 @@ export default function PeluchePublicitarioPage() {
         <img
           src="/images/categories/peluche-publicitario/peluche-leopardo.jpg"
           alt="Peluche publicitario corporativo en venta para activaciones de marca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/peluche-publicitario/peluche-pulmones.jpg"
           alt="Peluche promocional personalizado con diseño a medida"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/peluche-publicitario/peluche-scribe.jpg"
           alt="Peluche publicitario en venta para campañas de marca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 
 const WHATSAPP_NUMBERS = [
@@ -126,6 +127,7 @@ export default function TomiPage() {
             }}
             className="cta"
           >
+            <FaWhatsapp size={20} />
             Cotiza tu Tomi ahora
           </Link>
 
@@ -177,7 +179,7 @@ export default function TomiPage() {
         />
 
         {GRID_IMAGES.map((img, i) => (
-          <img key={i} src={img.src} alt={img.alt} />
+          <img key={i} src={img.src} alt={img.alt} loading="lazy" />
         ))}
       </div>
 
@@ -275,14 +277,16 @@ Mantener el mismo estilo visual de la página.
         }
 
         .cta {
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
           margin-top: 1rem;
           background: #25D366;
           color: #fff;
           padding: 1rem 2.4rem;
           border-radius: 999px;
           text-decoration: none;
-          font-weight: 600;
+          font-weight: 700;
           box-shadow: 0 10px 24px rgba(0,0,0,0.18);
         }
 

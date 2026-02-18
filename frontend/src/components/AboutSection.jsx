@@ -8,6 +8,7 @@ function AboutSection() {
         <img
           src="/images/background/cover-nosotros.jpg"
           alt="Nosotros"
+          loading="lazy"
           className="about-section__image"
         />
 

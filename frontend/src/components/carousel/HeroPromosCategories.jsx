@@ -162,6 +162,7 @@ function HeroPromosCategories() {
               <img
                 src={item.image || '/images/carousel/placeholder.png'}
                 alt={item.title}
+                loading="lazy"
                 style={{
                   height: '200px',
                   aspectRatio: '4 / 5',

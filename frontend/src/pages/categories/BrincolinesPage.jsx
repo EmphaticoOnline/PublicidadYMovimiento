@@ -78,16 +78,19 @@ export default function BrincolinesPage() {
         <img
           src="/images/categories/brincolines/brincolin-azul.jpg"
           alt="Brincolín inflable azul para fiestas infantiles y eventos escolares con alta seguridad"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/brincolines/brincolin-rojo.jpg"
           alt="Brincolín inflable rojo llamativo ideal para celebraciones infantiles y ferias"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/brincolines/cocodrilo.jpg"
           alt="Brincolín inflable temática cocodrilo que atrae familias y niños en eventos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

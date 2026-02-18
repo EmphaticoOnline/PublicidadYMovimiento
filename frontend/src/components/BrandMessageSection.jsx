@@ -10,6 +10,7 @@ function BrandMessageSection() {
       <img
         src="/images/brand-message/brand-message.jpg"
         alt="Brand Message"
+        loading="lazy"
         style={{
           width: '100%',
           height: 'auto',

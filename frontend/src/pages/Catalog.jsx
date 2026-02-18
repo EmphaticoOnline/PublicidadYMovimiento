@@ -1,28 +1,32 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import catalog from '../data/catalog.json'
 import { subcategories } from '../data/subcategories'
+import { categories } from '../data/categories'
 import CategoriesGrid from '../components/CategoriesGrid'
-import TomiPage from './categories/TomiPage'
-import SkyDancerPage from './categories/SkyDancerPage'
-import ReplicasInflablesPage from './categories/ReplicasInflablesPage'
-import ArcosMetaPage from './categories/ArcosMetaPage'
-import PublibackPage from './categories/PublibackPage'
-import CilindrosPublicitariosPage from './categories/CilindrosPublicitariosPage'
-import PublituboPage from './categories/PublituboPage'
-import PantallasCartelerasPage from './categories/PantallasCartelerasPage'
-import FlagBannerPage from './categories/FlagBannerPage'
-import BotargasPage from './categories/BotargasPage'
-import CarpasToldosPage from './categories/CarpasToldosPage'
-import TunelsPage from './categories/TunelsPage'
-import GlobosAerostaticosPage from './categories/GlobosAerostaticosPage'
-import JuegosInteractivosPage from './categories/JuegosInteractivosPage'
-import BrincolinesPage from './categories/BrincolinesPage'
-import PeluchePublicitarioPage from './categories/PeluchePublicitarioPage'
-import DomisRellenablesPage from './categories/DomisRellenablesPage'
-import LineaAutosPage from './categories/LineaAutosPage'
-import DisplayPage from './categories/DisplayPage'
-import KitsPage from './categories/KitsPage'
-import TurbinasPage from './categories/TurbinasPage'
+import usePageTitle from '../hooks/usePageTitle'
+
+const TomiPage = lazy(() => import('./categories/TomiPage'))
+const SkyDancerPage = lazy(() => import('./categories/SkyDancerPage'))
+const ReplicasInflablesPage = lazy(() => import('./categories/ReplicasInflablesPage'))
+const ArcosMetaPage = lazy(() => import('./categories/ArcosMetaPage'))
+const PublibackPage = lazy(() => import('./categories/PublibackPage'))
+const CilindrosPublicitariosPage = lazy(() => import('./categories/CilindrosPublicitariosPage'))
+const PublituboPage = lazy(() => import('./categories/PublituboPage'))
+const PantallasCartelerasPage = lazy(() => import('./categories/PantallasCartelerasPage'))
+const FlagBannerPage = lazy(() => import('./categories/FlagBannerPage'))
+const BotargasPage = lazy(() => import('./categories/BotargasPage'))
+const CarpasToldosPage = lazy(() => import('./categories/CarpasToldosPage'))
+const TunelsPage = lazy(() => import('./categories/TunelsPage'))
+const GlobosAerostaticosPage = lazy(() => import('./categories/GlobosAerostaticosPage'))
+const JuegosInteractivosPage = lazy(() => import('./categories/JuegosInteractivosPage'))
+const BrincolinesPage = lazy(() => import('./categories/BrincolinesPage'))
+const PeluchePublicitarioPage = lazy(() => import('./categories/PeluchePublicitarioPage'))
+const DomisRellenablesPage = lazy(() => import('./categories/DomisRellenablesPage'))
+const LineaAutosPage = lazy(() => import('./categories/LineaAutosPage'))
+const DisplayPage = lazy(() => import('./categories/DisplayPage'))
+const KitsPage = lazy(() => import('./categories/KitsPage'))
+const TurbinasPage = lazy(() => import('./categories/TurbinasPage'))
 
 const specialPages = {
   'tomi-publicitario': TomiPage,
@@ -54,10 +58,39 @@ const isValidCategoryParam = slug =>
   Boolean(slug) && (hasOwn.call(specialPages, slug) || hasOwn.call(subcategories, slug))
 
 function Catalog({ initialCategory }) {
+  const location = useLocation()
   const [searchParams] = useSearchParams()
   const categoriaParam = searchParams.get('categoria')
   const sub = searchParams.get('sub')
   const categoria = isValidCategoryParam(categoriaParam) ? categoriaParam : initialCategory || null
+
+  const categoryLabel = categories.find(cat => cat.id === categoria)?.label || (categoria ? categoria.replace(/-/g, ' ') : '')
+  const subLabel = (subcategories[categoria] || []).find(s => s.id === sub)?.label || (sub ? sub.replace(/-/g, ' ') : '')
+
+  const canonicalUrl = hasOwn.call(specialPages, categoria)
+    ? `https://grupopmpublicidad.mx/${categoria}`
+    : `https://grupopmpublicidad.mx${location.pathname}${location.search || ''}`
+
+  const rendersSpecialPage = !sub && Boolean(specialPages[categoria])
+
+  const defaultTitle = 'Catálogo de Inflables Publicitarios | Publicidad y Movimiento'
+  const defaultDescription = 'Explora nuestro catálogo de inflables publicitarios, sky dancers, arcos inflables y soluciones personalizadas en México.'
+
+  const title = categoria
+    ? sub
+      ? `${subLabel} | ${categoryLabel} | Publicidad y Movimiento`
+      : `${categoryLabel} | Publicidad y Movimiento`
+    : defaultTitle
+
+  const description = categoria
+    ? sub
+      ? `Descubre ${subLabel} dentro de ${categoryLabel}. Inflables publicitarios y soluciones personalizadas en México.`
+      : `Explora ${categoryLabel} y soluciones de inflables publicitarios personalizadas en México.`
+    : defaultDescription
+
+  if (!rendersSpecialPage) {
+    usePageTitle(title, description, canonicalUrl)
+  }
 
   if (!categoria) {
     return (
@@ -73,7 +106,11 @@ function Catalog({ initialCategory }) {
 
   if (!sub && specialPages[categoria]) {
     const SpecialComponent = specialPages[categoria]
-    return <SpecialComponent />
+    return (
+      <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Cargando...</div>}>
+        <SpecialComponent />
+      </Suspense>
+    )
   }
 
   const subs = subcategories[categoria] || []
@@ -136,6 +173,7 @@ function Catalog({ initialCategory }) {
                 <img
                   src={product.image}
                   alt={product.title}
+                  loading="lazy"
                   style={{
                     width: '100%',
                     borderRadius: '8px',

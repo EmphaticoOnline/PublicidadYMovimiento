@@ -78,16 +78,19 @@ export default function CilindrosPublicitariosPage() {
         <img
           src="/images/categories/cilindros-publicitarios/cilindro-cartepillar.jpg"
           alt="Cilindro publicitario inflable vertical personalizado para activaciones en Guadalajara"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/cilindros-publicitarios/cilindro-efilea.jpg"
           alt="Cilindro inflable corporativo con impresión 360° para eventos deportivos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/cilindros-publicitarios/cilindro-presnillo.jpg"
           alt="Cilindro publicitario inflable personalizado en venta para campañas promocionales"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

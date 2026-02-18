@@ -84,6 +84,7 @@ function HowToBuySection() {
               <img
                 src={`/images/icons/paso-${step.id}.jpg`}
                 alt={`Icono paso ${step.id}`}
+                loading="lazy"
                 style={{
                   width: '80px',
                   height: '80px',

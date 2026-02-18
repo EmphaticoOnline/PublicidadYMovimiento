@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 import usePageTitle from '../../hooks/usePageTitle'
 
@@ -78,16 +79,19 @@ export default function ArcosMetaPage() {
         <img
           src="/images/categories/arcos-meta/arco-curvo.jpg"
           alt="Arco meta inflable profesional curvo para carreras y maratones, alta visibilidad en eventos deportivos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/arcos-meta/arco-deea.jpg"
           alt="Arco meta inflable publicitario DEEA para llegada y salida de eventos deportivos con patrocinadores"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/arcos-meta/arco-evo.jpg"
           alt="Arco meta inflable EVO resaltando la meta en maratones y activaciones de marca"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
@@ -113,6 +117,7 @@ export default function ArcosMetaPage() {
             boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
           }}
         >
+          <FaWhatsapp size={20} />
           Cotiza tu Arco Meta ahora
         </Link>
       </div>

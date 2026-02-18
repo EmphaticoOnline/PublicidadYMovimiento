@@ -78,16 +78,19 @@ export default function FlagBannerPage() {
         <img
           src="/images/categories/flag-banner/flag-repegi.jpg"
           alt="Flag banner publicitario Repegi para exterior, señalización ligera y visible"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/flag-banner/flag-subaru.jpg"
           alt="Flag banner publicitario Subaru ideal para promociones en calle y puntos de venta"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/flag-banner/flag-supercolchon.jpg"
           alt="Flag banner publicitario Supercolchón complementando inflables y dirigiendo tráfico"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

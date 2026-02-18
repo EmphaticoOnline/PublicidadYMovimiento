@@ -78,16 +78,19 @@ export default function CarpasToldosPage() {
         <img
           src="/images/categories/carpas-toldos/toldo-inflable.jpg"
           alt="Carpa inflable publicitaria con cobertura de marca para activaciones"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/carpas-toldos/toldo-mission.jpg"
           alt="Carpa personalizada tipo mission con impresión para eventos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/carpas-toldos/toldo-selgamex.jpg"
           alt="Toldo publicitario personalizado con logotipo Selgamex"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

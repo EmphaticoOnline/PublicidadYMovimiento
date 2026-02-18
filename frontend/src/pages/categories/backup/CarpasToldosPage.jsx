@@ -65,16 +65,19 @@ export default function CarpasToldosPage() {
         <img
           src="/images/categories/carpas-toldos/toldo-inflable.jpg"
           alt="Toldo Inflable"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/carpas-toldos/toldo-mission.jpg"
           alt="Toldo Mission"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/carpas-toldos/toldo-selgamex.jpg"
           alt="Toldo Selgamex"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>

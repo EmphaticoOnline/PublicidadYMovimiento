@@ -88,16 +88,19 @@ export default function PantallasCartelerasPage() {
         <img
           src="/images/categories/pantallas-carteleras/oxxo.jpg"
           alt="Pantalla inflable gigante en venta para conciertos y eventos masivos"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/pantallas-carteleras/pantalla-negra.jpg"
           alt="Cartelera inflable publicitaria fabricada en Guadalajara para promociones"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
         <img
           src="/images/categories/pantallas-carteleras/pantalla-roja.jpg"
           alt="Pantalla inflable profesional para cine al aire libre y festivales"
+          loading="lazy"
           style={{ width: '100%', borderRadius: '14px' }}
         />
       </div>
