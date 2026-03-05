@@ -81,8 +81,7 @@ function ContactSection() {
                 HORARIO DE ATENCIÓN
               </h3>
               <p style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
-                Lunes a Viernes: 9:00 AM - 6:00 PM<br />
-                Sábados: 10:00 AM - 2:00 PM
+                Lunes a Viernes: 9:00 AM - 5:00 PM
               </p>
             </div>
 
