@@ -7,7 +7,7 @@ export default function SkyDancerPage() {
   const { handleWhatsappClick } = useWhatsappLead()
 
   usePageTitle(
-    'Sky Dancer Publicitario en Guadalajara | Inflable Alto para Negocios',
+    'Sky Dancer Publicitario Inflable | Precio y Venta en Guadalajara',
     'Sky Dancer publicitario inflable para negocios. Disponible en Guadalajara y con envíos a todo México. Conoce modelos, alturas y solicita cotización.',
     'https://grupopmpublicidad.mx/sky-dancer'
   )
@@ -222,6 +222,27 @@ export default function SkyDancerPage() {
         <li>Ferias y plazas donde la altura ayuda a localizar tu stand rápidamente.</li>
         <li>Promociones continuas que buscan mantener flujo constante de clientes.</li>
       </ul>
+
+      {/* BLOQUE – OTROS INFLABLES */}
+      <section style={{ maxWidth: '900px', margin: '0 auto 2.4rem' }}>
+        <h2 style={{ fontSize: '1.6rem', color: '#222', marginBottom: '1rem', textAlign: 'center' }}>
+          Otros inflables publicitarios que pueden interesarte
+        </h2>
+        <ul style={{ lineHeight: 1.65, color: '#2c2c2c', paddingLeft: '1.1rem' }}>
+          <li>
+            <Link to="/inflable-publicitario-con-movimiento">Inflable publicitario con movimiento (Tomi)</Link>
+          </li>
+          <li>
+            <Link to="/botargas">Botargas</Link>
+          </li>
+          <li>
+            <Link to="/arcos-inflables">Arcos inflables</Link>
+          </li>
+          <li>
+            <Link to="/display">Display</Link>
+          </li>
+        </ul>
+      </section>
 
       {/* FAQ */}
       <section style={{ marginTop: '2.8rem' }}>

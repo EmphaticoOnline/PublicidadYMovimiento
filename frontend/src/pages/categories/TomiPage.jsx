@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
+import { crearLinkWhatsApp } from '../../utils/whatsapp'
 
 const WHATSAPP_NUMBERS = [
   '5213310949986', // Faby
@@ -20,7 +21,8 @@ function openWhatsappAlternado() {
       event_label: window.location?.pathname || '/',
     })
   }
-  window.open(`https://wa.me/${phone}`, '_blank')
+  const link = crearLinkWhatsApp('Tomi inflable publicitario', phone)
+  window.open(link, '_blank')
 }
 
 const VIDEOS = [
@@ -41,8 +43,8 @@ const GRID_IMAGES = [
 
 export default function TomiPage() {
   usePageTitle(
-    'Muñeco inflable para negocio | Inflables Publicitarios PM',
-    'Muñeco inflable para negocio con movimiento real, fabricado por Inflables Publicitarios PM y enviado a toda la República Mexicana. ¡Atrae clientes y convierte visitas en ventas!',
+    'Inflable Publicitario con Movimiento (Tomi) | Atrae Clientes a tu Negocio',
+    'Inflable publicitario con movimiento tipo Tomi, ideal para atraer clientes a tu negocio. Más control que un Sky Dancer y mayor interacción con peatones.',
     'https://grupopmpublicidad.mx/inflable-publicitario-con-movimiento'
   );
   const [mainVideoId, setMainVideoId] = useState('tomi-1')
@@ -98,7 +100,7 @@ export default function TomiPage() {
       <div className="tomi-hero">
         {/* TEXTO */}
         <div>
-          <h1>Muñeco inflable con movimiento para negocio </h1>
+          <h1>Inflable Publicitario con Movimiento para Negocios (Tomi)</h1>
           <h2>La alternativa profesional al Sky Dancer para negocios que buscan resultados</h2>
 
           <p className="lead">

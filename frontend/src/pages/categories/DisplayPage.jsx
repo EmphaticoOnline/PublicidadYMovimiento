@@ -6,8 +6,8 @@ export default function DisplayPage() {
   const { handleWhatsappClick } = useWhatsappLead()
 
   usePageTitle(
-    'Displays Publicitarios en Venta | Displays Inflables y Mostradores Portátiles',
-    'Displays publicitarios inflables y mostradores portátiles en venta, fabricados en Guadalajara con personalización total y envíos a todo México. Producción propia para punto de venta y expos.',
+    'Displays Publicitarios para Punto de Venta y Expos | Fabricación en Guadalajara',
+    'Displays publicitarios inflables y mostradores portátiles para punto de venta, expos y promociones. Fabricación en Guadalajara con envío a todo México.',
     'https://grupopmpublicidad.mx/display'
   )
 

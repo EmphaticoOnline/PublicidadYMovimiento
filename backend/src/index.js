@@ -87,6 +87,7 @@ app.post('/api/leads/whatsapp', async (req, res) => {
     // 3. Responder con los datos del vendedor asignado
     res.json({ vendedor });
   } catch (err) {
+    console.error('Error en /api/leads/whatsapp:', err);
     res.status(500).json({ error: err.message });
   } finally {
     client.release();

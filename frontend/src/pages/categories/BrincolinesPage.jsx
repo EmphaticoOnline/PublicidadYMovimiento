@@ -6,8 +6,8 @@ export default function BrincolinesPage() {
   const { handleWhatsappClick } = useWhatsappLead()
 
   usePageTitle(
-    'Brincolines Inflables en Venta | Modelos para Negocio en Guadalajara',
-    'Brincolines inflables en venta para fiestas y negocio. Modelos resistentes, personalizados y disponibles en Guadalajara con envíos a todo México.',
+    'Brincolines Inflables en Venta para Negocio | Fabricación en Guadalajara',
+    'Brincolines inflables en venta para emprendedores, salones y organizadores de eventos. Fabricación en Guadalajara con envíos a todo México.',
     'https://grupopmpublicidad.mx/brincolines'
   )
 

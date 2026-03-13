@@ -8,13 +8,22 @@ export async function getVendedorWhatsapp({ empresa_id, origen }) {
       },
       body: JSON.stringify({ empresa_id, origen }),
     });
+
+    const isJson = response.headers.get('content-type')?.includes('application/json');
+    const payload = isJson ? await response.json() : null;
+
     if (!response.ok) {
-      throw new Error('No se pudo obtener el número de WhatsApp');
+      const backendMsg = payload?.error || payload?.message;
+      throw new Error(backendMsg || 'No se pudo obtener el número de WhatsApp');
     }
-    const data = await response.json();
-    return data.vendedor?.telefono || null;
+
+    const telefono = payload?.vendedor?.telefono || null;
+    if (!telefono) {
+      throw new Error('El backend no devolvió teléfono');
+    }
+    return telefono;
   } catch (error) {
     console.error('Error obteniendo WhatsApp:', error);
-    return null;
+    throw error;
   }
 }
