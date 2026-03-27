@@ -27,6 +27,111 @@ app.get('/api/ejemplo', async (req, res) => {
   }
 });
 
+// Servicio y endpoint para ruteo de leads vía WhatsApp (round robin)
+app.post('/api/leads/whatsapp', async (req, res) => {
+  const { empresa_id, origen } = req.body;
+  if (!empresa_id || !origen) {
+    return res.status(400).json({ error: 'empresa_id y origen son requeridos' });
+  }
+
+  const client = await pool.connect();
+  try {
+    const query = `
+      WITH vendedores AS (
+        SELECT id, nombre, telefono, email
+        FROM contactos
+        WHERE tipo_contacto = 'Vendedor'
+          AND activo = true
+          AND bloqueado = false
+          AND empresa_id = $1
+        ORDER BY id
+      ),
+      ultimo AS (
+        SELECT ultimo_vendedor_id
+        FROM crm_ruteo_leads
+        WHERE empresa_id = $1
+          AND origen = $2
+          AND modo_asignacion = 'round_robin'
+          AND activo = true
+        LIMIT 1
+      ),
+      base AS (
+        SELECT COALESCE((SELECT ultimo_vendedor_id FROM ultimo), 0) AS ultimo_vendedor_id
+      )
+      SELECT v.*
+      FROM vendedores v
+      CROSS JOIN base b
+      ORDER BY (v.id > b.ultimo_vendedor_id) DESC, v.id ASC
+      LIMIT 1;
+    `;
+
+    const vendedorResult = await client.query(query, [empresa_id, origen]);
+    if (vendedorResult.rows.length === 0) {
+      return res.status(404).json({ error: 'No hay vendedores activos para este origen/empresa.' });
+    }
+
+    const vendedor = vendedorResult.rows[0];
+
+    const updateQuery = `
+      UPDATE crm_ruteo_leads
+      SET ultimo_vendedor_id = $1, fecha_actualizacion = NOW()
+      WHERE empresa_id = $2 AND origen = $3 AND modo_asignacion = 'round_robin' AND activo = true;
+    `;
+    await client.query(updateQuery, [vendedor.id, empresa_id, origen]);
+
+    res.json({ vendedor });
+  } catch (err) {
+    console.error('Error en /api/leads/whatsapp:', err);
+    res.status(500).json({ error: err.message });
+  } finally {
+    client.release();
+  }
+});
+
+// Registro de intentos de contacto vía WhatsApp
+app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
+  const { empresa_id, pagina_origen, producto, fuente, mensaje_prellenado, session_id, user_agent } = req.body || {};
+
+  if (!empresa_id) {
+    return res.status(400).json({ error: 'empresa_id es requerido' });
+  }
+
+  const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
+
+  const query = `
+    INSERT INTO whatsapp.whatsapp_intentos_contacto (
+      empresa_id,
+      pagina_origen,
+      producto,
+      fuente,
+      mensaje_prellenado,
+      session_id,
+      ip_address,
+      user_agent
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    RETURNING id;
+  `;
+
+  const values = [
+    empresa_id,
+    pagina_origen || null,
+    producto || null,
+    fuente || 'web',
+    mensaje_prellenado || null,
+    session_id || null,
+    ipAddress,
+    user_agent || null,
+  ];
+
+  try {
+    const result = await pool.query(query, values);
+    return res.status(201).json({ ok: true, id: result.rows[0]?.id });
+  } catch (error) {
+    console.error('Error registrando intento de contacto WhatsApp:', error);
+    return res.status(500).json({ error: 'Error al registrar el intento de contacto' });
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en puerto ${PORT}`);

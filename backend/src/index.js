@@ -32,7 +32,7 @@ app.post('/api/items', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001; // alineado con proxy de Vite (ver vite.config.js)
 app.listen(PORT, () => {
   console.log(`Servidor backend escuchando en puerto ${PORT}`);
 });
@@ -99,5 +99,49 @@ app.post('/api/leads/whatsapp', async (req, res) => {
     res.status(500).json({ error: err.message });
   } finally {
     client.release();
+  }
+});
+
+// Registro de intentos de contacto vía WhatsApp
+app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
+  const { empresa_id, pagina_origen, producto, fuente, mensaje_prellenado, session_id, user_agent } = req.body || {};
+
+  if (!empresa_id) {
+    return res.status(400).json({ error: 'empresa_id es requerido' });
+  }
+
+  const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
+
+  const query = `
+    INSERT INTO whatsapp.whatsapp_intentos_contacto (
+      empresa_id,
+      pagina_origen,
+      producto,
+      fuente,
+      mensaje_prellenado,
+      session_id,
+      ip_address,
+      user_agent
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    RETURNING id;
+  `;
+
+  const values = [
+    empresa_id,
+    pagina_origen || null,
+    producto || null,
+    fuente || 'web',
+    mensaje_prellenado || null,
+    session_id || null,
+    ipAddress,
+    user_agent || null,
+  ];
+
+  try {
+    const result = await pool.query(query, values);
+    return res.status(201).json({ ok: true, id: result.rows[0]?.id });
+  } catch (error) {
+    console.error('Error registrando intento de contacto WhatsApp:', error);
+    return res.status(500).json({ error: 'Error al registrar el intento de contacto' });
   }
 });

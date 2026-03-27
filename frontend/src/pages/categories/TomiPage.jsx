@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
-import { crearLinkWhatsApp } from '../../utils/whatsapp'
+import { crearLinkWhatsApp, construirMensajeWhatsApp } from '../../utils/whatsapp'
+import { registrarIntentoWhatsapp, obtenerSessionIdWhatsapp } from '../../services/registrarIntentoWhatsapp'
 
 const WHATSAPP_NUMBERS = [
   '5213310949986', // Faby
@@ -21,7 +22,20 @@ function openWhatsappAlternado() {
       event_label: window.location?.pathname || '/',
     })
   }
-  const link = crearLinkWhatsApp('Tomi inflable publicitario', phone)
+  const nombrePagina = 'Tomi inflable publicitario'
+  const mensajePrellenado = construirMensajeWhatsApp(nombrePagina)
+
+  registrarIntentoWhatsapp({
+    empresa_id: 2,
+    pagina_origen: window.location?.pathname || '/',
+    producto: nombrePagina,
+    fuente: 'web',
+    mensaje_prellenado: mensajePrellenado,
+    session_id: obtenerSessionIdWhatsapp(),
+    user_agent: navigator?.userAgent || 'desconocido',
+  }).catch((err) => console.debug('[TomiPage] intento no registrado', err))
+
+  const link = crearLinkWhatsApp(nombrePagina, phone)
   window.open(link, '_blank')
 }
 

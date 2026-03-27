@@ -1,10 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Navega a la raíz del proyecto sin importar desde dónde se ejecute
+REM Navega a la raíz del proyecto
 pushd "%~dp0..\.." || exit /b 1
 
-echo [1/3] Construyendo frontend...
+echo [1/4] Construyendo frontend...
 pushd frontend || exit /b 1
 call npm run build
 if errorlevel 1 (
@@ -13,15 +13,29 @@ if errorlevel 1 (
 )
 popd
 
-echo [2/3] Subiendo archivos al servidor...
-rem Copiar solo el contenido de dist al root /var/www/pm
+echo [2/4] Subiendo frontend...
 scp -r frontend\dist\* ubuntu@148.113.192.7:/var/www/pm
 if errorlevel 1 (
-  echo ❌ Error al copiar con scp. Verifica tu clave SSH y permisos en /var/www/pm.
+  echo ❌ Error al subir frontend.
   exit /b 1
 )
 
-echo [3/3] Deploy completado.
+echo [3/4] Subiendo backend...
+scp -r backend\src\* ubuntu@148.113.192.7:/home/ubuntu/pmpublicidad-backend/src
+if errorlevel 1 (
+  echo ❌ Error al subir backend.
+  exit /b 1
+)
+
+echo [4/4] Reiniciando backend (PM2)...
+ssh ubuntu@148.113.192.7 "pm2 restart pm-publicidad-api"
+if errorlevel 1 (
+  echo ❌ Error al reiniciar PM2.
+  exit /b 1
+)
+
+echo ✅ Deploy completo exitoso.
+
 popd
 endlocal
 exit /b 0
