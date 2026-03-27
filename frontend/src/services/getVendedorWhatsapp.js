@@ -12,6 +12,15 @@ export async function getVendedorWhatsapp({ empresa_id, origen }) {
     const isJson = response.headers.get('content-type')?.includes('application/json');
     const payload = isJson ? await response.json() : null;
 
+    // Log detallado para depuración en consola del frontend
+    console.debug('[getVendedorWhatsapp] respuesta', {
+      status: response.status,
+      ok: response.ok,
+      payload,
+      empresa_id,
+      origen,
+    });
+
     if (!response.ok) {
       const backendMsg = payload?.error || payload?.message;
       throw new Error(backendMsg || 'No se pudo obtener el número de WhatsApp');

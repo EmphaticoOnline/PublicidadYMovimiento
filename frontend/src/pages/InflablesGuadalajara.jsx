@@ -42,7 +42,10 @@ const bullet = {
 }
 
 function InflablesGuadalajara() {
-  const { handleWhatsappClick, loading } = useWhatsappLead({ origen: 'landing-gdl' })
+  // Usamos el origen por defecto ('web') y personalizamos el nombre para el mensaje inicial de WhatsApp
+  const { handleWhatsappClick, loading } = useWhatsappLead({
+    pageName: 'Página de los más vendidos en inflables publicitarios'
+  })
 
   usePageTitle(
     'Inflables publicitarios en Guadalajara | Cotiza hoy con respuesta inmediata',

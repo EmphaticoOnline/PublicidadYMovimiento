@@ -41,6 +41,7 @@ app.listen(PORT, () => {
 // Servicio y endpoint para ruteo de leads vía WhatsApp (round robin)
 app.post('/api/leads/whatsapp', async (req, res) => {
   const { empresa_id, origen } = req.body;
+  console.log('[whatsapp] request body:', { empresa_id, origen });
   if (!empresa_id || !origen) {
     return res.status(400).json({ error: 'empresa_id y origen son requeridos' });
   }
@@ -64,14 +65,21 @@ app.post('/api/leads/whatsapp', async (req, res) => {
           AND origen = $2
           AND modo_asignacion = 'round_robin'
           AND activo = true
+        LIMIT 1
+      ),
+      base AS (
+        SELECT COALESCE((SELECT ultimo_vendedor_id FROM ultimo), 0) AS ultimo_vendedor_id
       )
       SELECT v.*
-      FROM vendedores v, ultimo u
-      ORDER BY (v.id > COALESCE(u.ultimo_vendedor_id, 0)) DESC, v.id ASC
+      FROM vendedores v
+      CROSS JOIN base b
+      ORDER BY (v.id > b.ultimo_vendedor_id) DESC, v.id ASC
       LIMIT 1;
     `;
     const vendedorResult = await client.query(query, [empresa_id, origen]);
+    console.log('[whatsapp] rows found:', vendedorResult.rows.length, 'rows:', vendedorResult.rows);
     if (vendedorResult.rows.length === 0) {
+      console.warn('[whatsapp] no active vendors for', { empresa_id, origen });
       return res.status(404).json({ error: 'No hay vendedores activos para este origen/empresa.' });
     }
     const vendedor = vendedorResult.rows[0];

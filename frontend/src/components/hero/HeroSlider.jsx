@@ -47,9 +47,9 @@ const INTERVAL_TIME = 4500
 function HeroSlider() {
   const [index, setIndex] = useState(0)
 
-  const { handleWhatsappClick, loading: loadingWhatsapp } = useWhatsappLead({ 
-    empresa_id: 1, 
-    origen: 'web' 
+  // Unificamos empresa_id al default (2) para ruteo consistente
+  const { handleWhatsappClick, loading: loadingWhatsapp } = useWhatsappLead({
+    origen: 'web'
   })
 
   const intervalRef = useRef(null)
