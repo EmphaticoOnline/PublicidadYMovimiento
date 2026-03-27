@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "deploy:win": "scripts\\windows\\deploy_pm.bat"
+    "deploy:win": "scripts\\windows\\deploy_pm.bat",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "dotenv": "^17.2.4",

@@ -2,6 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const { Pool } = require('pg');
 
+console.log('ENV DEBUG:', {
+  DB_HOST: process.env.DB_HOST,
+  DB_PORT: process.env.DB_PORT,
+  DB_NAME: process.env.DB_NAME,
+  DB_USER: process.env.DB_USER,
+  DB_PASSWORD: process.env.DB_PASSWORD,
+  PORT: process.env.PORT,
+});
+
 const app = express();
 app.use(express.json());
 
@@ -30,6 +39,7 @@ app.get('/api/ejemplo', async (req, res) => {
 // Servicio y endpoint para ruteo de leads vía WhatsApp (round robin)
 app.post('/api/leads/whatsapp', async (req, res) => {
   const { empresa_id, origen } = req.body;
+  console.log('[whatsapp] request body:', { empresa_id, origen });
   if (!empresa_id || !origen) {
     return res.status(400).json({ error: 'empresa_id y origen son requeridos' });
   }
@@ -66,6 +76,7 @@ app.post('/api/leads/whatsapp', async (req, res) => {
     `;
 
     const vendedorResult = await client.query(query, [empresa_id, origen]);
+    console.log('[whatsapp] rows found:', vendedorResult.rows.length, 'rows:', vendedorResult.rows);
     if (vendedorResult.rows.length === 0) {
       return res.status(404).json({ error: 'No hay vendedores activos para este origen/empresa.' });
     }
@@ -79,7 +90,14 @@ app.post('/api/leads/whatsapp', async (req, res) => {
     `;
     await client.query(updateQuery, [vendedor.id, empresa_id, origen]);
 
-    res.json({ vendedor });
+    // Responder con contrato esperado por frontend: ok/payload (telefono) + vendedor completo
+    const telefono = vendedor?.telefono ? String(vendedor.telefono) : null;
+    console.log('[whatsapp] responding with telefono:', telefono);
+    if (!telefono) {
+      return res.status(500).json({ error: 'El vendedor asignado no tiene teléfono' });
+    }
+
+    return res.json({ ok: true, payload: telefono, vendedor });
   } catch (err) {
     console.error('Error en /api/leads/whatsapp:', err);
     res.status(500).json({ error: err.message });
