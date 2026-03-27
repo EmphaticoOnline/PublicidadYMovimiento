@@ -6,6 +6,7 @@ import './App.css'
 const Home = lazy(() => import('./pages/Home'))
 const Catalog = lazy(() => import('./pages/Catalog'))
 const Contact = lazy(() => import('./pages/Contact'))
+const InflablesGuadalajara = lazy(() => import('./pages/InflablesGuadalajara'))
 import MainLayout from './components/layout/MainLayout'
 import { categories } from './data/categories'
 import { initAnalyticsListener } from './utils/analyticsListener'
@@ -23,6 +24,15 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/catalogo" element={<Catalog />} />
+
+              {/* Landing Guadalajara - URL nueva */}
+              <Route path="/inflables-publicitarios-guadalajara" element={<InflablesGuadalajara />} />
+
+              {/* Redirección 301-like desde la URL anterior */}
+              <Route
+                path="/test-inflables-guadalajara"
+                element={<Navigate to="/inflables-publicitarios-guadalajara" replace />}
+              />
 
               {/* RUTAS LIMPIAS SEO */}
               {categories

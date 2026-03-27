@@ -26,7 +26,7 @@ function Home() {
 
       <div style={{ padding: '1.8rem 1.2rem 0', maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
         <h1 style={{ fontSize: '2.2rem', lineHeight: 1.22, marginBottom: '0.9rem' }}>
-          Inflables Publicitarios en Guadalajara que Atraen Clientes y Destacan desde Lejos
+          Inflables Publicitarios que Atraen Clientes y Destacan desde Lejos
         </h1>
         <p style={{ maxWidth: '900px', margin: '0 auto 1.4rem', fontSize: '1.06rem', lineHeight: 1.65, color: '#444' }}>
           Diseñamos y fabricamos en Guadalajara inflables publicitarios con impacto visual —Sky Dancer, arcos inflables y piezas personalizadas— listos para activaciones y punto de venta, con envíos a todo México para llevar tu marca donde se vea y venda más.
@@ -47,6 +47,35 @@ function Home() {
             <FaWhatsapp size={20} />
             Cotiza tu inflable ahora
           </button>
+          <a
+            href="/inflables-publicitarios-guadalajara"
+            style={{
+              display: 'inline-block',
+              marginLeft: '0.75rem',
+              marginTop: '0.6rem',
+              padding: '0.75rem 1rem',
+              borderRadius: '999px',
+              border: '1px solid #d80000',
+              background: '#d80000',
+              color: '#fff',
+              textDecoration: 'none',
+              fontWeight: 700,
+              boxShadow: '0 8px 18px rgba(216,0,0,0.22)',
+              transition: 'background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = '#b00000'
+              e.currentTarget.style.boxShadow = '0 10px 22px rgba(176,0,0,0.28)'
+              e.currentTarget.style.transform = 'translateY(-1px)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = '#d80000'
+              e.currentTarget.style.boxShadow = '0 8px 18px rgba(216,0,0,0.22)'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
+          >
+            Nuestros inflables más vendidos
+          </a>
         </div>
       </div>
 
