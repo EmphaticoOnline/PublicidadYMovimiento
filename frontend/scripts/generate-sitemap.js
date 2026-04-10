@@ -21,6 +21,7 @@ const addRoute = (routePath, priority) => {
 addRoute('/', '1.0')
 addRoute('/catalogo', '0.8')
 addRoute('/contacto', '0.8')
+addRoute('/inflables-publicitarios-guadalajara', '0.8')
 
 knownCatalogRoutes.forEach(slug => {
   if (!slug) return

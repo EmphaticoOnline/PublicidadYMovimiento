@@ -29,6 +29,7 @@ function App() {
               <Route path="/inflables-publicitarios-guadalajara" element={<InflablesGuadalajara />} />
 
               {/* Redirección 301-like desde la URL anterior */}
+              {/* SEO: requiere redirección 301 real en servidor -> /test-inflables-guadalajara */}
               <Route
                 path="/test-inflables-guadalajara"
                 element={<Navigate to="/inflables-publicitarios-guadalajara" replace />}
@@ -45,6 +46,7 @@ function App() {
                   />
                 ))}
 
+              {/* SEO: requiere redirección 301 real en servidor -> /tomi-publicitario */}
               <Route
                 path="/tomi-publicitario"
                 element={<Navigate to="/inflable-publicitario-con-movimiento" replace />}
