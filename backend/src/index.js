@@ -128,7 +128,7 @@ app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
   const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
 
   const query = `
-    INSERT INTO whatsapp.whatsapp_intentos_contacto (
+    INSERT INTO whatsapp.intentos_contacto (
       empresa_id,
       pagina_origen,
       producto,
