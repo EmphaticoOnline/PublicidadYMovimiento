@@ -19,7 +19,9 @@ function usePageTitle(title, description, canonicalUrl, options = {}) {
   const twitterCard = options.twitterCard || DEFAULT_TW_CARD;
 
   useEffect(() => {
-    document.title = title;
+    if (title) {
+      document.title = title;
+    }
 
     if (description) {
       const meta = ensureMeta('meta[name="description"]', () => {

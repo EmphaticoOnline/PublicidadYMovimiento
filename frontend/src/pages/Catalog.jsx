@@ -67,9 +67,12 @@ function Catalog({ initialCategory }) {
   const categoryLabel = categories.find(cat => cat.id === categoria)?.label || (categoria ? categoria.replace(/-/g, ' ') : '')
   const subLabel = (subcategories[categoria] || []).find(s => s.id === sub)?.label || (sub ? sub.replace(/-/g, ' ') : '')
 
-  const canonicalUrl = hasOwn.call(specialPages, categoria)
-    ? `https://grupopmpublicidad.mx/${categoria}`
-    : `https://grupopmpublicidad.mx${location.pathname}${location.search || ''}`
+  const baseUrl = 'https://grupopmpublicidad.mx'
+  const canonicalUrl = categoriaParam && isValidCategoryParam(categoriaParam) && !sub
+    ? `${baseUrl}/${categoriaParam}`
+    : hasOwn.call(specialPages, categoria)
+      ? `${baseUrl}/${categoria}`
+      : `${baseUrl}${location.pathname}${location.search || ''}`
 
   const rendersSpecialPage = !sub && Boolean(specialPages[categoria])
 
@@ -88,9 +91,12 @@ function Catalog({ initialCategory }) {
       : `Explora ${categoryLabel} y soluciones de inflables publicitarios personalizadas en México.`
     : defaultDescription
 
-  if (!rendersSpecialPage) {
-    usePageTitle(title, description, canonicalUrl)
-  }
+  const shouldApplyMeta = !rendersSpecialPage
+  usePageTitle(
+    shouldApplyMeta ? title : null,
+    shouldApplyMeta ? description : null,
+    shouldApplyMeta ? canonicalUrl : null
+  )
 
   if (!categoria) {
     return (

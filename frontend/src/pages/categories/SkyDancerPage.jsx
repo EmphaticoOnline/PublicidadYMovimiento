@@ -164,6 +164,47 @@ export default function SkyDancerPage() {
         Colores vibrantes, bailes visibles y fabricación robusta se combinan para ofrecer un inflable bailarín que funciona como faro visual. <span style={{ color: '#1a7f37', fontWeight: 600 }}>Envíos a toda la República Mexicana.</span>
       </p>
 
+      <div
+        style={{
+          maxWidth: '820px',
+          margin: '1.8rem auto 0',
+          padding: '1.4rem 1.2rem',
+          textAlign: 'center',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)'
+        }}
+      >
+        <p
+          style={{
+            margin: 0,
+            fontSize: '1.05rem',
+            lineHeight: 1.7,
+            color: '#444'
+          }}
+        >
+          Hay un inflable que últimamente todos voltean a ver 👇
+        </p>
+
+        <Link
+          to="/inflable-publicitario-con-movimiento"
+          style={{
+            display: 'inline-block',
+            marginTop: '1rem',
+            backgroundColor: '#25D366',
+            color: '#fff',
+            padding: '1rem 2.2rem',
+            borderRadius: '999px',
+            textDecoration: 'none',
+            fontSize: '1.05rem',
+            fontWeight: 600,
+            boxShadow: '0 8px 20px rgba(0,0,0,0.18)'
+          }}
+        >
+          Ver inflable con movimiento
+        </Link>
+      </div>
+
       <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
         <h2 style={{ fontSize: '1.55rem', color: '#222', marginBottom: '0.8rem' }}>
           ¿Cuál es el precio de un Sky Dancer publicitario?

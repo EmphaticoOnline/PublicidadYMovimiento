@@ -1,40 +1,42 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM Navega a la raíz del proyecto
+set SERVER=ubuntu@148.113.192.7
+
+REM Ir a la raíz del proyecto
 pushd "%~dp0..\.." || exit /b 1
 
 echo [1/4] Construyendo frontend...
 pushd frontend || exit /b 1
 call npm run build
 if errorlevel 1 (
-  echo ❌ Error al construir el frontend.
+  echo ❌ Error al construir frontend.
   exit /b 1
 )
 popd
 
-echo [2/4] Subiendo frontend...
-scp -r frontend\dist\* ubuntu@148.113.192.7:/var/www/pm
+echo [2/4] Subiendo frontend (solo dist)...
+scp -r frontend\dist\* %SERVER%:/var/www/pm
 if errorlevel 1 (
   echo ❌ Error al subir frontend.
   exit /b 1
 )
 
-echo [3/4] Subiendo backend...
-scp -r backend\src\* ubuntu@148.113.192.7:/home/ubuntu/pmpublicidad-backend/src
+echo [3/4] Actualizando backend (git pull)...
+ssh %SERVER% "cd /home/ubuntu/PublicidadYMovimiento && git pull"
 if errorlevel 1 (
-  echo ❌ Error al subir backend.
+  echo ❌ Error en git pull.
   exit /b 1
 )
 
-echo [4/4] Reiniciando backend (PM2)...
-ssh ubuntu@148.113.192.7 "pm2 restart pm-publicidad-api"
+echo [4/4] Reiniciando backend...
+ssh %SERVER% "pm2 restart pm-publicidad-api"
 if errorlevel 1 (
   echo ❌ Error al reiniciar PM2.
   exit /b 1
 )
 
-echo ✅ Deploy completo exitoso.
+echo ✅ Deploy completo y rápido 🚀
 
 popd
 endlocal

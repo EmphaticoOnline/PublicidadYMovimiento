@@ -13,6 +13,15 @@ const express = require('express');
 const app = express();
 const { Pool } = require('pg');
 
+console.log('ENV DEBUG:', {
+  DB_HOST: process.env.DB_HOST,
+  DB_PORT: process.env.DB_PORT,
+  DB_NAME: process.env.DB_NAME,
+  DB_USER: process.env.DB_USER,
+  DB_PASSWORD: process.env.DB_PASSWORD,
+  PORT: process.env.PORT,
+});
+
 app.use(express.json());
 
 const pool = new Pool({
@@ -102,8 +111,14 @@ app.post('/api/leads/whatsapp', async (req, res) => {
     `;
     await client.query(updateQuery, [vendedor.id, empresa_id, origen]);
 
-    // 3. Responder con los datos del vendedor asignado
-    res.json({ vendedor });
+    // 3. Responder con el contrato que espera el frontend (ok + payload = telefono)
+    const telefono = vendedor?.telefono ? String(vendedor.telefono) : null;
+    console.log('[whatsapp] responding with telefono:', telefono);
+    if (!telefono) {
+      return res.status(500).json({ error: 'El vendedor asignado no tiene teléfono' });
+    }
+
+    return res.json({ ok: true, payload: telefono, vendedor });
   } catch (err) {
     console.error('Error en /api/leads/whatsapp:', err);
     res.status(500).json({ error: err.message });
@@ -123,7 +138,7 @@ app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
   const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
 
   const query = `
-    INSERT INTO whatsapp.whatsapp_intentos_contacto (
+    INSERT INTO whatsapp.intentos_contacto (
       empresa_id,
       pagina_origen,
       producto,

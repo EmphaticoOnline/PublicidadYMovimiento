@@ -41,6 +41,14 @@ const bullet = {
   color: '#0f172a'
 }
 
+const caseImageStyle = {
+  width: '100%',
+  height: '190px',
+  objectFit: 'cover',
+  borderRadius: '10px',
+  marginBottom: '0.75rem'
+}
+
 function InflablesGuadalajara() {
   // Usamos el origen por defecto ('web') y personalizamos el nombre para el mensaje inicial de WhatsApp
   const { handleWhatsappClick, loading } = useWhatsappLead({
@@ -91,6 +99,16 @@ function InflablesGuadalajara() {
       link: '/arcos-inflables',
       image: '/images/categories/arcos-meta/arco-curvo.jpg',
       alt: 'Arco meta inflable curvo en evento deportivo'
+    },
+    {
+      id: 'botargas',
+      nombre: 'Botargas',
+      descripcion:
+        'Personajes inflables y botargas que generan interacción directa con el público y hacen tu marca más cercana y memorable.',
+      ideal: 'Activaciones, promociones en punto de venta y eventos donde buscas interacción con clientes',
+      link: '/botargas',
+      image: '/images/casos-uso/botarga-elote.jpg',
+      alt: 'Botarga publicitaria para eventos y promociones'
     }
   ]
 
@@ -276,19 +294,28 @@ function InflablesGuadalajara() {
           {[
             {
               title: 'Retail en zona metropolitana',
-              text: 'Apertura con Tomi publicitario en fachada; visibilidad inmediata desde lejos y mayor flujo peatonal y vehicular en la primera semana.'
+              text: 'Presencia de marca en punto de venta con inflables y elementos visuales que atraen miradas desde la calle y generan mayor flujo de clientes desde el primer día.',
+              image: '/images/casos-uso/continental.jpg',
+              alt: 'Inflable publicitario en negocio local en Guadalajara'
             },
             {
               title: 'Evento deportivo local',
-              text: 'Arco meta personalizado para carrera; montaje rápido y alta recordación de marca durante la activación.'
+              text: 'Activaciones en eventos deportivos con inflables de gran formato que captan la atención del público y refuerzan la recordación de marca durante toda la experiencia.',
+              image: '/images/casos-uso/replica-balon.jpg',
+              alt: 'Arco inflable en evento deportivo en Guadalajara'
             },
             {
               title: 'Lanzamiento de producto',
-              text: 'Sky Dancer y réplica inflable en activación; más interacción visual y fotos compartidas que atraen clientes.'
+              text: 'Activaciones con personajes e inflables que generan interacción, fotos y una experiencia memorable para los asistentes, ayudando a que tu marca se comparta y se recuerde.',
+              image: '/images/casos-uso/botargas.jpg',
+              alt: 'Activación de marca con inflables publicitarios'
             }
           ].map(card => (
             <div key={card.title} style={cardStyle}>
               <h3 style={{ margin: '0 0 0.4rem', color: '#0f172a' }}>{card.title}</h3>
+              {card.image ? (
+                <img src={card.image} alt={card.alt} loading="lazy" style={caseImageStyle} />
+              ) : null}
               <p style={{ color: '#334155', lineHeight: 1.6 }}>{card.text}</p>
             </div>
           ))}
