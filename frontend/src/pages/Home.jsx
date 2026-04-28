@@ -79,6 +79,57 @@ function Home() {
         </div>
       </div>
 
+      <div
+        style={{
+          maxWidth: '760px',
+          margin: '1.8rem auto 0',
+          padding: '1.25rem 1.1rem',
+          textAlign: 'center',
+          background: '#f8f9fb',
+          borderRadius: '18px',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.08)'
+        }}
+      >
+        <p
+          style={{
+            margin: 0,
+            fontSize: '1.05rem',
+            lineHeight: 1.65,
+            color: '#444'
+          }}
+        >
+          Hay un inflable que últimamente todos voltean a ver 👇
+        </p>
+        <a
+          href="/inflable-publicitario-con-movimiento"
+          style={{
+            display: 'inline-block',
+            marginTop: '1rem',
+            padding: '0.8rem 1.15rem',
+            borderRadius: '999px',
+            border: '1px solid #d80000',
+            background: '#d80000',
+            color: '#fff',
+            textDecoration: 'none',
+            fontWeight: 700,
+            boxShadow: '0 8px 18px rgba(216,0,0,0.22)',
+            transition: 'background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease'
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = '#b00000'
+            e.currentTarget.style.boxShadow = '0 10px 22px rgba(176,0,0,0.28)'
+            e.currentTarget.style.transform = 'translateY(-1px)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = '#d80000'
+            e.currentTarget.style.boxShadow = '0 8px 18px rgba(216,0,0,0.22)'
+            e.currentTarget.style.transform = 'translateY(0)'
+          }}
+        >
+          Ver inflable con movimiento
+        </a>
+      </div>
+
       {/* Carrusel de promos / categorías */}
       {/* <HeroPromosCategories /> */}
 

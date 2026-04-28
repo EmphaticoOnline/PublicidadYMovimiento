@@ -162,8 +162,64 @@ function InflablesGuadalajara() {
         </div>
       </section>
 
+      <div
+        style={{
+          maxWidth: '760px',
+          margin: '0 auto 0',
+          padding: '0 1.25rem 0.6rem',
+          textAlign: 'center'
+        }}
+      >
+        <div
+          style={{
+            background: '#fff',
+            border: '1px solid #e5e7eb',
+            borderRadius: '16px',
+            padding: '1.15rem 1rem 1.2rem',
+            boxShadow: '0 12px 30px rgba(0,0,0,0.04)'
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              fontSize: '1.02rem',
+              lineHeight: 1.6,
+              color: '#334155'
+            }}
+          >
+            Hay un inflable que últimamente todos voltean a ver 👇
+          </p>
+          <Link
+            to="/inflable-publicitario-con-movimiento"
+            style={{
+              display: 'inline-block',
+              marginTop: '0.9rem',
+              padding: '0.72rem 1rem',
+              borderRadius: '999px',
+              background: '#e7f5ff',
+              color: '#0b6bcb',
+              textDecoration: 'none',
+              fontWeight: 700,
+              border: '1px solid #b6e0fe'
+            }}
+          >
+            Ver inflable con movimiento
+          </Link>
+        </div>
+      </div>
+
       {/* Catálogo de opciones */}
       <section style={sectionStyle}>
+        <p
+          style={{
+            color: '#0b6bcb',
+            fontWeight: 700,
+            fontSize: '1rem',
+            marginBottom: '0.5rem'
+          }}
+        >
+          Algunos inflables cumplen... otros hacen que la gente voltee y pregunte por tu negocio.
+        </p>
         <h2 style={{ fontSize: '1.7rem', marginBottom: '0.6rem', color: '#0f172a' }}>Opciones destacadas</h2>
         <p style={{ color: '#334155', marginBottom: '1.2rem' }}>
           Trabajamos en Guadalajara, y enviamos a toda la República.
