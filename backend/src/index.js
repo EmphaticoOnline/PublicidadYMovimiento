@@ -129,15 +129,53 @@ app.post('/api/leads/whatsapp', async (req, res) => {
 
 // Registro de intentos de contacto vía WhatsApp
 app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
-  const { empresa_id, pagina_origen, producto, fuente, mensaje_prellenado, session_id, user_agent } = req.body || {};
+  const {
+    empresa_id,
+    pagina_origen,
+    producto,
+    fuente,
+    mensaje_prellenado,
+    session_id,
+    user_agent,
+    tipo_intento,
+  } = req.body || {};
 
   if (!empresa_id) {
     return res.status(400).json({ error: 'empresa_id es requerido' });
   }
 
-  const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
+  if (!session_id) {
+    return res.status(400).json({ error: 'session_id es requerido' });
+  }
 
-  const query = `
+  if (!pagina_origen) {
+    return res.status(400).json({ error: 'pagina_origen es requerido' });
+  }
+
+  const ipAddress = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || req.ip;
+  const tipoIntentoNormalizado = tipo_intento || 'whatsapp_click';
+  const dedupeWindowSeconds = 60;
+
+  const client = await pool.connect();
+
+  const advisoryLockQuery = `
+    SELECT pg_advisory_xact_lock(
+      hashtext($1 || '|' || $2 || '|' || $3)
+    );
+  `;
+
+  const dedupeQuery = `
+    SELECT id
+    FROM whatsapp.intentos_contacto
+    WHERE session_id = $1
+      AND pagina_origen = $2
+      AND tipo_intento = $3
+      AND creado_en >= NOW() - make_interval(secs => $4)
+    ORDER BY creado_en DESC
+    LIMIT 1;
+  `;
+
+  const insertQuery = `
     INSERT INTO whatsapp.intentos_contacto (
       empresa_id,
       pagina_origen,
@@ -146,27 +184,53 @@ app.post('/api/whatsapp/intentos-contacto', async (req, res) => {
       mensaje_prellenado,
       session_id,
       ip_address,
-      user_agent
-    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+      user_agent,
+      tipo_intento
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING id;
   `;
 
-  const values = [
-    empresa_id,
-    pagina_origen || null,
-    producto || null,
-    fuente || 'web',
-    mensaje_prellenado || null,
-    session_id || null,
-    ipAddress,
-    user_agent || null,
-  ];
-
   try {
-    const result = await pool.query(query, values);
-    return res.status(201).json({ ok: true, id: result.rows[0]?.id });
+    await client.query('BEGIN');
+
+    await client.query(advisoryLockQuery, [
+      session_id,
+      pagina_origen,
+      tipoIntentoNormalizado,
+    ]);
+
+    const existingResult = await client.query(dedupeQuery, [
+      session_id,
+      pagina_origen,
+      tipoIntentoNormalizado,
+      dedupeWindowSeconds,
+    ]);
+
+    const existingId = existingResult.rows[0]?.id;
+    if (existingId) {
+      await client.query('COMMIT');
+      return res.status(200).json({ ok: true, id: existingId, duplicado: true });
+    }
+
+    const result = await client.query(insertQuery, [
+      empresa_id,
+      pagina_origen,
+      producto || null,
+      fuente || 'web',
+      mensaje_prellenado || null,
+      session_id,
+      ipAddress,
+      user_agent || null,
+      tipoIntentoNormalizado,
+    ]);
+
+    await client.query('COMMIT');
+    return res.status(201).json({ ok: true, id: result.rows[0]?.id, duplicado: false });
   } catch (error) {
+    await client.query('ROLLBACK');
     console.error('Error registrando intento de contacto WhatsApp:', error);
     return res.status(500).json({ error: 'Error al registrar el intento de contacto' });
+  } finally {
+    client.release();
   }
 });

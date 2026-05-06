@@ -33,6 +33,7 @@ export function obtenerSessionIdWhatsapp() {
  * @param {string} intento.pagina_origen
  * @param {string | null} intento.producto
  * @param {string} intento.fuente
+ * @param {string} intento.tipo_intento
  * @param {string | null} intento.mensaje_prellenado
  * @param {string} intento.session_id
  * @param {string} intento.user_agent
@@ -45,6 +46,7 @@ export function registrarIntentoWhatsapp(intento) {
       pagina_origen: intento.pagina_origen || null,
       producto: intento.producto || null,
       fuente: intento.fuente || 'web',
+      tipo_intento: intento.tipo_intento || 'whatsapp_click',
       mensaje_prellenado: intento.mensaje_prellenado || null,
       session_id: intento.session_id,
       user_agent: intento.user_agent || null,

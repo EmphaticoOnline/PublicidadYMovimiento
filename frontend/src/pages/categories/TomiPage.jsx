@@ -30,6 +30,7 @@ function openWhatsappAlternado() {
     pagina_origen: window.location?.pathname || '/',
     producto: nombrePagina,
     fuente: 'web',
+    tipo_intento: 'whatsapp_click',
     mensaje_prellenado: mensajePrellenado,
     session_id: obtenerSessionIdWhatsapp(),
     user_agent: navigator?.userAgent || 'desconocido',

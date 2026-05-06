@@ -43,6 +43,7 @@ export function useWhatsappLead({ empresa_id = 2, origen = 'web', pageName } = {
           pagina_origen: paginaOrigen,
           producto: pageName || null,
           fuente: 'web',
+          tipo_intento: 'whatsapp_click',
           mensaje_prellenado: mensajePrellenado,
           session_id: sessionId,
           user_agent: userAgent,
