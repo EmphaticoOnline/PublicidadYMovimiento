@@ -98,7 +98,24 @@ function ContactSection() {
                 TELÉFONOS
               </h3>
               <div style={{ fontSize: '1.1rem', lineHeight: '1.8', margin: 0, fontFamily: 'Montserrat, Arial, sans-serif' }}>
-                (33) 3641-0130<br />
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
+                    (33) 3641-0130
+                    <span 
+                      onClick={handleWhatsappClick}
+                      style={{
+                        backgroundColor: '#25D366',
+                        borderRadius: '50%',
+                        width: '1.2em',
+                        height: '1.2em',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginLeft: '0.5em',
+                        cursor: 'pointer'
+                      }}>
+                      <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
+                    </span>
+                  </span><br />
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
                   (33) 1618-0720
                   <span 
@@ -117,24 +134,7 @@ function ContactSection() {
                     <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
                   </span>
                 </span><br />
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
-                  (33) 1594-0580
-                  <span 
-                    onClick={handleWhatsappClick}
-                    style={{
-                      backgroundColor: '#25D366',
-                      borderRadius: '50%',
-                      width: '1.2em',
-                      height: '1.2em',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginLeft: '0.5em',
-                      cursor: 'pointer'
-                    }}>
-                    <FaWhatsapp style={{ color: '#fff', fontSize: '0.8em' }} />
-                  </span>
-                </span>
+                (33) 1594-0580
               </div>
             </div>
 
