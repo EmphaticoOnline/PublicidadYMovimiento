@@ -43,6 +43,7 @@ const SLIDE_TEXTS = [
 
 
 const INTERVAL_TIME = 4500
+const PROMOTIONS_SCROLL_OFFSET = 120
 
 function HeroSlider() {
   const [index, setIndex] = useState(0)
@@ -63,6 +64,17 @@ function HeroSlider() {
 
   const goNext = () => {
     setIndex((prev) => (prev + 1) % total)
+  }
+
+  const handlePromotionsClick = () => {
+    const promotionsSection = document.getElementById('promociones')
+    if (!promotionsSection) return
+
+    const targetTop = promotionsSection.getBoundingClientRect().top + window.scrollY - PROMOTIONS_SCROLL_OFFSET
+    window.scrollTo({
+      top: Math.max(targetTop, 0),
+      behavior: 'smooth'
+    })
   }
 
   /* ======================
@@ -248,25 +260,72 @@ function HeroSlider() {
         ›
       </button>
 
-{/* BOTÓN WHATSAPP */}
-<button
-  className="whatsapp-btn"
-  onClick={handleWhatsappClick}
-  disabled={loadingWhatsapp}
-  style={{
-    position: 'absolute',
-    left: '8%',
-    bottom: '80px',
-    zIndex: 3,
-    fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
-    cursor: loadingWhatsapp ? 'not-allowed' : 'pointer',
-    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-    opacity: loadingWhatsapp ? 0.7 : 1,
-  }}
->
-  <FaWhatsapp size={20} />
-  {loadingWhatsapp ? 'Cargando...' : 'Cotiza ahora'}
-</button>
+      <div
+        className="hero-cta-stack"
+        style={{
+          position: 'absolute',
+          left: '8%',
+          bottom: '78px',
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: '0.8rem'
+        }}
+      >
+        <button
+          className="whatsapp-btn"
+          onClick={handleWhatsappClick}
+          disabled={loadingWhatsapp}
+          style={{
+            fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
+            cursor: loadingWhatsapp ? 'not-allowed' : 'pointer',
+            transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+            opacity: loadingWhatsapp ? 0.7 : 1,
+          }}
+        >
+          <FaWhatsapp size={20} />
+          {loadingWhatsapp ? 'Cargando...' : 'Cotiza ahora'}
+        </button>
+
+        <button
+          type="button"
+          className="hero-promo-cta"
+          onClick={handlePromotionsClick}
+          aria-label="Ver promociones del mes"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.45rem',
+            padding: '0.72rem 1.1rem',
+            borderRadius: '999px',
+            border: '1px solid rgba(255,255,255,0.78)',
+            background: 'rgba(255,255,255,0.12)',
+            color: '#fff',
+            fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
+            fontSize: '0.95rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            transition: 'background 0.2s ease, transform 0.2s ease, border-color 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(255,255,255,0.18)'
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.92)'
+            e.currentTarget.style.transform = 'translateY(-1px)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
+            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.78)'
+            e.currentTarget.style.transform = 'translateY(0)'
+          }}
+        >
+          🔥 Ver promociones del mes
+        </button>
+      </div>
 
 {/* INDICADORES */}
 <div
@@ -319,6 +378,19 @@ function HeroSlider() {
         @media (max-width: 768px) {
           .hero-slider-control {
             display: none !important;
+          }
+
+          .hero-cta-stack {
+            left: 1rem !important;
+            right: 1rem;
+            bottom: 4.5rem !important;
+            max-width: calc(100% - 2rem);
+          }
+
+          .hero-cta-stack .whatsapp-btn,
+          .hero-promo-cta {
+            width: 100%;
+            justify-content: center;
           }
         }
       `}</style>
