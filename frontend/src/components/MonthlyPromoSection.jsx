@@ -1,7 +1,13 @@
 import { useWhatsappLead } from '../hooks/useWhatsappLead'
+import { SHOW_MONTHLY_PROMOS } from '../config/featureFlags'
 
 function MonthlyPromoSection() {
   const { handleWhatsappClick } = useWhatsappLead()
+
+  if (!SHOW_MONTHLY_PROMOS) {
+    return null
+  }
+
   const promos = [
     { id: 1, image: '/images/monthly-promo/promo1.jpg', alt: 'Promocion activa 1' },
     { id: 2, image: '/images/monthly-promo/promo2.jpg', alt: 'Promocion activa 2' },

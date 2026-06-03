@@ -1,0 +1,1 @@
+export const SHOW_MONTHLY_PROMOS = false

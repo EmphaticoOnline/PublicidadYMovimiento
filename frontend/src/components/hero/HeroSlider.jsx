@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { FaWhatsapp } from 'react-icons/fa6'
 import { useWhatsappLead } from '../../hooks/useWhatsappLead'
+import { SHOW_MONTHLY_PROMOS } from '../../config/featureFlags'
 
 const IMAGES = [
   {
@@ -288,43 +289,45 @@ function HeroSlider() {
           {loadingWhatsapp ? 'Cargando...' : 'Cotiza ahora'}
         </button>
 
-        <button
-          type="button"
-          className="hero-promo-cta"
-          onClick={handlePromotionsClick}
-          aria-label="Ver promociones del mes"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.45rem',
-            padding: '0.72rem 1.1rem',
-            borderRadius: '999px',
-            border: '1px solid rgba(255,255,255,0.78)',
-            background: 'rgba(255,255,255,0.12)',
-            color: '#fff',
-            fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
-            fontSize: '0.95rem',
-            fontWeight: 600,
-            cursor: 'pointer',
-            boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            transition: 'background 0.2s ease, transform 0.2s ease, border-color 0.2s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.18)'
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.92)'
-            e.currentTarget.style.transform = 'translateY(-1px)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.78)'
-            e.currentTarget.style.transform = 'translateY(0)'
-          }}
-        >
-          🔥 Ver promociones del mes
-        </button>
+        {SHOW_MONTHLY_PROMOS && (
+          <button
+            type="button"
+            className="hero-promo-cta"
+            onClick={handlePromotionsClick}
+            aria-label="Ver promociones del mes"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.45rem',
+              padding: '0.72rem 1.1rem',
+              borderRadius: '999px',
+              border: '1px solid rgba(255,255,255,0.78)',
+              background: 'rgba(255,255,255,0.12)',
+              color: '#fff',
+              fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
+              backdropFilter: 'blur(8px)',
+              WebkitBackdropFilter: 'blur(8px)',
+              transition: 'background 0.2s ease, transform 0.2s ease, border-color 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.18)'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.92)'
+              e.currentTarget.style.transform = 'translateY(-1px)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.12)'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.78)'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
+          >
+            🔥 Ver promociones del mes
+          </button>
+        )}
       </div>
 
 {/* INDICADORES */}
