@@ -5,6 +5,7 @@ import { FaWhatsapp } from 'react-icons/fa6'
 import usePageTitle from '../../hooks/usePageTitle'
 import { crearLinkWhatsApp, construirMensajeWhatsApp } from '../../utils/whatsapp'
 import { registrarIntentoWhatsapp, obtenerSessionIdWhatsapp } from '../../services/registrarIntentoWhatsapp'
+import { trackWhatsAppClick } from '../../utils/metaPixel'
 
 const WHATSAPP_NUMBERS = [
   '5213310949986', // Faby
@@ -37,6 +38,13 @@ function openWhatsappAlternado() {
   }).catch((err) => console.debug('[TomiPage] intento no registrado', err))
 
   const link = crearLinkWhatsApp(nombrePagina, phone)
+  trackWhatsAppClick({
+    pagePath: `${window.location?.pathname || '/'}${window.location?.search || ''}`,
+    productId: 'tomi-publicitario',
+    contentName: nombrePagina,
+    buttonId: 'category_primary_quote',
+    placement: 'tomi_hero'
+  })
   window.open(link, '_blank')
 }
 

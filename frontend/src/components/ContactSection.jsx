@@ -2,7 +2,14 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { useWhatsappLead } from '../hooks/useWhatsappLead'
 
 function ContactSection() {
-  const { handleWhatsappClick } = useWhatsappLead()
+  const firstWhatsapp = useWhatsappLead({
+    buttonId: 'home_contact_phone_1',
+    placement: 'home_contact_section'
+  })
+  const secondWhatsapp = useWhatsappLead({
+    buttonId: 'home_contact_phone_2',
+    placement: 'home_contact_section'
+  })
   return (
     <section
       style={{
@@ -101,7 +108,7 @@ function ContactSection() {
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
                     (33) 3641-0130
                     <span 
-                      onClick={handleWhatsappClick}
+                      onClick={firstWhatsapp.handleWhatsappClick}
                       style={{
                         backgroundColor: '#25D366',
                         borderRadius: '50%',
@@ -119,7 +126,7 @@ function ContactSection() {
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5em' }}>
                   (33) 1618-0720
                   <span 
-                    onClick={handleWhatsappClick}
+                    onClick={secondWhatsapp.handleWhatsappClick}
                     style={{
                       backgroundColor: '#25D366',
                       borderRadius: '50%',

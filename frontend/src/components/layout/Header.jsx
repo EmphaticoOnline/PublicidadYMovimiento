@@ -18,7 +18,14 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_BREAKPOINT)
-  const { handleWhatsappClick } = useWhatsappLead()
+  const desktopWhatsapp = useWhatsappLead({
+    buttonId: 'header_whatsapp_desktop',
+    placement: 'header_desktop'
+  })
+  const mobileWhatsapp = useWhatsappLead({
+    buttonId: 'header_whatsapp_mobile',
+    placement: 'header_mobile_menu'
+  })
 
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
@@ -134,7 +141,7 @@ export default function Header() {
               )}
             </div>
 
-            <Icon bg="#25D366" onClick={handleWhatsappClick}><FaWhatsapp /></Icon>
+            <Icon bg="#25D366" onClick={desktopWhatsapp.handleWhatsappClick}><FaWhatsapp /></Icon>
             <Icon onClick={() => openSocialLink(SOCIAL_LINKS.facebook)}><FaFacebookF /></Icon>
             <Icon onClick={() => openSocialLink(SOCIAL_LINKS.tiktok)}><FaTiktok /></Icon>
             <Icon onClick={() => openSocialLink(SOCIAL_LINKS.instagram)}><FaInstagram /></Icon>
@@ -166,7 +173,7 @@ export default function Header() {
       <SideMenu
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        onWhatsappClick={handleWhatsappClick}
+        onWhatsappClick={mobileWhatsapp.handleWhatsappClick}
         onSocialClick={openSocialLink}
       />
     </>

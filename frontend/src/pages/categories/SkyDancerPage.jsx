@@ -319,7 +319,10 @@ export default function SkyDancerPage() {
           to="/#"
           onClick={e => {
             e.preventDefault()
-            handleWhatsappClick()
+            handleWhatsappClick({
+              buttonId: 'category_secondary_quote',
+              placement: 'category_bottom_cta'
+            })
           }}
           style={{
             display: 'inline-block',

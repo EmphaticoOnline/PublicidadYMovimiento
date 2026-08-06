@@ -10,6 +10,7 @@ const InflablesGuadalajara = lazy(() => import('./pages/InflablesGuadalajara'))
 import MainLayout from './components/layout/MainLayout'
 import { categories } from './data/categories'
 import { initAnalyticsListener } from './utils/analyticsListener'
+import MetaPixelTracker from './components/analytics/MetaPixelTracker'
 
 function App() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <MetaPixelTracker />
       <CartProvider>
         <MainLayout>
           <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Cargando...</div>}>

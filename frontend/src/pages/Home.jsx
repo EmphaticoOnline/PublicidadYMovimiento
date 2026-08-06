@@ -13,7 +13,10 @@ import { useWhatsappLead } from '../hooks/useWhatsappLead'
 import { FaWhatsapp } from 'react-icons/fa6'
 
 function Home() {
-  const { handleWhatsappClick } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead({
+    buttonId: 'home_primary_quote',
+    placement: 'home_intro'
+  })
   usePageTitle(
     'Inflables Publicitarios en Guadalajara | Envíos a Todo México',
     'Fabricamos inflables publicitarios en Guadalajara: Sky Dancer, arcos inflables, réplicas y estructuras personalizadas. Envíos a todo México. Solicita cotización.',

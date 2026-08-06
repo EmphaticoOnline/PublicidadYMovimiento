@@ -51,7 +51,9 @@ function HeroSlider() {
 
   // Unificamos empresa_id al default (2) para ruteo consistente
   const { handleWhatsappClick, loading: loadingWhatsapp } = useWhatsappLead({
-    origen: 'web'
+    origen: 'web',
+    buttonId: 'hero_home_quote',
+    placement: 'home_hero'
   })
 
   const intervalRef = useRef(null)

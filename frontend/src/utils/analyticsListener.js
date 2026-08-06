@@ -22,11 +22,6 @@ const handleDocumentClick = (event) => {
     ? window.location.pathname || '/'
     : '/'
 
-  if (normalizedHref.includes('wa.me')) {
-    fireContactEvent('click_whatsapp', currentPath)
-    return
-  }
-
   if (normalizedHref.startsWith('tel:')) {
     fireContactEvent('click_telefono', currentPath)
   }

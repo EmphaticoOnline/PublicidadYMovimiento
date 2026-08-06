@@ -8,6 +8,8 @@ build/
 # Entornos
 .env
 .env.*
+!.env.example
+!frontend/.env.example
 
 # Logs
 npm-debug.log*

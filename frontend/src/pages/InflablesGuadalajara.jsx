@@ -52,7 +52,9 @@ const caseImageStyle = {
 function InflablesGuadalajara() {
   // Usamos el origen por defecto ('web') y personalizamos el nombre para el mensaje inicial de WhatsApp
   const { handleWhatsappClick, loading } = useWhatsappLead({
-    pageName: 'Página de los más vendidos en inflables publicitarios'
+    pageName: 'Página de los más vendidos en inflables publicitarios',
+    buttonId: 'guadalajara_hero_quote',
+    placement: 'guadalajara_hero'
   })
 
   usePageTitle(
@@ -273,7 +275,12 @@ function InflablesGuadalajara() {
                 </Link>
                 <button
                   className="whatsapp-btn"
-                  onClick={handleWhatsappClick}
+                  onClick={() => handleWhatsappClick({
+                    productId: item.id,
+                    contentName: item.nombre,
+                    buttonId: 'guadalajara_product_quote',
+                    placement: 'guadalajara_product_card'
+                  })}
                   disabled={loading}
                   style={{ padding: '0.65rem 0.85rem', fontSize: '0.95rem' }}
                 >
@@ -322,7 +329,10 @@ function InflablesGuadalajara() {
             </ul>
             <button
               className="whatsapp-btn"
-              onClick={handleWhatsappClick}
+              onClick={() => handleWhatsappClick({
+                buttonId: 'guadalajara_advisor_quote',
+                placement: 'guadalajara_advisor_section'
+              })}
               disabled={loading}
               style={{ marginTop: '1rem' }}
             >
@@ -398,7 +408,10 @@ function InflablesGuadalajara() {
         </div>
         <button
           className="whatsapp-btn"
-          onClick={handleWhatsappClick}
+          onClick={() => handleWhatsappClick({
+            buttonId: 'guadalajara_process_quote',
+            placement: 'guadalajara_process_section'
+          })}
           disabled={loading}
           style={{ marginTop: '1rem' }}
         >
@@ -457,7 +470,10 @@ function InflablesGuadalajara() {
         </p>
         <button
           className="whatsapp-btn"
-          onClick={handleWhatsappClick}
+          onClick={() => handleWhatsappClick({
+            buttonId: 'guadalajara_final_quote',
+            placement: 'guadalajara_final_cta'
+          })}
           disabled={loading}
           style={{ minWidth: '240px' }}
         >

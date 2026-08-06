@@ -3,7 +3,14 @@ import { useWhatsappLead } from '../../hooks/useWhatsappLead'
 import '../../styles/footer.css'
 
 function Footer() {
-  const { handleWhatsappClick } = useWhatsappLead() as { handleWhatsappClick: () => void }
+  const iconWhatsapp = useWhatsappLead({
+    buttonId: 'footer_whatsapp_icon',
+    placement: 'footer_social'
+  }) as { handleWhatsappClick: () => void }
+  const textWhatsapp = useWhatsappLead({
+    buttonId: 'footer_whatsapp_text',
+    placement: 'footer_contact'
+  }) as { handleWhatsappClick: () => void }
 
   return (
     <footer className="site-footer">
@@ -25,7 +32,7 @@ function Footer() {
             </a>
             <button
               className="footer-social-link"
-              onClick={handleWhatsappClick}
+              onClick={iconWhatsapp.handleWhatsappClick}
               aria-label="WhatsApp"
               style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
               type="button"
@@ -78,7 +85,16 @@ function Footer() {
               Tel: <a href="tel:+523331704595">+52 33 3170 4595</a>
             </li>
             <li>
-              WhatsApp: <a href="https://wa.me/5213331704595">+52 1 33 3170 4595</a>
+              WhatsApp:{' '}
+              <a
+                href="https://wa.me/5213331704595"
+                onClick={(event) => {
+                  event.preventDefault()
+                  textWhatsapp.handleWhatsappClick()
+                }}
+              >
+                +52 1 33 3170 4595
+              </a>
             </li>
             <li>
               Email: <a href="mailto:ventas@publicidadymovimiento.com">ventas@publicidadymovimiento.com</a>

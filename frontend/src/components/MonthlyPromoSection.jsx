@@ -2,7 +2,10 @@ import { useWhatsappLead } from '../hooks/useWhatsappLead'
 import { SHOW_MONTHLY_PROMOS } from '../config/featureFlags'
 
 function MonthlyPromoSection() {
-  const { handleWhatsappClick } = useWhatsappLead()
+  const { handleWhatsappClick } = useWhatsappLead({
+    buttonId: 'monthly_promo_quote',
+    placement: 'home_monthly_promotions'
+  })
 
   if (!SHOW_MONTHLY_PROMOS) {
     return null
@@ -56,7 +59,12 @@ function MonthlyPromoSection() {
               type="button"
               key={promo.id}
               className="monthly-promo-card"
-              onClick={handleWhatsappClick}
+              onClick={() => handleWhatsappClick({
+                productId: `monthly-promo-${promo.id}`,
+                contentName: promo.alt,
+                buttonId: `monthly_promo_${promo.id}_quote`,
+                placement: 'home_monthly_promotions'
+              })}
               aria-label={`Abrir WhatsApp para la promoción ${promo.id}`}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)'

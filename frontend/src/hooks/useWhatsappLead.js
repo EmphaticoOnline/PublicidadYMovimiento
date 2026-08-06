@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { getVendedorWhatsapp } from '../services/getVendedorWhatsapp';
 import { registrarIntentoWhatsapp, obtenerSessionIdWhatsapp } from '../services/registrarIntentoWhatsapp';
 import { construirMensajeWhatsApp, crearLinkWhatsApp } from '../utils/whatsapp';
+import { trackWhatsAppClick } from '../utils/metaPixel';
+import { categories } from '../data/categories';
 
 /**
  * Hook personalizado para manejar leads de WhatsApp
@@ -12,10 +14,19 @@ import { construirMensajeWhatsApp, crearLinkWhatsApp } from '../utils/whatsapp';
  * @param {string} options.origen - Origen del lead (default: 'web')
  * @returns {Object} { handleWhatsappClick, loading }
  */
-export function useWhatsappLead({ empresa_id = 2, origen = 'web', pageName } = {}) {
+export function useWhatsappLead({
+  empresa_id = 2,
+  origen = 'web',
+  pageName,
+  productId,
+  contentName,
+  buttonId = 'category_primary_quote',
+  placement = 'category_page',
+} = {}) {
   const [loading, setLoading] = useState(false);
 
-  const handleWhatsappClick = async () => {
+  const handleWhatsappClick = async (trackingOverrides = {}) => {
+    const overrides = trackingOverrides?.nativeEvent ? {} : trackingOverrides
     setLoading(true);
     try {
       const telefono = await getVendedorWhatsapp({ empresa_id, origen });
@@ -50,6 +61,14 @@ export function useWhatsappLead({ empresa_id = 2, origen = 'web', pageName } = {
         }).catch((err) => console.debug('[useWhatsappLead] intento no registrado', err));
 
         const link = crearLinkWhatsApp(nombrePagina, telefono);
+        const pathCategory = categories.find(category => category.link === window.location?.pathname)
+        trackWhatsAppClick({
+          pagePath: `${window.location?.pathname || '/'}${window.location?.search || ''}`,
+          productId: overrides.productId || productId || pathCategory?.id,
+          contentName: overrides.contentName || contentName || pageName || pathCategory?.label,
+          buttonId: overrides.buttonId || buttonId,
+          placement: overrides.placement || placement,
+        });
         window.open(link, '_blank');
       } else {
         alert('No se pudo obtener el número de WhatsApp. Intenta más tarde.');
