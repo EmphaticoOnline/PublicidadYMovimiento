@@ -8,7 +8,7 @@ export default function PeluchePublicitarioPage() {
   usePageTitle(
     'Peluches Publicitarios Personalizados en Venta | Fabricación en Guadalajara',
     'Peluches publicitarios personalizados en venta, fabricados en Guadalajara con diseño a medida y envíos a todo México. Producción propia para campañas y promociones corporativas.',
-    'https://grupopmpublicidad.mx/peluches-publicitarios'
+    'https://grupopmpublicidad.mx/peluche-publicitario'
   )
 
   const faqSchema = {

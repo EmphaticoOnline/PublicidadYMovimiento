@@ -98,7 +98,7 @@ function InflablesGuadalajara() {
       nombre: 'Arcos meta',
       descripcion: 'Pórticos inflables para entradas y eventos deportivos.',
       ideal: 'Carreras, ferias y accesos destacados',
-      link: '/arcos-inflables',
+      link: '/arcos-meta',
       image: '/images/categories/arcos-meta/arco-curvo.jpg',
       alt: 'Arco meta inflable curvo en evento deportivo'
     },

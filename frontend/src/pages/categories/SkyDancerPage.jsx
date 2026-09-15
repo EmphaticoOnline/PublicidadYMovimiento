@@ -277,7 +277,7 @@ export default function SkyDancerPage() {
             <Link to="/botargas">Botargas</Link>
           </li>
           <li>
-            <Link to="/arcos-inflables">Arcos inflables</Link>
+            <Link to="/arcos-meta">Arcos inflables</Link>
           </li>
           <li>
             <Link to="/display">Display</Link>

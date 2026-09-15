@@ -182,7 +182,7 @@ export default function PublibackPage() {
           color: '#444'
         }}
       >
-        Con presencia móvil y dirigida, el Publiback ayuda a distribuir volantes, guiar flujos peatonales y sostener mensajes corporativos en recorridos. Complementa tu activación con nuestros <Link to="/cilindros-publicitarios">Cilindros Publicitarios</Link>, <Link to="/display">Displays</Link>, <Link to="/arcos-meta">Arcos Meta</Link> o <Link to="/pantallas-inflables">Pantallas Inflables</Link> para crear un circuito completo de impacto. Ideales para marcas que necesitan soluciones profesionales sin depender de importaciones genéricas.
+        Con presencia móvil y dirigida, el Publiback ayuda a distribuir volantes, guiar flujos peatonales y sostener mensajes corporativos en recorridos. Complementa tu activación con nuestros <Link to="/cilindros-publicitarios">Cilindros Publicitarios</Link>, <Link to="/display">Displays</Link>, <Link to="/arcos-meta">Arcos Meta</Link> o <Link to="/pantallas-carteleras">Pantallas Inflables</Link> para crear un circuito completo de impacto. Ideales para marcas que necesitan soluciones profesionales sin depender de importaciones genéricas.
       </p>
 
       <div style={{ textAlign: 'center', marginTop: '1.5rem', marginBottom: '2rem' }}>

@@ -8,7 +8,7 @@ export default function PantallasCartelerasPage() {
   usePageTitle(
     'Pantallas Inflables en Venta | Carteleras Inflables Gigantes | Fabricación en Guadalajara',
     'Pantallas inflables en venta y carteleras inflables gigantes fabricadas en Guadalajara. Producción propia, personalización total y envíos a todo México para proyección profesional y eventos masivos.',
-    'https://grupopmpublicidad.mx/pantallas-inflables'
+    'https://grupopmpublicidad.mx/pantallas-carteleras'
   )
 
   const faqSchema = {
@@ -157,7 +157,7 @@ export default function PantallasCartelerasPage() {
         <strong>Las pantallas y carteleras inflables de gran formato te dan exposición masiva en eventos y promociones.</strong>{' '}
         Desde una pantalla inflable gigante para conciertos hasta formatos medianos para activaciones itinerantes, funcionan como lienzos para tu marca en ferias y activaciones, reforzando presencia y mensajes clave ante grandes audiencias.
         <br /><br />
-        Amplía tu circuito de impacto con nuestros <Link to="/displays">Displays Publicitarios</Link>, <Link to="/arcos-meta">Arcos Meta</Link>, <Link to="/cilindros-publicitarios">Cilindros Inflables</Link> y <Link to="/replicas-inflables">Réplicas Inflables</Link> para acompañar cada punto de contacto.
+        Amplía tu circuito de impacto con nuestros <Link to="/display">Displays Publicitarios</Link>, <Link to="/arcos-meta">Arcos Meta</Link>, <Link to="/cilindros-publicitarios">Cilindros Inflables</Link> y <Link to="/replicas-inflables">Réplicas Inflables</Link> para acompañar cada punto de contacto.
       </p>
 
       <div style={{ textAlign: 'center', marginTop: '2.3rem' }}>

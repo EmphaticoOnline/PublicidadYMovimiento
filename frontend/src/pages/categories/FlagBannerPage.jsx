@@ -8,7 +8,7 @@ export default function FlagBannerPage() {
   usePageTitle(
     'Flag Banner Publicitario en Venta | Banderolas Publicitarias Personalizadas',
     'Flag banner publicitario y banderolas publicitarias en venta para exterior y punto de venta. Personalizadas y disponibles en Guadalajara con envíos nacionales.',
-    'https://grupopmpublicidad.mx/flag-banners'
+    'https://grupopmpublicidad.mx/flag-banner'
   )
 
   const faqSchema = {
