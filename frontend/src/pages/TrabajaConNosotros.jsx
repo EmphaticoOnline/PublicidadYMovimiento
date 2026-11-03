@@ -20,6 +20,16 @@ function TrabajaConNosotros() {
     script.dataset.jobPosting = 'disenador-industrial-jr'
     script.textContent = JSON.stringify({
       '@context': 'https://schema.org', '@type': 'JobPosting', title: jobTitle, description,
+      datePosted: '2026-11-03',
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Guadalajara',
+          addressRegion: 'Jalisco',
+          addressCountry: 'MX',
+        },
+      },
       hiringOrganization: { '@type': 'Organization', name: 'Grupo PM Publicidad y Movimiento', url: siteUrl },
       url: `${siteUrl}/trabaja-con-nosotros`,
       qualifications: 'Diseño industrial, de producto o carrera afín. Manejo de software CAD 3D como Rhino, SolidWorks, Fusion 360 o similar. Interés en patronaje y fabricación.',
