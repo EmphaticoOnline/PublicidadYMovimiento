@@ -32,16 +32,12 @@ function TrabajaConNosotros() {
 
   return (
     <div className="careers-page">
-      <section className="careers-hero" aria-labelledby="careers-title">
-        <div className="careers-hero-inner"><p className="careers-eyebrow">Grupo PM Publicidad y Movimiento</p><h1 id="careers-title">Trabaja con nosotros</h1><p className="careers-intro">Únete a nuestro equipo y participa en el desarrollo de inflables publicitarios.</p></div>
-      </section>
       <main className="careers-content">
         <article className="job-card" aria-labelledby="job-title">
-          <div className="job-card-heading"><div><p className="job-label">Vacante disponible</p><h2 id="job-title">{jobTitle}</h2><p className="job-summary">Modelado 3D y desarrollo de moldes para inflables.</p></div><img className="job-illustration" src="/images/careers/disenador-industrial-jr.png" alt="Vacante de Diseñador(a) Industrial Jr. en Grupo PM" /></div>
+          <div className="job-card-heading"><div><p className="careers-eyebrow">Grupo PM Publicidad y Movimiento</p><p className="job-label">Vacante disponible</p><h1 id="careers-title">Trabaja con nosotros</h1><h2 id="job-title">{jobTitle}</h2><p className="job-summary">Modelado 3D y desarrollo de moldes para inflables.</p><p className="job-intro">Únete a nuestro equipo y participa en el desarrollo de inflables publicitarios.</p><div className="benefits"><span>Prestaciones de ley</span><span>Desarrollo profesional</span></div><a className="hero-cta" href="#application-title">Postúlate ahora <span aria-hidden="true">↓</span></a></div><img className="job-illustration" src="/images/careers/disenador-industrial-jr.png" alt="Vacante de Diseñador(a) Industrial Jr. en Grupo PM" /></div>
           <div className="job-sections">
             <section><h3>¿Qué harás?</h3><ul><li>Modelado 3D de figuras y réplicas.</li><li>Desarrollo de patrones o moldes 2D para producción.</li><li>Preparación de archivos técnicos.</li></ul></section>
             <section><h3>Buscamos</h3><ul><li>Diseño industrial, de producto o carrera afín.</li><li>Manejo de software CAD 3D: Rhino, SolidWorks, Fusion 360 o similar.</li><li>Interés en patronaje y fabricación.</li></ul></section>
-            <section><h3>Prestaciones y desarrollo</h3><ul><li>Prestaciones de ley.</li><li>Oportunidad de desarrollo profesional.</li></ul></section>
           </div>
           <section className="application-section" aria-labelledby="application-title"><h3 id="application-title">Postúlate</h3><p>Envía tu CV o portafolio por WhatsApp o correo electrónico.</p><div className="application-actions"><a className="application-button whatsapp" href={`https://wa.me/523310949986?text=${whatsappMessage}`} target="_blank" rel="noreferrer">WhatsApp 33 1094 9986</a><a className="application-button whatsapp" href={`https://wa.me/523316180720?text=${whatsappMessage}`} target="_blank" rel="noreferrer">WhatsApp 33 1618 0720</a><a className="application-button email" href="mailto:facturaspm@yahoo.com.mx?subject=Postulación%20Diseñador(a)%20Industrial%20Jr.">facturaspm@yahoo.com.mx</a></div></section>
         </article>

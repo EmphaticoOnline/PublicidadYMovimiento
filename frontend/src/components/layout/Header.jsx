@@ -17,6 +17,7 @@ const SOCIAL_LINKS = {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
+  const [nosotrosOpen, setNosotrosOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_BREAKPOINT)
   const desktopWhatsapp = useWhatsappLead({
     buttonId: 'header_whatsapp_desktop',
@@ -73,10 +74,20 @@ export default function Header() {
               fontFamily: `'Montserrat', 'Segoe UI', sans-serif`,
               marginLeft: '0.5rem'
             }}
-            onMouseLeave={() => setProductsOpen(false)}
+            onMouseLeave={() => { setProductsOpen(false); setNosotrosOpen(false) }}
           >
             <Link to="/" style={menuLink}>INICIO</Link>
-            <Link to="/#nosotros" style={menuLink}>NOSOTROS</Link>
+            <div style={{ position: 'relative' }} onMouseEnter={() => setNosotrosOpen(true)}>
+              <button type="button" style={{ ...menuLink, background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontWeight: 800 }}>
+                NOSOTROS ▾
+              </button>
+              {nosotrosOpen && (
+                <div style={{ position: 'absolute', top: '110%', left: 0, background: '#fff', boxShadow: '0 10px 28px rgba(0,0,0,0.16)', borderRadius: '14px', padding: '1rem', minWidth: '220px', zIndex: 1300, display: 'grid', gap: '0.5rem' }} onMouseLeave={() => setNosotrosOpen(false)}>
+                  <Link to="/#nosotros" style={dropdownLink} onClick={() => setNosotrosOpen(false)}>Nosotros</Link>
+                  <Link to="/trabaja-con-nosotros" style={dropdownLink} onClick={() => setNosotrosOpen(false)}>Trabaja con nosotros</Link>
+                </div>
+              )}
+            </div>
             <Link to="/#promociones" style={menuLink}>OFERTAS</Link>
 
             {/* PRODUCTOS DROPDOWN */}
@@ -182,6 +193,7 @@ export default function Header() {
 
 function SideMenu({ open, onClose, onWhatsappClick, onSocialClick }) {
   const [productsOpen, setProductsOpen] = useState(false)
+  const [nosotrosOpen, setNosotrosOpen] = useState(false)
   return (
     <>
       {open && (
@@ -229,7 +241,19 @@ function SideMenu({ open, onClose, onWhatsappClick, onSocialClick }) {
         </button>
 
   <Link to="/" style={mobileLink}>INICIO</Link>
-  <Link to="/#nosotros" style={mobileLink}>NOSOTROS</Link>
+  <button
+    type="button"
+    onClick={() => setNosotrosOpen(p => !p)}
+    style={{ ...mobileLink, background: 'transparent', border: 'none', padding: 0, textAlign: 'left', cursor: 'pointer' }}
+  >
+    NOSOTROS {nosotrosOpen ? '▴' : '▾'}
+  </button>
+  {nosotrosOpen && (
+    <div style={{ display: 'grid', gap: '0.75rem', paddingLeft: '1rem' }}>
+      <Link to="/#nosotros" style={mobileSubLink} onClick={onClose}>Nosotros</Link>
+      <Link to="/trabaja-con-nosotros" style={mobileSubLink} onClick={onClose}>Trabaja con nosotros</Link>
+    </div>
+  )}
   <Link to="/#promociones" style={mobileLink}>OFERTAS</Link>
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
@@ -308,4 +332,19 @@ const mobileLink = {
   textDecoration: 'none',
   fontWeight: 700,
   fontSize: '1.2rem'
+}
+
+const dropdownLink = {
+  color: '#222',
+  textDecoration: 'none',
+  fontWeight: 700,
+  fontSize: '0.93rem',
+  padding: '0.25rem 0.1rem'
+}
+
+const mobileSubLink = {
+  color: '#fff',
+  textDecoration: 'none',
+  fontWeight: 600,
+  fontSize: '1rem'
 }
