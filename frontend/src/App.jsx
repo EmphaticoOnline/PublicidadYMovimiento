@@ -8,6 +8,7 @@ const Catalog = lazy(() => import('./pages/Catalog'))
 const Contact = lazy(() => import('./pages/Contact'))
 const InflablesGuadalajara = lazy(() => import('./pages/InflablesGuadalajara'))
 const AvisoDePrivacidad = lazy(() => import('./pages/AvisoDePrivacidad'))
+const TrabajaConNosotros = lazy(() => import('./pages/TrabajaConNosotros'))
 import MainLayout from './components/layout/MainLayout'
 import { categories } from './data/categories'
 import { initAnalyticsListener } from './utils/analyticsListener'
@@ -62,6 +63,7 @@ function App() {
 
               <Route path="/contacto" element={<Contact />} />
               <Route path="/aviso-de-privacidad" element={<AvisoDePrivacidad />} />
+              <Route path="/trabaja-con-nosotros" element={<TrabajaConNosotros />} />
             </Routes>
           </Suspense>
         </MainLayout>

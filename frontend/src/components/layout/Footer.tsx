@@ -110,6 +110,7 @@ function Footer() {
             <li><Link to="/#nosotros" className="footer-link">Nosotros</Link></li>
             <li><Link to="/#promociones" className="footer-link">Ofertas</Link></li>
             <li><Link to="/contacto" className="footer-link">Contacto</Link></li>
+            <li><Link to="/trabaja-con-nosotros" className="footer-link">Trabaja con nosotros</Link></li>
           </ul>
         </div>
       </div>
