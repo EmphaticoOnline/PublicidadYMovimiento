@@ -12,15 +12,14 @@ function MonthlyPromoSection() {
   }
 
   const promos = [
-    { id: 1, image: '/images/monthly-promo/promo1.jpg', alt: 'Promocion activa 1' },
-    { id: 2, image: '/images/monthly-promo/promo2.jpg', alt: 'Promocion activa 2' },
-    { id: 3, image: '/images/monthly-promo/promo3.jpg', alt: 'Promocion activa 3' },
-    { id: 4, image: '/images/monthly-promo/promo4.jpg', alt: 'Promocion activa 4' },
-    { id: 5, image: '/images/monthly-promo/promo5.jpg', alt: 'Promocion activa 5' },
-    { id: 6, image: '/images/monthly-promo/promo6.jpg', alt: 'Promocion activa 6' },
-    { id: 7, image: '/images/monthly-promo/promo7.jpg', alt: 'Promocion activa 7' },
-    { id: 8, image: '/images/monthly-promo/promo8.jpg', alt: 'Promocion activa 8' },
-    { id: 9, image: '/images/monthly-promo/promo9.jpg', alt: 'Promocion activa 9' }
+    { id: 'buen-fin-1', image: '/images/buen-fin/buen-fin-1.jpg', alt: 'Buen Fin 2026 llegó a Publicidad y Movimiento, del 13 al 17 de noviembre' },
+    { id: 'buen-fin-2', image: '/images/buen-fin/buen-fin-2.jpg', alt: 'Arma tu kit promocional: 15% de descuento desde 3 piezas' },
+    { id: 'buen-fin-3', image: '/images/buen-fin/buen-fin-3.jpg', alt: 'Kit promocional para eventos: 15% de descuento a partir de 3 piezas' },
+    { id: 'buen-fin-4', image: '/images/buen-fin/buen-fin-4.jpg', alt: '10% de descuento en Sky Dancer, Arco Meta, Flag Banner y Tomi' },
+    { id: 'buen-fin-5', image: '/images/buen-fin/buen-fin-5.jpg', alt: 'Tomi publicitario con 10% de descuento' },
+    { id: 'buen-fin-6', image: '/images/buen-fin/buen-fin-6.jpg', alt: 'Flag Banner con 10% de descuento' },
+    { id: 'buen-fin-7', image: '/images/buen-fin/buen-fin-7.jpg', alt: 'Arco Meta menor de 6x4 metros con 10% de descuento' },
+    { id: 'buen-fin-8', image: '/images/buen-fin/buen-fin-8.jpg', alt: 'Sky Dancer con 10% de descuento' }
   ]
 
   return (
@@ -42,15 +41,26 @@ function MonthlyPromoSection() {
         <h2
           style={{
             color: '#d80000',
-            fontSize: '2.5rem',
+            fontSize: 'clamp(1.7rem, 7vw, 2.5rem)',
             fontWeight: 700,
             textAlign: 'center',
-            marginBottom: '3rem',
+            margin: '0 0 0.4rem',
             fontFamily: `'Poppins', 'Segoe UI', sans-serif`
           }}
         >
-          PROMOS DEL MES
+          PROMOS BUEN FIN
         </h2>
+        <p
+          style={{
+            textAlign: 'center',
+            margin: '0 0 2.5rem',
+            fontWeight: 600,
+            color: '#444',
+            fontFamily: `'Montserrat', 'Segoe UI', sans-serif`
+          }}
+        >
+          Válido del 13 al 17 de noviembre
+        </p>
 
         {/* GRID DE PROMOS */}
         <div className="monthly-promos-grid">
@@ -65,7 +75,7 @@ function MonthlyPromoSection() {
                 buttonId: `monthly_promo_${promo.id}_quote`,
                 placement: 'home_monthly_promotions'
               })}
-              aria-label={`Abrir WhatsApp para la promoción ${promo.id}`}
+              aria-label={`Cotizar por WhatsApp: ${promo.alt}`}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)'
               }}
@@ -86,9 +96,9 @@ function MonthlyPromoSection() {
       <style>{`
         .monthly-promos-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 2rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 1.5rem;
+          max-width: 1200px;
           margin: 0 auto;
           align-items: start;
         }
@@ -121,7 +131,7 @@ function MonthlyPromoSection() {
 
         @media (max-width: 640px) {
           .monthly-promos-grid {
-            grid-template-columns: 1fr;
+            gap: 1rem;
           }
         }
       `}</style>

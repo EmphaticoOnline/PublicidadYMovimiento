@@ -296,7 +296,7 @@ function HeroSlider() {
             type="button"
             className="hero-promo-cta"
             onClick={handlePromotionsClick}
-            aria-label="Ver promociones del mes"
+            aria-label="Ver promociones Buen Fin"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -327,7 +327,7 @@ function HeroSlider() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
-            🔥 Ver promociones del mes
+            🔥 Ver promociones Buen Fin
           </button>
         )}
       </div>

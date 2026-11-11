@@ -136,6 +136,9 @@ function Home() {
       {/* Carrusel de promos / categorías */}
       {/* <HeroPromosCategories /> */}
 
+      {/* Promos de temporada (Buen Fin): arriba de las categorías para que se vean pronto */}
+      <MonthlyPromoSection />
+
       <CategoriesGrid />
       <ClientsLogos />
 
@@ -143,7 +146,6 @@ function Home() {
       <AboutSection />
 
       <BestSellersSection />
-      <MonthlyPromoSection />
       <BrandMessageSection />
       <HowToBuySection />
       <ContactSection />
