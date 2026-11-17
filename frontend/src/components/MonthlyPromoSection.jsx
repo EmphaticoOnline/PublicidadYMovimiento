@@ -12,13 +12,13 @@ function MonthlyPromoSection() {
   }
 
   const promos = [
-    { id: 'buen-fin-2', image: '/images/buen-fin/buen-fin-2.jpg', alt: 'Arma tu kit promocional: 15% de descuento desde 3 piezas' },
-    { id: 'buen-fin-3', image: '/images/buen-fin/buen-fin-3.jpg', alt: 'Kit promocional para eventos: 15% de descuento a partir de 3 piezas' },
-    { id: 'buen-fin-4', image: '/images/buen-fin/buen-fin-4.jpg', alt: '10% de descuento en Sky Dancer, Arco Meta, Flag Banner y Tomi' },
-    { id: 'buen-fin-5', image: '/images/buen-fin/buen-fin-5.jpg', alt: 'Tomi publicitario con 10% de descuento' },
-    { id: 'buen-fin-6', image: '/images/buen-fin/buen-fin-6.jpg', alt: 'Flag Banner con 10% de descuento' },
-    { id: 'buen-fin-7', image: '/images/buen-fin/buen-fin-7.jpg', alt: 'Arco Meta menor de 6x4 metros con 10% de descuento' },
-    { id: 'buen-fin-8', image: '/images/buen-fin/buen-fin-8.jpg', alt: 'Sky Dancer con 10% de descuento' }
+    { id: 'buen-fin-2', image: '/images/buen-fin/buen-fin-2.jpg?v=sin-logos', alt: 'Arma tu kit promocional: 15% de descuento desde 3 piezas' },
+    { id: 'buen-fin-3', image: '/images/buen-fin/buen-fin-3.jpg?v=sin-logos', alt: 'Kit promocional para eventos: 15% de descuento a partir de 3 piezas' },
+    { id: 'buen-fin-4', image: '/images/buen-fin/buen-fin-4.jpg?v=sin-logos', alt: '10% de descuento en Sky Dancer, Arco Meta, Flag Banner y Tomi' },
+    { id: 'buen-fin-5', image: '/images/buen-fin/buen-fin-5.jpg?v=sin-logos', alt: 'Tomi publicitario con 10% de descuento' },
+    { id: 'buen-fin-6', image: '/images/buen-fin/buen-fin-6.jpg?v=sin-logos', alt: 'Flag Banner con 10% de descuento' },
+    { id: 'buen-fin-7', image: '/images/buen-fin/buen-fin-7.jpg?v=sin-logos', alt: 'Arco Meta menor de 6x4 metros con 10% de descuento' },
+    { id: 'buen-fin-8', image: '/images/buen-fin/buen-fin-8.jpg?v=sin-logos', alt: 'Sky Dancer con 10% de descuento' }
   ]
 
   return (
