@@ -12,7 +12,6 @@ function MonthlyPromoSection() {
   }
 
   const promos = [
-    { id: 'buen-fin-1', image: '/images/buen-fin/buen-fin-1.jpg', alt: 'Buen Fin 2026 llegó a Publicidad y Movimiento, del 13 al 17 de noviembre' },
     { id: 'buen-fin-2', image: '/images/buen-fin/buen-fin-2.jpg', alt: 'Arma tu kit promocional: 15% de descuento desde 3 piezas' },
     { id: 'buen-fin-3', image: '/images/buen-fin/buen-fin-3.jpg', alt: 'Kit promocional para eventos: 15% de descuento a partir de 3 piezas' },
     { id: 'buen-fin-4', image: '/images/buen-fin/buen-fin-4.jpg', alt: '10% de descuento en Sky Dancer, Arco Meta, Flag Banner y Tomi' },
