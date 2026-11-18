@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import FloatingWhatsapp from './FloatingWhatsapp'
 
 function MainLayout({ children }) {
   const location = useLocation()
@@ -38,6 +39,8 @@ function MainLayout({ children }) {
       </main>
 
       <Footer />
+
+      <FloatingWhatsapp />
     </>
   )
 }
