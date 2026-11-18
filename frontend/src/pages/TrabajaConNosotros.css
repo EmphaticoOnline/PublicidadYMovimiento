@@ -29,3 +29,5 @@
 .application-button.email { background: #0b2f5b; }
 @media (max-width: 900px) { .job-card-heading { grid-template-columns: minmax(0, 1fr) minmax(300px, .9fr); gap: 1.5rem; padding: 2rem; } }
 @media (max-width: 700px) { .careers-content { padding: 1rem .75rem 2rem; } .job-card-heading { display: block; min-height: 0; padding: 1.5rem; background: #fff; } .job-illustration { max-height: none; margin-top: 1.75rem; } .job-sections { display: block; padding: .75rem; } .job-sections section + section { margin-top: .75rem; } .job-sections section { min-height: 0; } .application-button { width: 100%; } }
+.careers-closed { padding: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 4rem); text-align: center; }
+.careers-closed .job-intro { max-width: 560px; margin: 0 auto; }

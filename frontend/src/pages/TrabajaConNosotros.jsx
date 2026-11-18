@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import usePageTitle from '../hooks/usePageTitle'
+import { JOB_OPENING_ACTIVE } from '../config/featureFlags'
 import './TrabajaConNosotros.css'
 
 const siteUrl = 'https://grupopmpublicidad.mx'
@@ -7,12 +8,15 @@ const jobTitle = 'Diseñador(a) Industrial Jr.'
 const whatsappMessage = encodeURIComponent(`Hola, me interesa la vacante de ${jobTitle} en Grupo PM. Comparto mi CV o portafolio para consideración.`)
 
 function TrabajaConNosotros() {
-  const title = `${jobTitle} | Trabaja con nosotros | Grupo PM`
-  const description = `Vacante de ${jobTitle} en Grupo PM Publicidad y Movimiento: modelado 3D, desarrollo de moldes para inflables y preparación de archivos técnicos.`
+  const title = JOB_OPENING_ACTIVE ? `${jobTitle} | Trabaja con nosotros | Grupo PM` : 'Trabaja con nosotros | Grupo PM'
+  const description = JOB_OPENING_ACTIVE
+    ? `Vacante de ${jobTitle} en Grupo PM Publicidad y Movimiento: modelado 3D, desarrollo de moldes para inflables y preparación de archivos técnicos.`
+    : 'Trabaja con nosotros en Grupo PM Publicidad y Movimiento. Por ahora no tenemos vacantes abiertas; publicaremos aquí las próximas oportunidades.'
 
-  usePageTitle(title, description, `${siteUrl}/trabaja-con-nosotros`, { ogImage: `${siteUrl}/images/careers/disenador-industrial-jr.png` })
+  usePageTitle(title, description, `${siteUrl}/trabaja-con-nosotros`, JOB_OPENING_ACTIVE ? { ogImage: `${siteUrl}/images/careers/disenador-industrial-jr.png` } : {})
 
   useEffect(() => {
+    if (!JOB_OPENING_ACTIVE) return undefined
     const existing = document.querySelector('script[data-job-posting="disenador-industrial-jr"]')
     if (existing) return undefined
     const script = document.createElement('script')
@@ -39,6 +43,20 @@ function TrabajaConNosotros() {
     document.head.appendChild(script)
     return () => script.remove()
   }, [description])
+
+  if (!JOB_OPENING_ACTIVE) {
+    return (
+      <div className="careers-page">
+        <main className="careers-content">
+          <section className="job-card careers-closed" aria-labelledby="careers-title">
+            <p className="careers-eyebrow">Grupo PM Publicidad y Movimiento</p>
+            <h1 id="careers-title">Trabaja con nosotros</h1>
+            <p className="job-intro">Por ahora no tenemos vacantes abiertas. Gracias por tu interés en formar parte de nuestro equipo; publicaremos aquí las próximas oportunidades.</p>
+          </section>
+        </main>
+      </div>
+    )
+  }
 
   return (
     <div className="careers-page">
